@@ -1,6 +1,0 @@
-book_filename: "series"
-language:
-  ui:
-    chapter_name: "Rozdział "
-delete_merged_file: true 
-output_dir: "docs"

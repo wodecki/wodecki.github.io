@@ -1,5 +1,1 @@
-# bookdown-tutorial
-Mini tutorial for bookdown 
-
-
-afdafadjl
+# Architektury Sztucznej Inteligencji
