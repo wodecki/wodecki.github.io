@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Rozdział 3 Typy danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
+  <meta name="description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Rozdział 3 Typy danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  <meta name="github-repo" content="openscapes/series" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Rozdział 3 Typy danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  
+  <meta name="twitter:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  
+
+<meta name="author" content="Andrzej Wodecki" />
+
+
+<meta name="date" content="2022-04-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="potoki-danych.html"/>
+<link rel="next" href="bazy-danych.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Architektury i Metodyki Wdrozen Systemów Sztucznej Inteligencji</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Wprowadzenie<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#motywacja"><i class="fa fa-check"></i><b>1.1</b> <strong>Motywacja</strong><span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#cele-kursu"><i class="fa fa-check"></i><b>1.2</b> Cele kursu<span></span></a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#warsztaty"><i class="fa fa-check"></i><b>1.3</b> Warsztaty<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="potoki-danych.html"><a href="potoki-danych.html"><i class="fa fa-check"></i><b>2</b> Potoki danych<span></span></a></li>
+<li class="chapter" data-level="3" data-path="typy-danych.html"><a href="typy-danych.html"><i class="fa fa-check"></i><b>3</b> Typy danych<span></span></a></li>
+<li class="chapter" data-level="4" data-path="bazy-danych.html"><a href="bazy-danych.html"><i class="fa fa-check"></i><b>4</b> Bazy danych<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="bazy-danych.html"><a href="bazy-danych.html#bazy-sql"><i class="fa fa-check"></i><b>4.1</b> Bazy SQL<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="bazy-danych.html"><a href="bazy-danych.html#bazy-nosql"><i class="fa fa-check"></i><b>4.2</b> Bazy NoSQL<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="hurtownie-danych.html"><a href="hurtownie-danych.html"><i class="fa fa-check"></i><b>5</b> Hurtownie danych<span></span></a></li>
+<li class="chapter" data-level="6" data-path="jeziora-danych.html"><a href="jeziora-danych.html"><i class="fa fa-check"></i><b>6</b> Jeziora danych<span></span></a></li>
+<li class="chapter" data-level="7" data-path="konsumenci-danych.html"><a href="konsumenci-danych.html"><i class="fa fa-check"></i><b>7</b> Konsumenci danych<span></span></a></li>
+<li class="chapter" data-level="8" data-path="producenci-danych.html"><a href="producenci-danych.html"><i class="fa fa-check"></i><b>8</b> Producenci danych<span></span></a></li>
+<li class="chapter" data-level="9" data-path="transformacja-danych.html"><a href="transformacja-danych.html"><i class="fa fa-check"></i><b>9</b> Transformacja danych<span></span></a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="transformacja-danych.html"><a href="transformacja-danych.html#przetwarzanie-etl-extract-transform-load"><i class="fa fa-check"></i><b>9.1</b> Przetwarzanie ETL (Extract, Transform, Load)<span></span></a></li>
+<li class="chapter" data-level="9.2" data-path="transformacja-danych.html"><a href="transformacja-danych.html#przetwarzanie-elt-extract-load-transform"><i class="fa fa-check"></i><b>9.2</b> Przetwarzanie ELT (Extract, Load, Transform)<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="strategia-wdrożenia-własne-czy-gotowe.html"><a href="strategia-wdrożenia-własne-czy-gotowe.html"><i class="fa fa-check"></i><b>10</b> Strategia wdrożenia: własne czy gotowe?<span></span></a></li>
+<li class="chapter" data-level="11" data-path="strategia-wdrożenia-otwarte-czy-komercyjne.html"><a href="strategia-wdrożenia-otwarte-czy-komercyjne.html"><i class="fa fa-check"></i><b>11</b> Strategia wdrożenia: otwarte czy komercyjne?<span></span></a></li>
+<li class="chapter" data-level="12" data-path="strategia-wdrożenia-u-siebie-czy-w-chmurze.html"><a href="strategia-wdrożenia-u-siebie-czy-w-chmurze.html"><i class="fa fa-check"></i><b>12</b> Strategia wdrożenia: u siebie czy “w chmurze”?<span></span></a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="typy-danych" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Rozdział 3</span> Typy danych<a href="typy-danych.html#typy-danych" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Najważniejsze typy danych, które napotkamy w projektach uczenia maszynowego, to:</p>
+<ol style="list-style-type: decimal">
+<li>Dane o zdarzeniach, obiektach i ich agregaty</li>
+<li>Dane ustrukturyzowane, nieustrukturyzowane i częściowo-ustrukturyzowane.</li>
+</ol>
+<p><img src="media/image-20220329134711068.png" alt="image-20220329134711068" style="zoom:50%;" /></p>
+<p><strong>Dane o obiektach</strong> (ang. entity data) przedstawiają najczęściej stan obiektu, np. użytkownika, produktu, zamówienia.</p>
+<p><img src="media/image-20220329134014182.png" alt="image-20220329134014182" style="zoom:50%;" /></p>
+<p><strong>Dane o zdarzeniach</strong> (ang. event data) opisują działania wykonywane przez (lub na) obiektach.</p>
+<p><img src="media/image-20220329134337809.png" alt="image-20220329134337809" style="zoom:50%;" /></p>
+<p>Najbardziej typowe cechy takich zdarzeń to:</p>
+<ul>
+<li>identyfikator</li>
+<li>typ zdarzenia</li>
+<li>znacznik czasu</li>
+<li>informacje uzupełniające.</li>
+</ul>
+<p>Warto podkreślić, że współczesne systemy generują zdecydowanie więcej danych o zdarzeniach niż danych o podmiotach (na każdego użytkownika korzystającego z aplikacji mogą przypadać tysiące zdarzeń).</p>
+<p>Dane o zdarzeniach mogą być <strong>agregowane</strong> np. w celu analiz biznesowych (np. KPIs). Przykładowo, często wykorzystywane w biznesie miary będące wynikiem agregacji danych o obiektach i wydarzeniach to:</p>
+<ol style="list-style-type: decimal">
+<li>Liczba aktywnych użytkowników
+Dzienni aktywni użytkownicy (DAU)
+Tygodniowi aktywni użytkownicy (WAU)
+Miesięczna liczba aktywnych użytkowników (MAU)</li>
+<li>Długość sesji
+Czas spędzony przez użytkownika korzystającego z Twojej aplikacji podczas jednej sesji.</li>
+<li>Współczynnik kliknięć (CTR)
+Stosunek liczby użytkowników, którzy kliknęli na reklamę lub banner do liczby użytkowników, którzy obejrzeli stronę z tą reklamą lub bannerem.</li>
+<li>Współczynnik odrzuceń (BR)
+Procent użytkowników opuszczających witrynę po obejrzeniu tylko jednej strony.</li>
+<li>Współczynnik konwersji (CR)
+Procent użytkowników, którzy wykonują pożądaną akcję.</li>
+</ol>
+<p>Relację pomiędzy danymi o zdarzeniach i obiektach można podsumować następująco:</p>
+<p><img src="media/image-20220329134633633.png" alt="image-20220329134633633" style="zoom:40%;" /></p>
+<p>Kolejną istotną w uczeniu maszynowym charakterystyką danych jest ich podział na dane ustrukturyzowane, częściowo-ustrukturyzowane i nieustrukturyzowane.</p>
+<p><img src="media/image-20220329134825429.png" alt="image-20220329134825429" style="zoom:50%;" /></p>
+<p><strong>Dane ustrukturyzowane</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>Są uporządkowane w tabelach</li>
+<li>Można określić między nimi relacje</li>
+<li>Można odpytywać korzystając z języka SQL (Structured Query Language)</li>
+<li>Wymagają wskazania schematu (Schema): sposobu organizacji danych.</li>
+</ol>
+<p><strong>Dane częściowo-ustrukturyzowane</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Nie są zgodne z relacyjnymi bazami danych, takimi jak Excel czy SQL, ale mają pewien poziom organizacji, np. znaczniki.</p></li>
+<li><p>Nie są ściśle relacyjne</p></li>
+<li><p>Po przetworzeniu mogą być przechowywane w:</p>
+<ol style="list-style-type: decimal">
+<li>relacyjnych bazach danych</li>
+<li>bazach NoSQL</li>
+<li>plikach CSV, XML i JSON.</li>
+</ol></li>
+</ol>
+<p><strong>Dane nieustrukturyzowane</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Najczęściej dane jakościowe</p></li>
+<li><p>Nie posiadają schematu/modelu, czy też relacji</p></li>
+<li><p>Można je składować w bazach NoSQL i jeziorach danych</p></li>
+<li><p>Przykłady: pliki audio, video, dokumenty tekstowe, wpisy na forach dyskusyjnych, etc.</p></li>
+</ol>
+
+<iframe width="745" height="450" src="https://www.youtube.com/embed/PX12hNFXRgM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="potoki-danych.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bazy-danych.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/wodecki/ASI/edit/master/2.2._Architektury_IT_-_typy_danych.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["series.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

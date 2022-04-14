@@ -1,10 +1,6 @@
 book_filename: "series"
 language:
   ui:
-    chapter_name: "Chapter "
-rmd_files: [
-  "index.Rmd",
-  "setup.Rmd",
-  "write.Rmd"]
+    chapter_name: "Rozdział "
 delete_merged_file: true 
 output_dir: "docs"

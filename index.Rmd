@@ -1,6 +1,6 @@
 --- 
-title: "Making free books with RStudio’s RMarkdown & Bookdown"
-author: "Julie Lowndes"
+title: "Architektury i metodyki wdrożeń Sztucznej Inteligencji"
+author: "Andrzej Wodecki"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 # output: bookdown::gitbook
@@ -9,37 +9,62 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: openscapes/series
-description: "A mini bookdown tutorial book on how to make bookdown books."
+description: "Materiały szkoleniowe z obszaru MLDevOps."
 ---
 
-# Welcome {#welcome}
+# Wprowadzenie
 
-hi
+<iframe width="560" height="515" src="https://www.youtube.com/embed/IQo5p8-73ZY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-It's possible to create beautiful books for free using [RStudio's R Markdown](http://rmarkdown.rstudio.com/) and Yihui Xie's [bookdown](https://bookdown.org/yihui/bookdown/) and hosting them on [Github](http://github.com). This is pretty new and incredibly cool. It is a really powerful way to communicate science using the same reproducible workflow you use for your analyses and collaborations.
+## **Motywacja**
 
-This tutorial borrows heavily from a lot of great tutorials and resources you should check out too -- there are links throughout. It also parallels a previous tutorial [Making free websites with RStudio’s R Markdown](https://jules32.github.io/rmarkdown-website-tutorial/).
+Trening modelu uczenia maszynowego to dopiero początek: wcześniej trzeba pozyskać i przygotować dane, następnie go udostępnić, a po udostępnieniu monitorować jego jakość**.** 
 
-The best way to learn is to follow along with your own laptop, but all are welcome. We'll spend half the time with the tutorial and half the time for you to work on your own website and get help. If you bring your laptop please do this beforehand: 
+![](media/image-20220329115350377.png)
 
-1. install [RStudio](https://www.rstudio.com/products/rstudio/download/)
-1. create a [GitHub]((http://github.com)) account ([advice](http://happygitwithr.com/github-acct.html))
-1. set up your computer to talk to GitHub
-    - have RStudio linked directly (highly recommended) ([instructions sections 8-14](http://happygitwithr.com/hello-git.html))
-    - or install the [Desktop App](https://desktop.github.com/)
-    - or be familiar with git commands for the command line ([tutorial](https://try.github.io/levels/1/challenges/1))
+W tym „cyklu życia modelu” pracujemy z wieloma komponentami i artefaktami:
 
-----
+1. Komponenty „przetwarzają” dane, są najczęściej skryptami komputerowymi (lub modułami dostępnymi w formie kontenerów)
+2. Artefakty są produktami i/lub materiałem wejściowym dla komponentów
 
+Przykładowe komponenty to: przygotowanie danych, modelowanie, udostępnianie, monitoring, dotrenowanie… Przykładowe artefakty zas to: dane, modele, aplikacje
 
-**Examples:**
+Komponenty też nie są proste… Składa się na nie najczęściej wiele różnych, złożonych działań.
 
-We have been using bookdown for the Ocean Health Index:  [**ohi-science.org/data-science-training**](http://ohi-science.org/data-science-training) and Openscapes: [**openscapes.org/series**](https://openscapes.org/series).  
-And R Markdown is much more than books and websites -- here's a [**one-minute video about R Markdown**](http://rmarkdown.rstudio.com/lesson-1.html) to get you excited. 
+Artefakty zaś wymagają składowania w dedykowanych strukturach, takich jak:
 
-----
+1. Repozytoria cech (features stores)
+2. Repozytoria modeli (model stores)
+3. Repozytoria metadanych (metadata stores)
 
-## Learn all about Bookdown
+Całość trzeba przy tym: 
 
-The best way to learn more about bookdown is from Yihui Xie himself. You can read his book [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/) or watch his webinar [introducing bookdown](https://www.rstudio.com/resources/webinars/introducing-bookdown/).
+1. monitorować:
 
+   1. Jakość i charakterystyki danych (np. dryf danych)
+
+   1. Wyniki eksperymentów
+
+   1. Jakość modeli (np. dryf modeli)
+
+2. … kontrolować 
+
+   1. Kontrola przebiegu procesu
+   2. Zarządzanie parametrami przebiegów… 
+
+3. i wersjonować
+
+   1. Dane
+   2. Modele.
+
+Dane zadanie/proces ML może być realizowane:
+
+1. Na różne sposoby
+2. Z wykorzystaniem różnych bibliotek i różnych narzędzi
+3. W różnych środowiskach (lokalnie, serwery w chmurze, chmura bezserwerowa, urządzenia mobilne.
+
+![](media/image-20220329115417586.png)
+
+Źródło: https://ai-infrastructure.org/maximizing-ml-infrastructure-tools-for-production-workloads-arize-ai/
+
+Na szczęście, pomaga nam w tym wiele różnych bibliotek i narzędzi. Krajobraz ten szybko się zmienia.

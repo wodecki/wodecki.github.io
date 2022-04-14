@@ -1,0 +1,42 @@
+<iframe width="560" height="515" src="https://www.youtube.com/embed/iyENO5Nu9LE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+# Warsztaty
+
+Pracę na ćwiczeniach podzielimy na 5 etapów:
+
+1. Stworzenie komponentów umożliwiających
+   1. trening
+   2. uruchomienie
+   3. i monitoring modeli
+2. Implementację tych komponentów w postaci kontenerów Docker (opcjonalnie: Kubernetes lub Dataiku)
+3. Opracowanie dokumentacji całej architektury.
+
+![image-20220329120614013](media/image-20220329120614013.png)
+
+
+
+W pracach wykorzystamy następujące narzędzia:
+
+1. Pakiet MLFlow
+2. Środowisko Docker/Kubeflow
+3. Platformę Dataiku.
+
+
+
+Na końcową dokumentację złożą się:
+
+1. Opis problemu: Co i dlaczego modelujemy?
+2. Analiza potrzeb. 
+   1. Krótka charakterystyka organizacji, dla której trenujemy model (1 akapit)
+   2. Prognozowana częstość dotrenowywania
+   3. Złożoność obliczeniowa algorytmu
+   4. Ilość i złożoność danych.
+3. Rekomendowana architektura (implementacja w diagrams.net z łączami do GitHub (artefakty i komponenty))
+4. Dokumentacja implementacji:
+   1. Komponenty
+   2. Artefakty
+   3. Środowisko uruchomieniowe
+5. Dyskusja wyników (ekrany z poszczególnych faz):
+   1. Dane
+   2. Modelowanie
+   3. Monitoring.
