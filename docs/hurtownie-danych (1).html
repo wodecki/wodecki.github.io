@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Rozdział 11 Strategia wdrożenia: otwarte czy komercyjne? | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
+  <title>Rozdział 5 Hurtownie danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
   <meta name="description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Rozdział 11 Strategia wdrożenia: otwarte czy komercyjne? | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta property="og:title" content="Rozdział 5 Hurtownie danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="github-repo" content="openscapes/series" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Rozdział 11 Strategia wdrożenia: otwarte czy komercyjne? | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta name="twitter:title" content="Rozdział 5 Hurtownie danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   
   <meta name="twitter:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="strategia-wdrożenia-własne-czy-gotowe.html"/>
-<link rel="next" href="strategia-wdrożenia-u-siebie-czy-w-chmurze.html"/>
+<link rel="prev" href="bazy-danych.html"/>
+<link rel="next" href="jeziora-danych.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -119,29 +119,42 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="strategia-wdrożenia-otwarte-czy-komercyjne" class="section level1 hasAnchor" number="11">
-<h1><span class="header-section-number">Rozdział 11</span> Strategia wdrożenia: otwarte czy komercyjne?<a href="strategia-wdrożenia-otwarte-czy-komercyjne.html#strategia-wdrożenia-otwarte-czy-komercyjne" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Decyzja o tym, czy zakupić rozwiązanie licencjonowane, czy też budować własne w oparciu o technologie otwarte (ang. open-source), to kolejny dylemat, przed którym stoją kierownicy projektów czy projektanci architektur systemów IT.</p>
-<p><img src="media/image-20220329164505231.png" alt="image-20220329164505231" style="zoom:50%;" /></p>
-<p><strong>Wybierz rozwiązanie otwarte (open-source)</strong>, gdy:</p>
+<div id="hurtownie-danych" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Rozdział 5</span> Hurtownie danych<a href="hurtownie-danych.html#hurtownie-danych" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Bazy danych, oparte na technologii OLTP (OnLine Transaction Processing) są zaprojektowane w celu zapewnienia efektywnego działania systemów transakcyjnych. Ich celem nie jest optymalizacja analityki</p>
+<p>Hurtownie danych:</p>
 <ol style="list-style-type: decimal">
-<li><p>ktoś już stworzył to, czego potrzebujesz?</p></li>
-<li><p>kod jest dobrze wspierany przez dużą i aktywną społeczność (np. na dużo twórców i commit’ów na GitHub.com)</p></li>
-<li><p>całkowity koszt posiadania takiego rozwiązania (TCO: Total Cost of Ownership) jest niski</p></li>
-<li><p>koresponduje to z wizerunkiem Twojej marki</p></li>
-<li><p>potrzebujesz nie tylko aplikacji, ale też kodu źródłowego.</p></li>
+<li>oparte są o technologie OLAP (Online Analytical Processing), wspomagające użytkowników w interaktywnej analizie wielowymiarowych danych, w szczególności:
+<ol style="list-style-type: decimal">
+<li>Konsolidacji (grupowania)</li>
+<li>Drążenia (drill-down)</li>
+<li>Przekrojów danych</li>
+</ol></li>
+<li>Hurtownie danych wykorzystują dane zgromadzone w bazach danych (OLTP), tworząc warstwę zoptymalizowaną pod kątem zastosowań analitycznych.</li>
 </ol>
-<p><strong>Wybierz rozwiązanie komercyjne</strong>, gdy:</p>
+<p>W efekcie, hurtownie danych integrują dane z różnych źródeł, będąc często centralnym repozytorium informacji zoptymalizowane pod kątem analityki biznesowej.</p>
+<p>Źródłami danych dla hurtowni danych są różne systemy transakcyjne i inne bazy danych.</p>
+<p>Główne <strong>zalety i korzyści</strong> ze stosowania hurtowni danych to:</p>
 <ol style="list-style-type: decimal">
-<li><p>jest prostsze w dostosowaniu do Twoich potrzeb i wdrożeniu</p></li>
-<li><p>jest standardem branżowym (np. arkusze kalkulacyjne)</p></li>
-<li><p>potrzebujesz wiarygodnego wsparcia</p></li>
-<li><p>całkowity koszt posiadania rozwiązania otwartego (TCO: Total Cost of Ownership) jest wysoki</p></li>
-<li><p>gdy musisz zagwarantować, że nie naruszasz czyichś praw autorskich</p></li>
-<li><p>istotne jest bezpieczeństwo (choć nie zawsze…).</p></li>
+<li>Konsolidacja danych w jednym miejscu</li>
+<li>Szybsze analizy biznesowe</li>
+<li>Ułatwione procesy transformacji i wzbogacania danych oraz inżynierii cech</li>
+<li>Poprawa jakość danych.</li>
+</ol>
+<p><strong>Wady i ograniczenia </strong>hurtowni danych:</p>
+<ol style="list-style-type: decimal">
+<li>Mogą być kosztowne</li>
+<li>Wymagają ciągłej opieki (czyszczenie, transformacja, integracja danych, …)</li>
+<li>Bywają zbyt złożone w przypadku doraźnych potrzeb analitycznych.</li>
+</ol>
+<p>Hurtownie danych <strong>warto stosować</strong> w danej organizacji:</p>
+<ol style="list-style-type: decimal">
+<li>Jest wiele rozproszonych baz danych/systemów dziedzinowych</li>
+<li>Jest wiele różnych baz danych</li>
+<li>Jest gromadzona duża ilość danych historycznych.</li>
 </ol>
 
-<iframe width="745" height="515" src="https://www.youtube.com/embed/CZ9yzEutAk0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/Trr6qBiEn3I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
 </div>
             </section>
@@ -149,8 +162,8 @@
           </div>
         </div>
       </div>
-<a href="strategia-wdrożenia-własne-czy-gotowe.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="strategia-wdrożenia-u-siebie-czy-w-chmurze.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="bazy-danych.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="jeziora-danych.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -181,7 +194,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/wodecki/ASI/edit/master/2.6.2._Otwarte_czy_komercyjne.Rmd",
+"link": "https://github.com/wodecki/ASI/edit/master/2.3.2._Hurtownie.Rmd",
 "text": "Edit"
 },
 "history": {

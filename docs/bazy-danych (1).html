@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Rozdział 11 Strategia wdrożenia: otwarte czy komercyjne? | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
+  <title>Rozdział 4 Bazy danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
   <meta name="description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Rozdział 11 Strategia wdrożenia: otwarte czy komercyjne? | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta property="og:title" content="Rozdział 4 Bazy danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="github-repo" content="openscapes/series" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Rozdział 11 Strategia wdrożenia: otwarte czy komercyjne? | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta name="twitter:title" content="Rozdział 4 Bazy danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   
   <meta name="twitter:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="strategia-wdrożenia-własne-czy-gotowe.html"/>
-<link rel="next" href="strategia-wdrożenia-u-siebie-czy-w-chmurze.html"/>
+<link rel="prev" href="typy-danych.html"/>
+<link rel="next" href="hurtownie-danych.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -119,38 +119,84 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="strategia-wdrożenia-otwarte-czy-komercyjne" class="section level1 hasAnchor" number="11">
-<h1><span class="header-section-number">Rozdział 11</span> Strategia wdrożenia: otwarte czy komercyjne?<a href="strategia-wdrożenia-otwarte-czy-komercyjne.html#strategia-wdrożenia-otwarte-czy-komercyjne" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Decyzja o tym, czy zakupić rozwiązanie licencjonowane, czy też budować własne w oparciu o technologie otwarte (ang. open-source), to kolejny dylemat, przed którym stoją kierownicy projektów czy projektanci architektur systemów IT.</p>
-<p><img src="media/image-20220329164505231.png" alt="image-20220329164505231" style="zoom:50%;" /></p>
-<p><strong>Wybierz rozwiązanie otwarte (open-source)</strong>, gdy:</p>
+<div id="bazy-danych" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Rozdział 4</span> Bazy danych<a href="bazy-danych.html#bazy-danych" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Technologie gromadzenia danych powinny być dostosowane do ich typu.</p>
+<p><img src="media/image-20220329145135721.png" alt="image-20220329145135721" style="zoom:50%;" /></p>
+<div id="bazy-sql" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Bazy SQL<a href="bazy-danych.html#bazy-sql" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Dane ustrukturyzowane</strong></p>
 <ol style="list-style-type: decimal">
-<li><p>ktoś już stworzył to, czego potrzebujesz?</p></li>
-<li><p>kod jest dobrze wspierany przez dużą i aktywną społeczność (np. na dużo twórców i commit’ów na GitHub.com)</p></li>
-<li><p>całkowity koszt posiadania takiego rozwiązania (TCO: Total Cost of Ownership) jest niski</p></li>
-<li><p>koresponduje to z wizerunkiem Twojej marki</p></li>
-<li><p>potrzebujesz nie tylko aplikacji, ale też kodu źródłowego.</p></li>
+<li>Uporządkowane w tabelach</li>
+<li>Można określić między nimi relacje</li>
+<li>Można odpytywać językiem SQL (Structured Query Language)</li>
+<li>Wymagają wskazania schematu (Schema): sposobu organizacji danych</li>
+<li>W efekcie, gromadzimy najczęściej w bazach SQL.</li>
 </ol>
-<p><strong>Wybierz rozwiązanie komercyjne</strong>, gdy:</p>
+<p>Kluczową technologią w tego typu systemach jest OLTP (OnLine Transaction Processing).</p>
+<p>Przykładowe bazy SQL: Oracle, MS SQL Server, MySQL, PostgreSQL</p>
+<p>Przykładowe zastosowania: systemy finansowe, transakcyjne, ERP, etc.</p>
+</div>
+<div id="bazy-nosql" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Bazy NoSQL<a href="bazy-danych.html#bazy-nosql" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Bazy NoSQL służą do przechowywania <strong>danych nieustrukturyzowanych</strong>.</p>
+<p>Wyróżniamy 4 podstawowe typy baz NoSQL.</p>
 <ol style="list-style-type: decimal">
-<li><p>jest prostsze w dostosowaniu do Twoich potrzeb i wdrożeniu</p></li>
-<li><p>jest standardem branżowym (np. arkusze kalkulacyjne)</p></li>
-<li><p>potrzebujesz wiarygodnego wsparcia</p></li>
-<li><p>całkowity koszt posiadania rozwiązania otwartego (TCO: Total Cost of Ownership) jest wysoki</p></li>
-<li><p>gdy musisz zagwarantować, że nie naruszasz czyichś praw autorskich</p></li>
-<li><p>istotne jest bezpieczeństwo (choć nie zawsze…).</p></li>
+<li>Bazy zorientowane na dokumenty</li>
+<li>Bazy kolumnowe</li>
+<li>Bazy oparte o wartości kluczy (key-value)</li>
+<li>Bazy grafowe.</li>
+</ol>
+<hr />
+<p><img src="media/image-20220329145821411.png" alt="image-20220329145821411" style="zoom:50%;" /></p>
+<p><strong>Bazy zorientowane na dokumenty:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Nie posiadają ustalonego schematu</li>
+<li>Dane składowane w dokumentach JSON (JavaScript Object Notation)</li>
+<li>Każdy dokument może mieć inny zestaw pól</li>
+<li>Przykładowe bazy: MongoDB, CouchDB, DocumentDB</li>
+<li>Przykładowe zastosowania: systemy zarządzania dokumentami.</li>
+</ol>
+<hr />
+<p><img src="media/image-20220329145848585.png" alt="image-20220329145848585" style="zoom:50%;" /></p>
+<p><strong>Bazy kolumnowe</strong></p>
+<ol style="list-style-type: decimal">
+<li>Dane składowane są w nich w kolumnach (nie w wierszach)</li>
+<li>W efekcie, operacje (zapytania, dodawanie, kasowanie, etc.) oparte na kolumnach działają  w nich bardzo szybko</li>
+<li>Przykładowe bazy: Cassandra</li>
+<li>Przykładowe zastosowania: zaawansowane analizy danych.</li>
+</ol>
+<hr />
+<p><img src="media/image-20220329145910797.png" alt="image-20220329145910797" style="zoom:50%;" /></p>
+<p><strong>Bazy oparte o wartości kluczy (key-value)</strong></p>
+<ol style="list-style-type: decimal">
+<li>Każdy wpis ma w nich unikatowy klucz</li>
+<li>Efekt: umożliwiają szybszy zapis i odczyt danych</li>
+<li>Przykładowe bazy: Redis, Amazon Dynamo DB</li>
+<li>Przykładowe zastosowania: opinie klientów.</li>
+</ol>
+<hr />
+<p><img src="media/image-20220329150131298.png" alt="image-20220329150131298" style="zoom:50%;" /></p>
+<p><strong>Bazy grafowe</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Dane skladowane w formie sieci</p></li>
+<li><p>Koncentracja na połączeniach (relacjach) pomiędzy punktami (obiektami)</p></li>
+<li><p>Wykorzystywane w analizach relacji</p></li>
+<li><p>Przykładowe bazy: Neo4j, Inifinite Graph</p></li>
+<li><p>Przykładowe zastosowania: analiza sieci społecznych.</p></li>
 </ol>
 
-<iframe width="745" height="515" src="https://www.youtube.com/embed/CZ9yzEutAk0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/Q8ekLPIZArA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="strategia-wdrożenia-własne-czy-gotowe.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="strategia-wdrożenia-u-siebie-czy-w-chmurze.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="typy-danych.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="hurtownie-danych.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -181,7 +227,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/wodecki/ASI/edit/master/2.6.2._Otwarte_czy_komercyjne.Rmd",
+"link": "https://github.com/wodecki/ASI/edit/master/2.3.1._Bazy_danych.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Warsztaty | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
+  <title>2.5 Strategia wdrożenia | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
   <meta name="description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Warsztaty | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta property="og:title" content="2.5 Strategia wdrożenia | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="github-repo" content="openscapes/series" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Warsztaty | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta name="twitter:title" content="2.5 Strategia wdrożenia | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   
   <meta name="twitter:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="cele-kursu.html"/>
-<link rel="next" href="architektury-it.html"/>
+<link rel="prev" href="transformacja-danych.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -125,53 +125,86 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="warsztaty" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Warsztaty<a href="warsztaty.html#warsztaty" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<iframe width="745" height="515" src="https://www.youtube.com/embed/iyENO5Nu9LE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+<div id="strategia-wdrożenia" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Strategia wdrożenia<a href="strategia-wdrożenia.html#strategia-wdrożenia" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="własne-czy-gotowe" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Własne czy gotowe?<a href="strategia-wdrożenia.html#własne-czy-gotowe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<iframe width="745" height="515" src="https://www.youtube.com/embed/eSMEdYet6WY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
-<p>Pracę na ćwiczeniach podzielimy na 5 etapów:</p>
+<p>Jedną z pierwszych decyzji, którą należy podjąć już podczas projektowania architektury IT, jest to, czy wykorzystamy rozwiązanie gotowe, czy też stworzymy własne?</p>
+<p>Generalnie, rekomenduję kierować się następującą zasadą:</p>
 <ol style="list-style-type: decimal">
-<li>Stworzenie komponentów umożliwiających
-<ol style="list-style-type: decimal">
-<li>trening</li>
-<li>uruchomienie</li>
-<li>i monitoring modeli</li>
-</ol></li>
-<li>Implementację tych komponentów w postaci kontenerów Docker (opcjonalnie: Kubernetes lub Dataiku)</li>
-<li>Opracowanie dokumentacji całej architektury.</li>
+<li>w pierwszej kolejności sprawdź, czy dane rozwiązanie jest dostępne na rynku? Jeśli tak: wykorzystaj je.</li>
+<li>dalej, sprawdź, czy można dostosować jakieś rozwiązanie do Twoich potrzeb</li>
+<li>… a dopiero jeśli nie jest możliwe skorzystanie z rozwiązania gotowego, nie ma też niczego, co można by dostosować: stwórz własne rozwiązanie.</li>
 </ol>
-<p><img src="media/image-20220329120614013.png" /></p>
-<p>W pracach wykorzystamy następujące narzędzia:</p>
+<p><img src="media/image-20220329164551255.png" alt="image-20220329164551255" style="zoom:50%;" /></p>
+<p><strong>Kup gotowe, gdy…</strong>:</p>
 <ol style="list-style-type: decimal">
-<li>Pakiet MLFlow</li>
-<li>Środowisko Docker/Kubeflow</li>
-<li>Platformę Dataiku.</li>
+<li><p>całkowity koszty zakupu jest dużo niższy niż wytworzenie</p></li>
+<li><p>budowa zajmie zbyt dużo czasu</p></li>
+<li><p>dla w miarę uniwersalnych problemów biznesowych (np. HR)</p></li>
+<li><p>jeśli Twoje problemy biznesowe już zostały przez kogoś rozwiązane, i na rynku są już liderzy takich rozwiązań.</p></li>
 </ol>
-<p>Na końcową dokumentację złożą się:</p>
+<p>Kupno gotowego rozwiązania przyspiesza zarówno wejście na rynek, jak i jego skalowanie w przyszłości</p>
+<p><strong>Stwórz własne, gdy…</strong>:</p>
 <ol style="list-style-type: decimal">
-<li>Opis problemu: Co i dlaczego modelujemy?</li>
-<li>Analiza potrzeb.
-<ol style="list-style-type: decimal">
-<li>Krótka charakterystyka organizacji, dla której trenujemy model (1 akapit)</li>
-<li>Prognozowana częstość dotrenowywania</li>
-<li>Złożoność obliczeniowa algorytmu</li>
-<li>Ilość i złożoność danych.</li>
-</ol></li>
-<li>Rekomendowana architektura (implementacja w diagrams.net z łączami do GitHub (artefakty i komponenty))</li>
-<li>Dokumentacja implementacji:
-<ol style="list-style-type: decimal">
-<li>Komponenty</li>
-<li>Artefakty</li>
-<li>Środowisko uruchomieniowe</li>
-</ol></li>
-<li>Dyskusja wyników (ekrany z poszczególnych faz):
-<ol style="list-style-type: decimal">
-<li>Dane</li>
-<li>Modelowanie</li>
-<li>Monitoring.</li>
-</ol></li>
+<li><p>obszar obsługiwany systemem jest kluczowym czynnikiem przewagi konkurencyjnej</p></li>
+<li><p>koszty dostosowania gotowego produktu są bardzo duże, całkowity koszty wytworzenia jest dużo niższy (programowanie, testowanie, konfiguracja, skalowanie, ludzie (specjaliści), infrastruktura)</p></li>
+<li><p>wytworzenie wymaga głębokiego zrozumienia specyfiki biznesu</p></li>
+<li><p>bardzo zależy Ci na czasie, a dostawcy nie mogą zagwarantować realizacji niezbędnego zakresu w terminie.</p></li>
 </ol>
 
+</div>
+<div id="otwarte-czy-komercyjne" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Otwarte czy komercyjne?<a href="strategia-wdrożenia.html#otwarte-czy-komercyjne" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<iframe width="745" height="515" src="https://www.youtube.com/embed/H76OkPz6eVY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Decyzja o tym, czy zakupić rozwiązanie licencjonowane, czy też budować własne w oparciu o technologie otwarte (ang. open-source), to kolejny dylemat, przed którym stoją kierownicy projektów czy projektanci architektur systemów IT.</p>
+<p><img src="media/image-20220329164505231.png" alt="image-20220329164505231" style="zoom:50%;" /></p>
+<p><strong>Wybierz rozwiązanie otwarte (open-source)</strong>, gdy:</p>
+<ol style="list-style-type: decimal">
+<li><p>ktoś już stworzył to, czego potrzebujesz?</p></li>
+<li><p>kod jest dobrze wspierany przez dużą i aktywną społeczność (np. na dużo twórców i commit’ów na GitHub.com)</p></li>
+<li><p>całkowity koszt posiadania takiego rozwiązania (TCO: Total Cost of Ownership) jest niski</p></li>
+<li><p>koresponduje to z wizerunkiem Twojej marki</p></li>
+<li><p>potrzebujesz nie tylko aplikacji, ale też kodu źródłowego.</p></li>
+</ol>
+<p><strong>Wybierz rozwiązanie komercyjne</strong>, gdy:</p>
+<ol style="list-style-type: decimal">
+<li><p>jest prostsze w dostosowaniu do Twoich potrzeb i wdrożeniu</p></li>
+<li><p>jest standardem branżowym (np. arkusze kalkulacyjne)</p></li>
+<li><p>potrzebujesz wiarygodnego wsparcia</p></li>
+<li><p>całkowity koszt posiadania rozwiązania otwartego (TCO: Total Cost of Ownership) jest wysoki</p></li>
+<li><p>gdy musisz zagwarantować, że nie naruszasz czyichś praw autorskich</p></li>
+<li><p>istotne jest bezpieczeństwo (choć nie zawsze…).</p></li>
+</ol>
+
+</div>
+<div id="u-siebie-czy-w-chmurze" class="section level3 hasAnchor" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> U siebie czy “w chmurze”?<a href="strategia-wdrożenia.html#u-siebie-czy-w-chmurze" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<iframe width="745" height="515" src="https://www.youtube.com/embed/CZ9yzEutAk0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Systemy IT/uczenia maszynowego możesz utrzymywać na własnej infrastrukturze, lokalnie w organizacji, lub też “w chmurze” (prywatnej lub publicznej).</p>
+<p><img src="media/image-20220329164036847.png" alt="image-20220329164036847" style="zoom:50%;" /></p>
+<p><strong>Utrzymuj na swoich serwerach</strong>, gdy:</p>
+<ol style="list-style-type: decimal">
+<li><p>chcesz mieć pełną kontrolę nad infrastrukturą i danymi</p></li>
+<li><p>całkowite koszty posiadania będą niższe niż w chmurze</p></li>
+<li><p>będziesz musiał często przesyłać duże ilości danych z własnych rozwiązań do “chmury” (egress) i z powrotem (ingres)</p></li>
+<li><p>rozwiązanie chmurowe może generować nieakceptowalne problemy z latencją (szybkością odpowiedzi serwera)</p></li>
+<li><p>stabilność działania jest krytyczna, i niemożliwa do zapewnienia przez dostawcę.</p></li>
+</ol>
+<p><strong>Utrzymuj w chmurze</strong>, gdy:</p>
+<ol style="list-style-type: decimal">
+<li><p>zależy Ci na koncentracji na swoim biznesie (uwolnieniu uwagi z konieczności monitoringu i rozwoju IT)</p></li>
+<li><p>chcesz obniżysz koszty posiadania i utrzymania infrastruktury IT</p></li>
+<li><p>istotna jest elastyczność skalowania rozwiązania (sezonowość, rozwój)</p></li>
+<li><p>potrzebujesz ciągłego, wiarygodnego wsparcia</p></li>
+<li><p>zasady firmy i reguły bezpieczeństwa dopuszczają takie rozwiązanie.</p></li>
+</ol>
+
+</div>
 </div>
 <!-- </div> -->
             </section>
@@ -179,8 +212,8 @@
           </div>
         </div>
       </div>
-<a href="cele-kursu.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="architektury-it.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="transformacja-danych.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -211,7 +244,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/wodecki/ASI/edit/master/1.3._Warsztaty.Rmd",
+"link": "https://github.com/wodecki/ASI/edit/master/2.6.1._Własne_czy_gotowe.Rmd",
 "text": "Edit"
 },
 "history": {

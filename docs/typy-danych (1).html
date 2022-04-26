@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Rozdział 11 Strategia wdrożenia: otwarte czy komercyjne? | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
+  <title>Rozdział 3 Typy danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
   <meta name="description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Rozdział 11 Strategia wdrożenia: otwarte czy komercyjne? | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta property="og:title" content="Rozdział 3 Typy danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="github-repo" content="openscapes/series" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Rozdział 11 Strategia wdrożenia: otwarte czy komercyjne? | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta name="twitter:title" content="Rozdział 3 Typy danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   
   <meta name="twitter:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="strategia-wdrożenia-własne-czy-gotowe.html"/>
-<link rel="next" href="strategia-wdrożenia-u-siebie-czy-w-chmurze.html"/>
+<link rel="prev" href="potoki-danych.html"/>
+<link rel="next" href="bazy-danych.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -119,29 +119,72 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="strategia-wdrożenia-otwarte-czy-komercyjne" class="section level1 hasAnchor" number="11">
-<h1><span class="header-section-number">Rozdział 11</span> Strategia wdrożenia: otwarte czy komercyjne?<a href="strategia-wdrożenia-otwarte-czy-komercyjne.html#strategia-wdrożenia-otwarte-czy-komercyjne" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Decyzja o tym, czy zakupić rozwiązanie licencjonowane, czy też budować własne w oparciu o technologie otwarte (ang. open-source), to kolejny dylemat, przed którym stoją kierownicy projektów czy projektanci architektur systemów IT.</p>
-<p><img src="media/image-20220329164505231.png" alt="image-20220329164505231" style="zoom:50%;" /></p>
-<p><strong>Wybierz rozwiązanie otwarte (open-source)</strong>, gdy:</p>
+<div id="typy-danych" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Rozdział 3</span> Typy danych<a href="typy-danych.html#typy-danych" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Najważniejsze typy danych, które napotkamy w projektach uczenia maszynowego, to:</p>
 <ol style="list-style-type: decimal">
-<li><p>ktoś już stworzył to, czego potrzebujesz?</p></li>
-<li><p>kod jest dobrze wspierany przez dużą i aktywną społeczność (np. na dużo twórców i commit’ów na GitHub.com)</p></li>
-<li><p>całkowity koszt posiadania takiego rozwiązania (TCO: Total Cost of Ownership) jest niski</p></li>
-<li><p>koresponduje to z wizerunkiem Twojej marki</p></li>
-<li><p>potrzebujesz nie tylko aplikacji, ale też kodu źródłowego.</p></li>
+<li>Dane o zdarzeniach, obiektach i ich agregaty</li>
+<li>Dane ustrukturyzowane, nieustrukturyzowane i częściowo-ustrukturyzowane.</li>
 </ol>
-<p><strong>Wybierz rozwiązanie komercyjne</strong>, gdy:</p>
+<p><img src="media/image-20220329134711068.png" alt="image-20220329134711068" style="zoom:50%;" /></p>
+<p><strong>Dane o obiektach</strong> (ang. entity data) przedstawiają najczęściej stan obiektu, np. użytkownika, produktu, zamówienia.</p>
+<p><img src="media/image-20220329134014182.png" alt="image-20220329134014182" style="zoom:50%;" /></p>
+<p><strong>Dane o zdarzeniach</strong> (ang. event data) opisują działania wykonywane przez (lub na) obiektach.</p>
+<p><img src="media/image-20220329134337809.png" alt="image-20220329134337809" style="zoom:50%;" /></p>
+<p>Najbardziej typowe cechy takich zdarzeń to:</p>
+<ul>
+<li>identyfikator</li>
+<li>typ zdarzenia</li>
+<li>znacznik czasu</li>
+<li>informacje uzupełniające.</li>
+</ul>
+<p>Warto podkreślić, że współczesne systemy generują zdecydowanie więcej danych o zdarzeniach niż danych o podmiotach (na każdego użytkownika korzystającego z aplikacji mogą przypadać tysiące zdarzeń).</p>
+<p>Dane o zdarzeniach mogą być <strong>agregowane</strong> np. w celu analiz biznesowych (np. KPIs). Przykładowo, często wykorzystywane w biznesie miary będące wynikiem agregacji danych o obiektach i wydarzeniach to:</p>
 <ol style="list-style-type: decimal">
-<li><p>jest prostsze w dostosowaniu do Twoich potrzeb i wdrożeniu</p></li>
-<li><p>jest standardem branżowym (np. arkusze kalkulacyjne)</p></li>
-<li><p>potrzebujesz wiarygodnego wsparcia</p></li>
-<li><p>całkowity koszt posiadania rozwiązania otwartego (TCO: Total Cost of Ownership) jest wysoki</p></li>
-<li><p>gdy musisz zagwarantować, że nie naruszasz czyichś praw autorskich</p></li>
-<li><p>istotne jest bezpieczeństwo (choć nie zawsze…).</p></li>
+<li>Liczba aktywnych użytkowników
+Dzienni aktywni użytkownicy (DAU)
+Tygodniowi aktywni użytkownicy (WAU)
+Miesięczna liczba aktywnych użytkowników (MAU)</li>
+<li>Długość sesji
+Czas spędzony przez użytkownika korzystającego z Twojej aplikacji podczas jednej sesji.</li>
+<li>Współczynnik kliknięć (CTR)
+Stosunek liczby użytkowników, którzy kliknęli na reklamę lub banner do liczby użytkowników, którzy obejrzeli stronę z tą reklamą lub bannerem.</li>
+<li>Współczynnik odrzuceń (BR)
+Procent użytkowników opuszczających witrynę po obejrzeniu tylko jednej strony.</li>
+<li>Współczynnik konwersji (CR)
+Procent użytkowników, którzy wykonują pożądaną akcję.</li>
+</ol>
+<p>Relację pomiędzy danymi o zdarzeniach i obiektach można podsumować następująco:</p>
+<p><img src="media/image-20220329134633633.png" alt="image-20220329134633633" style="zoom:40%;" /></p>
+<p>Kolejną istotną w uczeniu maszynowym charakterystyką danych jest ich podział na dane ustrukturyzowane, częściowo-ustrukturyzowane i nieustrukturyzowane.</p>
+<p><img src="media/image-20220329134825429.png" alt="image-20220329134825429" style="zoom:50%;" /></p>
+<p><strong>Dane ustrukturyzowane</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>Są uporządkowane w tabelach</li>
+<li>Można określić między nimi relacje</li>
+<li>Można odpytywać korzystając z języka SQL (Structured Query Language)</li>
+<li>Wymagają wskazania schematu (Schema): sposobu organizacji danych.</li>
+</ol>
+<p><strong>Dane częściowo-ustrukturyzowane</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Nie są zgodne z relacyjnymi bazami danych, takimi jak Excel czy SQL, ale mają pewien poziom organizacji, np. znaczniki.</p></li>
+<li><p>Nie są ściśle relacyjne</p></li>
+<li><p>Po przetworzeniu mogą być przechowywane w:</p>
+<ol style="list-style-type: decimal">
+<li>relacyjnych bazach danych</li>
+<li>bazach NoSQL</li>
+<li>plikach CSV, XML i JSON.</li>
+</ol></li>
+</ol>
+<p><strong>Dane nieustrukturyzowane</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Najczęściej dane jakościowe</p></li>
+<li><p>Nie posiadają schematu/modelu, czy też relacji</p></li>
+<li><p>Można je składować w bazach NoSQL i jeziorach danych</p></li>
+<li><p>Przykłady: pliki audio, video, dokumenty tekstowe, wpisy na forach dyskusyjnych, etc.</p></li>
 </ol>
 
-<iframe width="745" height="515" src="https://www.youtube.com/embed/CZ9yzEutAk0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/PX12hNFXRgM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
 </div>
             </section>
@@ -149,8 +192,8 @@
           </div>
         </div>
       </div>
-<a href="strategia-wdrożenia-własne-czy-gotowe.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="strategia-wdrożenia-u-siebie-czy-w-chmurze.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="potoki-danych.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bazy-danych.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -181,7 +224,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/wodecki/ASI/edit/master/2.6.2._Otwarte_czy_komercyjne.Rmd",
+"link": "https://github.com/wodecki/ASI/edit/master/2.2._Architektury_IT_-_typy_danych.Rmd",
 "text": "Edit"
 },
 "history": {
