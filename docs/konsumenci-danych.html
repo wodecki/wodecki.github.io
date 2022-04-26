@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="jeziora-danych.html"/>
-<link rel="next" href="transformacja-danych.html"/>
+<link rel="next" href="producenci-danych.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -89,20 +89,18 @@
 <li class="chapter" data-level="2.1.3" data-path="potoki-danych.html"><a href="potoki-danych.html#hurtownie-danych"><i class="fa fa-check"></i><b>2.1.3</b> Hurtownie danych</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="jeziora-danych.html"><a href="jeziora-danych.html"><i class="fa fa-check"></i><b>2.2</b> Jeziora danych</a></li>
-<li class="chapter" data-level="2.3" data-path="konsumenci-danych.html"><a href="konsumenci-danych.html"><i class="fa fa-check"></i><b>2.3</b> Konsumenci danych</a>
+<li class="chapter" data-level="2.3" data-path="konsumenci-danych.html"><a href="konsumenci-danych.html"><i class="fa fa-check"></i><b>2.3</b> Konsumenci danych</a></li>
+<li class="chapter" data-level="2.4" data-path="producenci-danych.html"><a href="producenci-danych.html"><i class="fa fa-check"></i><b>2.4</b> Producenci danych</a></li>
+<li class="chapter" data-level="2.5" data-path="transformacja-danych.html"><a href="transformacja-danych.html"><i class="fa fa-check"></i><b>2.5</b> Transformacja danych</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="konsumenci-danych.html"><a href="konsumenci-danych.html#producenci-danych"><i class="fa fa-check"></i><b>2.3.1</b> Producenci danych</a></li>
+<li class="chapter" data-level="2.5.1" data-path="transformacja-danych.html"><a href="transformacja-danych.html#przetwarzanie-etl-extract-transform-load"><i class="fa fa-check"></i><b>2.5.1</b> Przetwarzanie ETL (Extract, Transform, Load)</a></li>
+<li class="chapter" data-level="2.5.2" data-path="transformacja-danych.html"><a href="transformacja-danych.html#przetwarzanie-elt-extract-load-transform"><i class="fa fa-check"></i><b>2.5.2</b> Przetwarzanie ELT (Extract, Load, Transform)</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="transformacja-danych.html"><a href="transformacja-danych.html"><i class="fa fa-check"></i><b>2.4</b> Transformacja danych</a>
+<li class="chapter" data-level="2.6" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html"><i class="fa fa-check"></i><b>2.6</b> Strategia wdrożenia</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="transformacja-danych.html"><a href="transformacja-danych.html#przetwarzanie-etl-extract-transform-load"><i class="fa fa-check"></i><b>2.4.1</b> Przetwarzanie ETL (Extract, Transform, Load)</a></li>
-<li class="chapter" data-level="2.4.2" data-path="transformacja-danych.html"><a href="transformacja-danych.html#przetwarzanie-elt-extract-load-transform"><i class="fa fa-check"></i><b>2.4.2</b> Przetwarzanie ELT (Extract, Load, Transform)</a></li>
-</ul></li>
-<li class="chapter" data-level="2.5" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html"><i class="fa fa-check"></i><b>2.5</b> Strategia wdrożenia</a>
-<ul>
-<li class="chapter" data-level="2.5.1" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#własne-czy-gotowe"><i class="fa fa-check"></i><b>2.5.1</b> Własne czy gotowe?</a></li>
-<li class="chapter" data-level="2.5.2" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#otwarte-czy-komercyjne"><i class="fa fa-check"></i><b>2.5.2</b> Otwarte czy komercyjne?</a></li>
-<li class="chapter" data-level="2.5.3" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#u-siebie-czy-w-chmurze"><i class="fa fa-check"></i><b>2.5.3</b> U siebie czy “w chmurze”?</a></li>
+<li class="chapter" data-level="2.6.1" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#własne-czy-gotowe"><i class="fa fa-check"></i><b>2.6.1</b> Własne czy gotowe?</a></li>
+<li class="chapter" data-level="2.6.2" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#otwarte-czy-komercyjne"><i class="fa fa-check"></i><b>2.6.2</b> Otwarte czy komercyjne?</a></li>
+<li class="chapter" data-level="2.6.3" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#u-siebie-czy-w-chmurze"><i class="fa fa-check"></i><b>2.6.3</b> U siebie czy “w chmurze”?</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -141,55 +139,6 @@
 <p>Najbardziej typowe <strong>scenariusze użycia</strong>:</p>
 <p><img src="media/image-20220329154402498.png" alt="image-20220329154402498" style="zoom:50%;" /></p>
 
-<div id="producenci-danych" class="section level3 hasAnchor" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Producenci danych<a href="konsumenci-danych.html#producenci-danych" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<iframe width="745" height="515" src="https://www.youtube.com/embed/7LlxcqJlM2A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-<p><img src="media/image-20220329154518009.png" alt="image-20220329154518009" style="zoom: 25%;" />
-Typowe źródła <strong>danych o zdarzeniach</strong> to:</p>
-<ol style="list-style-type: decimal">
-<li>Strony www generujące dane o zachowaniach użytkownika:
-<ol style="list-style-type: decimal">
-<li>Pobrania</li>
-<li>Kliknięcia</li>
-<li>Wypełnienie formularza</li>
-<li>Komentarze</li>
-</ol></li>
-<li>Media społecznościowe:
-<ol style="list-style-type: decimal">
-<li>Publikacja wpisu</li>
-<li>Udostępnienie obiektu (wpis, zdjecie, film, …)</li>
-<li>Polubienie obiektu</li>
-<li>Hashtag</li>
-<li>Wystawienie opinii</li>
-</ol></li>
-<li>Systemy IT, generujące sygnały takie jak:
-<ol style="list-style-type: decimal">
-<li>Replikacja danych</li>
-<li>Synchronizacja danych</li>
-<li>Uruchomienie zadania</li>
-<li>Wykasowanie zadania, etc.</li>
-</ol></li>
-<li>Sensory, np.
-<ol style="list-style-type: decimal">
-<li>Detektory ruchu</li>
-<li>Detektory głosu</li>
-<li>Detektory temperatury</li>
-<li>Detektory dymu, etc.</li>
-</ol></li>
-</ol>
-<hr />
-<p><img src="media/image-20220329155340356.png" alt="image-20220329155340356" style="zoom:50%;" /></p>
-<p>Typowe źródła <strong>danych o obiektach</strong> to:</p>
-<ol style="list-style-type: decimal">
-<li><p>Systemy transakcyjne i dziedzinowe (ERP, CRM, etc.)</p></li>
-<li><p>Bazy danych</p></li>
-<li><p>Hurtownie danych</p></li>
-<li><p>Pliki i (rozproszone) systemy plików</p></li>
-<li><p>Źródła zewnętrzne, API (Application Programming Interface).</p></li>
-</ol>
-
-</div>
 </div>
             </section>
 
@@ -197,7 +146,7 @@ Typowe źródła <strong>danych o zdarzeniach</strong> to:</p>
         </div>
       </div>
 <a href="jeziora-danych.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="transformacja-danych.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="producenci-danych.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
