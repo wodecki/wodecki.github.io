@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3.2 Demo: trening i ewaluacja modelu | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
+  <meta name="description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3.2 Demo: trening i ewaluacja modelu | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  <meta name="github-repo" content="openscapes/series" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3.2 Demo: trening i ewaluacja modelu | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  
+  <meta name="twitter:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  
+
+<meta name="author" content="Andrzej Wodecki" />
+
+
+<meta name="date" content="2022-05-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="cykl-życia-modelu-uczenia-maszynowego.html"/>
+<link rel="next" href="ćwiczenie-trening-i-ewaluacja-modelu.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Architektury i Metodyki Wdrozen Systemów Sztucznej Inteligencji</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="wprowadzenie.html"><a href="wprowadzenie.html"><i class="fa fa-check"></i><b>1</b> Wprowadzenie<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="motywacja.html"><a href="motywacja.html"><i class="fa fa-check"></i><b>1.1</b> <strong>Motywacja</strong><span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="cele-kursu.html"><a href="cele-kursu.html"><i class="fa fa-check"></i><b>1.2</b> Cele kursu<span></span></a></li>
+<li class="chapter" data-level="1.3" data-path="warsztaty.html"><a href="warsztaty.html"><i class="fa fa-check"></i><b>1.3</b> Warsztaty<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="architektury-it.html"><a href="architektury-it.html"><i class="fa fa-check"></i><b>2</b> Architektury IT<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="potoki-danych.html"><a href="potoki-danych.html"><i class="fa fa-check"></i><b>2.1</b> Potoki danych<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="potoki-danych.html"><a href="potoki-danych.html#typy-danych"><i class="fa fa-check"></i><b>2.1.1</b> Typy danych<span></span></a></li>
+<li class="chapter" data-level="2.1.2" data-path="potoki-danych.html"><a href="potoki-danych.html#bazy-danych"><i class="fa fa-check"></i><b>2.1.2</b> Bazy danych<span></span></a></li>
+<li class="chapter" data-level="2.1.3" data-path="potoki-danych.html"><a href="potoki-danych.html#hurtownie-danych"><i class="fa fa-check"></i><b>2.1.3</b> Hurtownie danych<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="jeziora-danych.html"><a href="jeziora-danych.html"><i class="fa fa-check"></i><b>2.2</b> Jeziora danych<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="konsumenci-danych.html"><a href="konsumenci-danych.html"><i class="fa fa-check"></i><b>2.3</b> Konsumenci danych<span></span></a></li>
+<li class="chapter" data-level="2.4" data-path="producenci-danych.html"><a href="producenci-danych.html"><i class="fa fa-check"></i><b>2.4</b> Producenci danych<span></span></a></li>
+<li class="chapter" data-level="2.5" data-path="transformacja-danych.html"><a href="transformacja-danych.html"><i class="fa fa-check"></i><b>2.5</b> Transformacja danych<span></span></a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="transformacja-danych.html"><a href="transformacja-danych.html#przetwarzanie-etl-extract-transform-load"><i class="fa fa-check"></i><b>2.5.1</b> Przetwarzanie ETL (Extract, Transform, Load)<span></span></a></li>
+<li class="chapter" data-level="2.5.2" data-path="transformacja-danych.html"><a href="transformacja-danych.html#przetwarzanie-elt-extract-load-transform"><i class="fa fa-check"></i><b>2.5.2</b> Przetwarzanie ELT (Extract, Load, Transform)<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html"><i class="fa fa-check"></i><b>2.6</b> Strategia wdrożenia<span></span></a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#własne-czy-gotowe"><i class="fa fa-check"></i><b>2.6.1</b> Własne czy gotowe?<span></span></a></li>
+<li class="chapter" data-level="2.6.2" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#otwarte-czy-komercyjne"><i class="fa fa-check"></i><b>2.6.2</b> Otwarte czy komercyjne?<span></span></a></li>
+<li class="chapter" data-level="2.6.3" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#u-siebie-czy-w-chmurze"><i class="fa fa-check"></i><b>2.6.3</b> U siebie czy “w chmurze”?<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="modelowanie-architektur.html"><a href="modelowanie-architektur.html"><i class="fa fa-check"></i><b>3</b> Modelowanie architektur<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cykl-życia-modelu-uczenia-maszynowego.html"><a href="cykl-życia-modelu-uczenia-maszynowego.html"><i class="fa fa-check"></i><b>3.1</b> Cykl życia modelu uczenia maszynowego<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="demo-trening-i-ewaluacja-modelu.html"><a href="demo-trening-i-ewaluacja-modelu.html"><i class="fa fa-check"></i><b>3.2</b> Demo: trening i ewaluacja modelu<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="ćwiczenie-trening-i-ewaluacja-modelu.html"><a href="ćwiczenie-trening-i-ewaluacja-modelu.html"><i class="fa fa-check"></i><b>3.3</b> Ćwiczenie: trening i ewaluacja modelu<span></span></a></li>
+<li class="chapter" data-level="3.4" data-path="modelowanie-architektury---wprowadzenie.html"><a href="modelowanie-architektury---wprowadzenie.html"><i class="fa fa-check"></i><b>3.4</b> Modelowanie architektury - wprowadzenie<span></span></a></li>
+<li class="chapter" data-level="3.5" data-path="modelowanie-architektury---organizacja.html"><a href="modelowanie-architektury---organizacja.html"><i class="fa fa-check"></i><b>3.5</b> Modelowanie architektury - organizacja<span></span></a></li>
+<li class="chapter" data-level="3.6" data-path="modelowanie-architektury---specyfikacja-wymagań.html"><a href="modelowanie-architektury---specyfikacja-wymagań.html"><i class="fa fa-check"></i><b>3.6</b> Modelowanie architektury - specyfikacja wymagań<span></span></a></li>
+<li class="chapter" data-level="3.7" data-path="modelowanie-architektury---modelowanie.html"><a href="modelowanie-architektury---modelowanie.html"><i class="fa fa-check"></i><b>3.7</b> Modelowanie architektury - modelowanie<span></span></a></li>
+<li class="chapter" data-level="3.8" data-path="demo-modelowanie.html"><a href="demo-modelowanie.html"><i class="fa fa-check"></i><b>3.8</b> Demo: modelowanie<span></span></a></li>
+<li class="chapter" data-level="3.9" data-path="podsumowanie-modelowanie-architektur.html"><a href="podsumowanie-modelowanie-architektur.html"><i class="fa fa-check"></i><b>3.9</b> Podsumowanie: modelowanie architektur<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="monitoring-modeli.html"><a href="monitoring-modeli.html"><i class="fa fa-check"></i><b>4</b> Monitoring modeli<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="monitoring-modeli---wprowadzenie.html"><a href="monitoring-modeli---wprowadzenie.html"><i class="fa fa-check"></i><b>4.1</b> Monitoring modeli - wprowadzenie<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="demo-monitoring-modelu.html"><a href="demo-monitoring-modelu.html"><i class="fa fa-check"></i><b>4.2</b> Demo: monitoring modelu<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="ćwiczenie-monitoring-modelu.html"><a href="ćwiczenie-monitoring-modelu.html"><i class="fa fa-check"></i><b>4.3</b> Ćwiczenie: monitoring modelu<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="detekcja-dryfu-modelu.html"><a href="detekcja-dryfu-modelu.html"><i class="fa fa-check"></i><b>4.4</b> Detekcja dryfu modelu<span></span></a></li>
+<li class="chapter" data-level="4.5" data-path="demo-detekcja-dryfu.html"><a href="demo-detekcja-dryfu.html"><i class="fa fa-check"></i><b>4.5</b> Demo: detekcja dryfu<span></span></a></li>
+<li class="chapter" data-level="4.6" data-path="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html"><a href="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html"><i class="fa fa-check"></i><b>4.6</b> Ćwiczenia: detekcja dryfu i dotrenowanie<span></span></a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html"><a href="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html#ćwiczenie-detekcja-dryfu"><i class="fa fa-check"></i><b>4.6.1</b> Ćwiczenie: detekcja dryfu<span></span></a></li>
+<li class="chapter" data-level="4.6.2" data-path="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html"><a href="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html#ćwiczenie-uruchomienie-dotrenowania"><i class="fa fa-check"></i><b>4.6.2</b> Ćwiczenie: uruchomienie dotrenowania<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="monitoring-modeli---podsumowanie.html"><a href="monitoring-modeli---podsumowanie.html"><i class="fa fa-check"></i><b>4.7</b> Monitoring modeli - podsumowanie<span></span></a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="demo-trening-i-ewaluacja-modelu" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Demo: trening i ewaluacja modelu<a href="demo-trening-i-ewaluacja-modelu.html#demo-trening-i-ewaluacja-modelu" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/7kU9SM1py5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p><em>Uwaga: komplet wersji demonstracyjnych, ćwiczeń i rozwiązań oraz rekomendacje dotyczące środowiska uruchomieniowego znajdziesz tutaj:</em></p>
+<p><a href="https://github.com/wodecki/ASI_2022" class="uri">https://github.com/wodecki/ASI_2022</a></p>
+<p><strong>Cel</strong></p>
+<p>Nasz pierwszy kod będzie stanowił punkt wyjścia dla kolejnych ćwiczeń. Stworzymy sekwencję skryptów Python, których zadaniem będzie wczytanie danych treningowych, stworzenie modelu i jego ewaluacja na danych testowych.</p>
+<p>Do modelowania wykorzystamy dane syntetyczne, które będą możliwe do zamodelowania z wykorzystaniem prostego modelu regresji liniowej.</p>
+<p>Stworzony dzięki temu szkielet oprogramowania będziemy mogli później rozwijać w następujących wymiarach:</p>
+<ol style="list-style-type: decimal">
+<li>Urealnienie problemu:
+<ol style="list-style-type: decimal">
+<li>przejście od danych syntetycznych do danych realnych, np. modelowania cen mieszkań</li>
+<li>zmianę typu problemu uczenia maszynowego: przejście od regresji do np. klasyfikacji</li>
+</ol></li>
+<li>Zamiany prostych skryptów Python na dedykowane biblioteki, służące np. do monitorowania modeli czy pre-processingu danych</li>
+<li>Zmiany środowisk uruchomieniowych: z własnego komputera na docker czy kubernetes.</li>
+</ol>
+<p>W ćwiczeniu tym przedstawimy też podstawowe zasady projektowania architektury kodu uczenia maszynowego, w szczególności pojęcia artefaktów, komponentów i wizualizacji relacji pomiędzy nimi z wykorzystaniem diagramów.</p>
+<p><strong>Lista kontrolna</strong></p>
+<p>Skrypt, który stworzymy, będzie realizował następujące zadania:</p>
+<ol style="list-style-type: decimal">
+<li>Wczytanie danych</li>
+</ol>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+​ Wczytuje plik treningowy data_init.csv</li>
+<li><input type="checkbox" disabled="" />
+​ Zapisuje go do pliku data_train.csv</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Trenowanie modelu</li>
+</ol>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+​ Wczytuje dane treningowe data_train.csv</li>
+<li><input type="checkbox" disabled="" />
+​ Przygotowuje dane do modelowania</li>
+<li><input type="checkbox" disabled="" />
+​ Trenuje model korzystając algorytmu LinearRegression</li>
+<li><input type="checkbox" disabled="" />
+​ Drukuje na ekranie parametry modelu</li>
+<li><input type="checkbox" disabled="" />
+​ Zapisuje model do pliku model_1.0.pkl w folderze model</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Ewaluacja modelu</li>
+</ol>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+​ Wczytuje model z pliku model/model_1.0.pkl</li>
+<li><input type="checkbox" disabled="" />
+​ Wczytuje dane treningowe z pliku data/data_test.csv</li>
+<li><input type="checkbox" disabled="" />
+​ Generuje predykcje i ocenia model</li>
+<li><input type="checkbox" disabled="" />
+​ Drukuje wyniki ewaluacji na ekranie komputera</li>
+</ul>
+<p><strong>Architektura</strong></p>
+<p><em>Artefakty</em></p>
+<ol style="list-style-type: decimal">
+<li>Wejście
+<ol style="list-style-type: decimal">
+<li>Inicjalny plik treningowy: data_init.csv</li>
+<li>Plik testowy: data_test.csv</li>
+</ol></li>
+<li>Wyjście
+<ol style="list-style-type: decimal">
+<li>model: model_1.0</li>
+</ol></li>
+</ol>
+<p><em>Komponenty</em></p>
+<ol style="list-style-type: decimal">
+<li>Wczytanie danych (1. read.py)
+<ol style="list-style-type: decimal">
+<li>Wejście: data_init.csv</li>
+<li>Działania:
+<ol style="list-style-type: decimal">
+<li>wczytuje dane</li>
+<li>zapisuje na dysku</li>
+</ol></li>
+<li>Wyjście: data_train.csv</li>
+</ol></li>
+<li>Trening (2. train.py):
+<ol style="list-style-type: decimal">
+<li>Wejście: data_train.csv</li>
+<li>Działania:
+<ol style="list-style-type: decimal">
+<li>Wczytuje dane treningowe data_train.csv</li>
+<li>Przygotowuje dane do modelowania</li>
+<li>Trenuje model korzystając algorytmu LinearRegression</li>
+<li>Drukuje na ekranie parametry modelu</li>
+<li>Zapisuje model do pliku model_1.0.pkl w folderze model</li>
+</ol></li>
+<li>Wyjście: model_1.0.pkl</li>
+</ol></li>
+<li>Ewaluacja (3. test.py):
+<ol style="list-style-type: decimal">
+<li>Wejście:
+<ol style="list-style-type: decimal">
+<li>data_test.csv</li>
+<li>model_1.0.pkl</li>
+</ol></li>
+<li>Działania:
+<ol style="list-style-type: decimal">
+<li>Wczytuje model z pliku model/model_1.0.pkl</li>
+<li>Wczytuje dane treningowe z pliku data/data_test.csv</li>
+<li>Generuje predykcje i ocenia model</li>
+<li>Drukuje wyniki ewaluacji na ekranie komputera</li>
+</ol></li>
+<li>Wyjście: ekran</li>
+</ol></li>
+</ol>
+<p><strong>Decyzje</strong></p>
+<p>Projektując to rozwiązanie, musimy podjąć następujące decyzje:</p>
+<ol style="list-style-type: decimal">
+<li>Wybór miary jakości modelu
+<ol style="list-style-type: decimal">
+<li>RMSE</li>
+<li>R2</li>
+</ol></li>
+<li>Algorytm(y) ML: LinearRegression</li>
+</ol>
+<p><strong>Podsumowanie</strong></p>
+<p><img src="media/image-20220411121120443.png" alt="" style="zoom:50%;" /></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="cykl-życia-modelu-uczenia-maszynowego.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ćwiczenie-trening-i-ewaluacja-modelu.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/wodecki/ASI/edit/master/3.1.1.Demo_trening_i_ewaluacja.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["series.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
