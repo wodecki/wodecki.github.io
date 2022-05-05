@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.2 Jeziora danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
+  <title>Rozdział 13 Detekcja dryfu modelu | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
   <meta name="description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.2 Jeziora danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta property="og:title" content="Rozdział 13 Detekcja dryfu modelu | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="github-repo" content="openscapes/series" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.2 Jeziora danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta name="twitter:title" content="Rozdział 13 Detekcja dryfu modelu | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   
   <meta name="twitter:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="potoki-danych.html"/>
-<link rel="next" href="konsumenci-danych.html"/>
+<link rel="prev" href="przydatne-źródła-2.html"/>
+<link rel="next" href="przydatne-źródła-3.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -187,45 +187,82 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="jeziora-danych" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Jeziora danych<a href="jeziora-danych.html#jeziora-danych" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<iframe width="745" height="515" src="https://www.youtube.com/embed/Trr6qBiEn3I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+<div id="detekcja-dryfu-modelu" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Rozdział 13</span> <strong>Detekcja dryfu modelu</strong><a href="detekcja-dryfu-modelu.html#detekcja-dryfu-modelu" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/Ub72Eexc6GA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
-<p>Jeziora danych to repozytoria, które przechowują dane w ich naturalnej postaci. Stanowią zazwyczaj pojedynczy zbiór wszystkich danych przedsiębiorstwa. Są źródłem danych dla systemów umożliwiające raportowanie, wizualizację, zaawansowaną analitykę i uczenie maszynowe.</p>
-<p>Główne <strong>zalety</strong> jezior danych:</p>
+<p>Jak już wspominaliśmy wcześniej, dryf modelu może być spowodowany w szczególności:</p>
 <ol style="list-style-type: decimal">
-<li>Można w nich przechowywać duże ilości danych…</li>
-<li>…które mogą mieć różne formy:
+<li>Zmianą zmiennej prognozowanej (np. w przypadku sprzedaży: inflacją)</li>
+<li>Zmianą zmiennych objąśniających (np. cech klientów, charakterystyk produktów, etc.)</li>
+<li>Zmianą relacji pomiędzy zmiennych prognozowanymi a cechami (np. zmiana koniunktury, wprowadzenie substytów, nowe kampanie marketingowe, etc.).</li>
+</ol>
+<p>Poniżej przedstawimy najczęściej spotykane metody identyfikacji dryfu modelu i generowania sygnału dotrenowania.</p>
+<p><strong>Metoda 1. Twardy próg</strong></p>
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/3.%20Monitoring%20modeli/1.%20Tres%CC%81ci/4.%20Detekcja%20dryfu/1.%20prezentacja/media/image-20220501123728064.png" style="zoom:50%;" /></p>
+<p>Najprostszą metodą identyfikacji dryfu modelu jest:</p>
 <ol style="list-style-type: decimal">
-<li>Ustrukturyzowane</li>
-<li>Cześciowo ustruktyryzowane</li>
-<li>Nieustrukturyzowane</li>
+<li>ustalenie pewnego “twardego” progu: minimalnego akceptowalnego poziom jakości modelu (np. maksymalny dopuszczalny poziom błędu RMSE)</li>
+<li>uruchamienie sygnału dotrenowania w momencie, gdy miara jakości modelu przekroczy ten próg.</li>
+</ol>
+<p><strong>Metoda 2. Test porównawczy</strong></p>
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/3.%20Monitoring%20modeli/1.%20Tres%CC%81ci/4.%20Detekcja%20dryfu/1.%20prezentacja/media/image-20220501124027104.png" alt="image-20220501124027104" style="zoom:50%;" /></p>
+<p>Kolejna metoda, tzw. <strong>test porównawczy</strong>, uruchamia sygnał w momencie, gdy <strong>nowa miara jakości modelu jest gorsza niż wszystkie poprzednie wartości</strong>. Na rysunku miara oznaczona czerwoną kropką jest większa niż wszystkie pozostałe, co jest źródłem “alarmu”.</p>
+<p>Wadą tego rozwiązania jest często jego “nadwrażliwość”: sygnał dotrenowania uruchamiany jest zbyt często i niepotrzebnie.</p>
+<p><strong>Metoda 3. Test istotności parametrycznej</strong></p>
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/3.%20Monitoring%20modeli/1.%20Tres%CC%81ci/4.%20Detekcja%20dryfu/1.%20prezentacja/media/image-20220501124352192.png" alt="image-20220501124352192" style="zoom:50%;" /></p>
+<p>Rozwiązaniem problemu “nadwrażliwości” testu porównawczego jest test istotności parametrycznej.</p>
+<p>W tym podejściu sygnał dotrenowania uruchamiamy w sytuacji, gdy <strong>aktualna wartość miary jakości
+jest gorsza (mniejsza lub większa) o dwa odchylenia standardowe od średniej poprzednich wartości.</strong> Wybór <em>mniejsza/większa</em> zależy od tego, czy wyższa wartość miary świadczy o poprawie, czy też zmniejszeniu jakości modelu (por. rysunek powyżej).</p>
+<p>Procedura postępowania jest w tym przypadku następująca:</p>
+<ol style="list-style-type: decimal">
+<li><p>Oblicz średnią poprzednich wartości miary</p></li>
+<li><p>Oblicz odchylenie standardowe poprzednich wartości miary</p></li>
+<li><p>Sprawdź, czy aktualna wartość miary jest gorsza (mniejsza lub większa) niż średnia +/- 2*odchylenie standardowe.</p></li>
+</ol>
+<p>Problematyczne w tym podejściu mogą być sytuacje, gdy nasze odczyty pomiarów jakości:</p>
+<ol style="list-style-type: decimal">
+<li>nie układają się krzywą dzwonową</li>
+<li>mają wartości odstające.</li>
+</ol>
+<p><strong>Metoda 4. Testy nieparametryczne (detekcja wartości odstających)</strong></p>
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/3.%20Monitoring%20modeli/1.%20Tres%CC%81ci/4.%20Detekcja%20dryfu/1.%20prezentacja/media/image-20220501124934231.png" alt="image-20220501124934231" style="zoom:50%;" /></p>
+<p>W przypadku testów nieparametrycznych sygnał dotrenowania uruchamiamy w sytuacji, gdy
+<strong>aktualna wartość miary jakości jest zinterpretowana jako wartość odstająca <em>i</em> jest gorsza od poprzednich wartości</strong>.</p>
+<p>Procedura postępowania jest w tym podejściu następująca:</p>
+<ol style="list-style-type: decimal">
+<li>Dla zbioru poprzednich miar oblicz
+<ol style="list-style-type: decimal">
+<li>Q1 (pierwszy kwartyl)</li>
+<li>Q3 (trzeci kwartyl)</li>
+<li>Odległość międzykwartylową: IQR = Q3 - Q1</li>
 </ol></li>
-<li>Przetwarzanie przed załadowaniem nie jest wymagane.</li>
-</ol>
-<p>Główne <strong>wady i ograniczenia</strong> jezior danych to:</p>
+<li>Ustal granice wartości ”normalnych”:
 <ol style="list-style-type: decimal">
-<li><p>To technologia, która wciąż się rozwija</p></li>
-<li><p>Problemy ze specjalistami</p></li>
-<li><p>Zarządzanie danymi może być uciążliwe</p></li>
-<li><p>Niskie koszty mogą stymulować gromadzenie danych niepotrzebnych</p></li>
-<li><p>Prywatność danych: dane całej organizacji w jednym repozytorium.</p></li>
-</ol>
-<p>Jeziora danych <strong>warto stosować</strong> w następujących sytuacjach:</p>
+<li>Dolna granica: Q1 – 1.5 IQR</li>
+<li>Górna granica: Q3 + 1.5 IQR</li>
+</ol></li>
+<li>Dla nowej miary jakości modelu sprawdź, czy mieści się ona w dopuszczalnych granicach:
+Q1 – 1.5 IQR &lt; miara &lt; Q3 + 1.5*IQR</li>
+<li>Wygeneruj sygnał dotrenowania w sytuacji, gdy:
 <ol style="list-style-type: decimal">
-<li><p>Eksperymenty Data Science: chcemy sprawdzić proof-of-concept architektury przed zainwestowaniem w profesjonalny potok danych</p></li>
-<li><p>Do analizy danych w obszare cyberbezpieczeństwo: gromadzenie logów z wielu urządzeń w celu analizy pod kątem bezpieczeństwa</p></li>
-<li><p>Do analizy danych o klientach: gromadzenie i analiza danych o zachowaniach klientów z wielu źródeł i kanałów (www, mobile, sklepy tradycyjne, e-commerce, systemy lojalnościowe, CRM, etc.).</p></li>
+<li>nowa wartość miary jest poza tymi granicami
+i</li>
+<li>jest gorsza niż pozostałe (mniejsza lub większa, w zależności od typu miary).</li>
+</ol></li>
 </ol>
-
+<p>Dla przypomnienia, pierwszy kwartyl to wartość miary, od której 25% wszystkich miar w zbiorze jest mniejsza.</p>
+<p><strong>Metoda 5. Testy hipotez statystycznych</strong></p>
+<p>Często stosowaną metodą identyfikacji dryfu modelu jest sformułowanie i weryfikacja hipotezy, że rozkład jednego zbioru danych różni się od rozkładu innego zbioru. Podejście to może służyć zarówno do identyfikacji zmiany jakości modelu, jak tzw. dryfu danych prognozowanych.</p>
+<p>Do weryfikacji takich hipotez można wykorzystać <strong>testy hipotez statystycznych</strong>. W uczeniu maszynowym szczególnie popularne są <strong><a href="https://towardsdatascience.com/kolmogorov-smirnov-test-84c92fb4158d">test Kolmogorowa-Smirnowa</a></strong> oraz <strong><a href="https://en.wikipedia.org/wiki/Chi-squared_test">test Chi-squared</a></strong>. Osoby zainteresowane zachęcam do lektury artykułów z sekcji <em>Przydatne źródła</em>.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="potoki-danych.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="konsumenci-danych.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="przydatne-źródła-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="przydatne-źródła-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -256,7 +293,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/wodecki/ASI/edit/master/2.3.3._Jeziora.Rmd",
+"link": "https://github.com/wodecki/ASI/edit/master/4.4.1.Detekcja_dryfu.Rmd",
 "text": "Edit"
 },
 "history": {

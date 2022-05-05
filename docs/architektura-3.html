@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.2 Jeziora danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
+  <title>15.3 Architektura | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
   <meta name="description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.2 Jeziora danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta property="og:title" content="15.3 Architektura | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="github-repo" content="openscapes/series" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.2 Jeziora danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta name="twitter:title" content="15.3 Architektura | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   
   <meta name="twitter:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="potoki-danych.html"/>
-<link rel="next" href="konsumenci-danych.html"/>
+<link rel="prev" href="lista-kontrolna-3.html"/>
+<link rel="next" href="ćwiczenie-detekcja-dryfu.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -187,45 +187,35 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="jeziora-danych" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Jeziora danych<a href="jeziora-danych.html#jeziora-danych" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<iframe width="745" height="515" src="https://www.youtube.com/embed/Trr6qBiEn3I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-<p>Jeziora danych to repozytoria, które przechowują dane w ich naturalnej postaci. Stanowią zazwyczaj pojedynczy zbiór wszystkich danych przedsiębiorstwa. Są źródłem danych dla systemów umożliwiające raportowanie, wizualizację, zaawansowaną analitykę i uczenie maszynowe.</p>
-<p>Główne <strong>zalety</strong> jezior danych:</p>
+<div id="architektura-3" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> Architektura<a href="architektura-3.html#architektura-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="artefakty-3" class="section level3 hasAnchor" number="15.3.1">
+<h3><span class="header-section-number">15.3.1</span> Artefakty<a href="architektura-3.html#artefakty-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
-<li>Można w nich przechowywać duże ilości danych…</li>
-<li>…które mogą mieć różne formy:
+<li>Wejście
 <ol style="list-style-type: decimal">
-<li>Ustrukturyzowane</li>
-<li>Cześciowo ustruktyryzowane</li>
-<li>Nieustrukturyzowane</li>
+<li>Pliku z ewaluacjami: <code>evaluation/model_eval.csv</code>.</li>
 </ol></li>
-<li>Przetwarzanie przed załadowaniem nie jest wymagane.</li>
-</ol>
-<p>Główne <strong>wady i ograniczenia</strong> jezior danych to:</p>
+<li>Wyjście
 <ol style="list-style-type: decimal">
-<li><p>To technologia, która wciąż się rozwija</p></li>
-<li><p>Problemy ze specjalistami</p></li>
-<li><p>Zarządzanie danymi może być uciążliwe</p></li>
-<li><p>Niskie koszty mogą stymulować gromadzenie danych niepotrzebnych</p></li>
-<li><p>Prywatność danych: dane całej organizacji w jednym repozytorium.</p></li>
+<li>wydruk wyników testów na ekranie.</li>
+</ol></li>
 </ol>
-<p>Jeziora danych <strong>warto stosować</strong> w następujących sytuacjach:</p>
-<ol style="list-style-type: decimal">
-<li><p>Eksperymenty Data Science: chcemy sprawdzić proof-of-concept architektury przed zainwestowaniem w profesjonalny potok danych</p></li>
-<li><p>Do analizy danych w obszare cyberbezpieczeństwo: gromadzenie logów z wielu urządzeń w celu analizy pod kątem bezpieczeństwa</p></li>
-<li><p>Do analizy danych o klientach: gromadzenie i analiza danych o zachowaniach klientów z wielu źródeł i kanałów (www, mobile, sklepy tradycyjne, e-commerce, systemy lojalnościowe, CRM, etc.).</p></li>
-</ol>
+</div>
+<div id="komponenty-3" class="section level3 hasAnchor" number="15.3.2">
+<h3><span class="header-section-number">15.3.2</span> Komponenty<a href="architektura-3.html#komponenty-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Jeden program <code>1.detect_model_drift.py</code> realizujący zadania z listy kontrolnej.</p>
 
 </div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="potoki-danych.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="konsumenci-danych.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lista-kontrolna-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ćwiczenie-detekcja-dryfu.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -256,7 +246,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/wodecki/ASI/edit/master/2.3.3._Jeziora.Rmd",
+"link": "https://github.com/wodecki/ASI/edit/master/4.4.2.Demo_detekcja_dryfu.Rmd",
 "text": "Edit"
 },
 "history": {

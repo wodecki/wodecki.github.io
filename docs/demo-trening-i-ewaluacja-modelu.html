@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.2 Jeziora danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
+  <title>3.1 Demo: trening i ewaluacja modelu | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
   <meta name="description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.2 Jeziora danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta property="og:title" content="3.1 Demo: trening i ewaluacja modelu | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="github-repo" content="openscapes/series" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.2 Jeziora danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta name="twitter:title" content="3.1 Demo: trening i ewaluacja modelu | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   
   <meta name="twitter:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="potoki-danych.html"/>
-<link rel="next" href="konsumenci-danych.html"/>
+<link rel="prev" href="cykl-życia-projektu-uczenia-maszynowego-i-modelowanie-architektur.html"/>
+<link rel="next" href="modelowanie-architektury.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -187,45 +187,153 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="jeziora-danych" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Jeziora danych<a href="jeziora-danych.html#jeziora-danych" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<iframe width="745" height="515" src="https://www.youtube.com/embed/Trr6qBiEn3I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+<div id="demo-trening-i-ewaluacja-modelu" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Demo: trening i ewaluacja modelu<a href="demo-trening-i-ewaluacja-modelu.html#demo-trening-i-ewaluacja-modelu" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/7kU9SM1py5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
-<p>Jeziora danych to repozytoria, które przechowują dane w ich naturalnej postaci. Stanowią zazwyczaj pojedynczy zbiór wszystkich danych przedsiębiorstwa. Są źródłem danych dla systemów umożliwiające raportowanie, wizualizację, zaawansowaną analitykę i uczenie maszynowe.</p>
-<p>Główne <strong>zalety</strong> jezior danych:</p>
+<p><em>Uwaga: komplet wersji demonstracyjnych, ćwiczeń i rozwiązań oraz rekomendacje dotyczące środowiska uruchomieniowego znajdziesz tutaj:</em></p>
+<p><a href="https://github.com/wodecki/ASI_2022" class="uri">https://github.com/wodecki/ASI_2022</a></p>
+<div id="cel" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Cel<a href="demo-trening-i-ewaluacja-modelu.html#cel" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Nasz pierwszy kod będzie stanowił punkt wyjścia dla kolejnych ćwiczeń. Stworzymy sekwencję skryptów Python, których zadaniem będzie wczytanie danych treningowych, stworzenie modelu i jego ewaluacja na danych testowych.</p>
+<p>Do modelowania wykorzystamy dane syntetyczne, które będą możliwe do zamodelowania z wykorzystaniem prostego modelu regresji liniowej.</p>
+<p>Stworzony dzięki temu szkielet oprogramowania będziemy mogli później rozwijać w następujących wymiarach:</p>
 <ol style="list-style-type: decimal">
-<li>Można w nich przechowywać duże ilości danych…</li>
-<li>…które mogą mieć różne formy:
+<li>Urealnienie problemu:
 <ol style="list-style-type: decimal">
-<li>Ustrukturyzowane</li>
-<li>Cześciowo ustruktyryzowane</li>
-<li>Nieustrukturyzowane</li>
+<li>przejście od danych syntetycznych do danych realnych, np. modelowania cen mieszkań</li>
+<li>zmianę typu problemu uczenia maszynowego: przejście od regresji do np. klasyfikacji</li>
 </ol></li>
-<li>Przetwarzanie przed załadowaniem nie jest wymagane.</li>
+<li>Zamiany prostych skryptów Python na dedykowane biblioteki, służące np. do monitorowania modeli czy pre-processingu danych</li>
+<li>Zmiany środowisk uruchomieniowych: z własnego komputera na docker czy kubernetes.</li>
 </ol>
-<p>Główne <strong>wady i ograniczenia</strong> jezior danych to:</p>
+<p>W ćwiczeniu tym przedstawimy też podstawowe zasady projektowania architektury kodu uczenia maszynowego, w szczególności pojęcia artefaktów, komponentów i wizualizacji relacji pomiędzy nimi z wykorzystaniem diagramów.</p>
+</div>
+<div id="lista-kontrolna" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Lista kontrolna<a href="demo-trening-i-ewaluacja-modelu.html#lista-kontrolna" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Skrypt, który stworzymy, będzie realizował następujące zadania:</p>
 <ol style="list-style-type: decimal">
-<li><p>To technologia, która wciąż się rozwija</p></li>
-<li><p>Problemy ze specjalistami</p></li>
-<li><p>Zarządzanie danymi może być uciążliwe</p></li>
-<li><p>Niskie koszty mogą stymulować gromadzenie danych niepotrzebnych</p></li>
-<li><p>Prywatność danych: dane całej organizacji w jednym repozytorium.</p></li>
+<li>Wczytanie danych</li>
 </ol>
-<p>Jeziora danych <strong>warto stosować</strong> w następujących sytuacjach:</p>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+​ Wczytuje plik treningowy data_init.csv</li>
+<li><input type="checkbox" disabled="" />
+​ Zapisuje go do pliku data_train.csv</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Trenowanie modelu</li>
+</ol>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+​ Wczytuje dane treningowe data_train.csv</li>
+<li><input type="checkbox" disabled="" />
+​ Przygotowuje dane do modelowania</li>
+<li><input type="checkbox" disabled="" />
+​ Trenuje model korzystając algorytmu LinearRegression</li>
+<li><input type="checkbox" disabled="" />
+​ Drukuje na ekranie parametry modelu</li>
+<li><input type="checkbox" disabled="" />
+​ Zapisuje model do pliku model_1.0.pkl w folderze model</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Ewaluacja modelu</li>
+</ol>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+​ Wczytuje model z pliku model/model_1.0.pkl</li>
+<li><input type="checkbox" disabled="" />
+​ Wczytuje dane treningowe z pliku data/data_test.csv</li>
+<li><input type="checkbox" disabled="" />
+​ Generuje predykcje i ocenia model</li>
+<li><input type="checkbox" disabled="" />
+​ Drukuje wyniki ewaluacji na ekranie komputera</li>
+</ul>
+</div>
+<div id="architektura" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Architektura<a href="demo-trening-i-ewaluacja-modelu.html#architektura" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="artefakty" class="section level4 hasAnchor" number="3.1.3.1">
+<h4><span class="header-section-number">3.1.3.1</span> Artefakty<a href="demo-trening-i-ewaluacja-modelu.html#artefakty" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ol style="list-style-type: decimal">
-<li><p>Eksperymenty Data Science: chcemy sprawdzić proof-of-concept architektury przed zainwestowaniem w profesjonalny potok danych</p></li>
-<li><p>Do analizy danych w obszare cyberbezpieczeństwo: gromadzenie logów z wielu urządzeń w celu analizy pod kątem bezpieczeństwa</p></li>
-<li><p>Do analizy danych o klientach: gromadzenie i analiza danych o zachowaniach klientów z wielu źródeł i kanałów (www, mobile, sklepy tradycyjne, e-commerce, systemy lojalnościowe, CRM, etc.).</p></li>
+<li>Wejście
+<ol style="list-style-type: decimal">
+<li>Inicjalny plik treningowy: data_init.csv</li>
+<li>Plik testowy: data_test.csv</li>
+</ol></li>
+<li>Wyjście
+<ol style="list-style-type: decimal">
+<li>model: model_1.0</li>
+</ol></li>
 </ol>
+</div>
+<div id="komponenty" class="section level4 hasAnchor" number="3.1.3.2">
+<h4><span class="header-section-number">3.1.3.2</span> Komponenty<a href="demo-trening-i-ewaluacja-modelu.html#komponenty" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li><strong>Wczytanie danych (1. read.py)</strong>
+<ol style="list-style-type: decimal">
+<li>Wejście: data_init.csv</li>
+<li>Działania:
+<ol style="list-style-type: decimal">
+<li>wczytuje dane</li>
+<li>zapisuje na dysku</li>
+</ol></li>
+<li>Wyjście: data_train.csv</li>
+</ol></li>
+<li><strong>Trening (2. train.py):</strong>
+<ol style="list-style-type: decimal">
+<li>Wejście: data_train.csv</li>
+<li>Działania:
+<ol style="list-style-type: decimal">
+<li>Wczytuje dane treningowe data_train.csv</li>
+<li>Przygotowuje dane do modelowania</li>
+<li>Trenuje model korzystając algorytmu LinearRegression</li>
+<li>Drukuje na ekranie parametry modelu</li>
+<li>Zapisuje model do pliku model_1.0.pkl w folderze model</li>
+</ol></li>
+<li>Wyjście: model_1.0.pkl</li>
+</ol></li>
+<li><strong>Ewaluacja (3. test.py):</strong>
+<ol style="list-style-type: decimal">
+<li>Wejście:
+<ol style="list-style-type: decimal">
+<li>data_test.csv</li>
+<li>model_1.0.pkl</li>
+</ol></li>
+<li>Działania:
+<ol style="list-style-type: decimal">
+<li>Wczytuje model z pliku model/model_1.0.pkl</li>
+<li>Wczytuje dane treningowe z pliku data/data_test.csv</li>
+<li>Generuje predykcje i ocenia model</li>
+<li>Drukuje wyniki ewaluacji na ekranie komputera</li>
+</ol></li>
+<li>Wyjście: ekran</li>
+</ol></li>
+</ol>
+</div>
+</div>
+<div id="decyzje" class="section level3 hasAnchor" number="3.1.4">
+<h3><span class="header-section-number">3.1.4</span> Decyzje<a href="demo-trening-i-ewaluacja-modelu.html#decyzje" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Projektując to rozwiązanie, musimy podjąć następujące decyzje:</p>
+<ol style="list-style-type: decimal">
+<li>Wybór miary jakości modelu
+<ol style="list-style-type: decimal">
+<li>RMSE</li>
+<li>R2</li>
+</ol></li>
+<li>Algorytm(y) ML: LinearRegression</li>
+</ol>
+<p><strong>Podsumowanie</strong></p>
+<p><img src="/Users/wodecki/Mój dysk/2. Areas/1. Szkolenia/4. PJATK/Semestr lato 2022/ASI/! Moje materiały/3. Monitoring modelu/! ćwiczenia/1. Trenowanie/media//image-20220411121120443.png" alt="image-20220411121120443" style="zoom:50%;" /></p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="potoki-danych.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="konsumenci-danych.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="cykl-życia-projektu-uczenia-maszynowego-i-modelowanie-architektur.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="modelowanie-architektury.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -256,7 +364,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/wodecki/ASI/edit/master/2.3.3._Jeziora.Rmd",
+"link": "https://github.com/wodecki/ASI/edit/master/3.1.1.Demo_trening_i_ewaluacja.Rmd",
 "text": "Edit"
 },
 "history": {

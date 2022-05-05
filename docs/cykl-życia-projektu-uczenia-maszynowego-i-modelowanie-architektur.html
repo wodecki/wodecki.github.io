@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.2 Jeziora danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
+  <title>Rozdział 3 Cykl życia projektu Uczenia Maszynowego i modelowanie architektur | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
   <meta name="description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.2 Jeziora danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta property="og:title" content="Rozdział 3 Cykl życia projektu Uczenia Maszynowego i modelowanie architektur | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="github-repo" content="openscapes/series" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.2 Jeziora danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta name="twitter:title" content="Rozdział 3 Cykl życia projektu Uczenia Maszynowego i modelowanie architektur | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   
   <meta name="twitter:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="potoki-danych.html"/>
-<link rel="next" href="konsumenci-danych.html"/>
+<link rel="prev" href="strategia-wdrożenia.html"/>
+<link rel="next" href="demo-trening-i-ewaluacja-modelu.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -187,45 +187,88 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="jeziora-danych" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Jeziora danych<a href="jeziora-danych.html#jeziora-danych" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<iframe width="745" height="515" src="https://www.youtube.com/embed/Trr6qBiEn3I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+<div id="cykl-życia-projektu-uczenia-maszynowego-i-modelowanie-architektur" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Rozdział 3</span> Cykl życia projektu Uczenia Maszynowego i modelowanie architektur<a href="cykl-życia-projektu-uczenia-maszynowego-i-modelowanie-architektur.html#cykl-życia-projektu-uczenia-maszynowego-i-modelowanie-architektur" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/fBVGpVMmlbw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
-<p>Jeziora danych to repozytoria, które przechowują dane w ich naturalnej postaci. Stanowią zazwyczaj pojedynczy zbiór wszystkich danych przedsiębiorstwa. Są źródłem danych dla systemów umożliwiające raportowanie, wizualizację, zaawansowaną analitykę i uczenie maszynowe.</p>
-<p>Główne <strong>zalety</strong> jezior danych:</p>
+<p>Na typowy projekt uczenia maszynowego składają się następujące etapy:</p>
 <ol style="list-style-type: decimal">
-<li>Można w nich przechowywać duże ilości danych…</li>
-<li>…które mogą mieć różne formy:
+<li>Przygotowanie danych</li>
+<li>Modelowanie (trening i ewaluacja)</li>
+<li>Udostępnianie modelu</li>
+<li>Monitoring</li>
+<li>Dotrenowywanie.</li>
+</ol>
+<p>Za realizację każdego z nich odpowiada najczęściej osobny <strong>komponent</strong> (na rysunku powyżej zaprezentowany w formie owalnej), który przyjmuje na wejściu oraz generuje na wyjściu tzw. <strong>artefakt</strong> (oznaczony jako prostokąt).</p>
+<p><img src="media/image-20220430101905775-1312764.png" alt="" style="zoom:50%;" /></p>
+<p>W realnych projektach sytuacja jest bardziej złożona: na przygotowanie danych, modelowanie, udostępnianie i monitoring składa się wiele etapów cząstkowych (realizowanych przez odpowiednie komponenty):</p>
 <ol style="list-style-type: decimal">
-<li>Ustrukturyzowane</li>
-<li>Cześciowo ustruktyryzowane</li>
-<li>Nieustrukturyzowane</li>
+<li>Przygotowanie danych
+<ol style="list-style-type: decimal">
+<li>pozyskanie danych</li>
+<li>walidacja danych</li>
+<li>transformacja danych</li>
 </ol></li>
-<li>Przetwarzanie przed załadowaniem nie jest wymagane.</li>
-</ol>
-<p>Główne <strong>wady i ograniczenia</strong> jezior danych to:</p>
+<li>Modelowanie:
 <ol style="list-style-type: decimal">
-<li><p>To technologia, która wciąż się rozwija</p></li>
-<li><p>Problemy ze specjalistami</p></li>
-<li><p>Zarządzanie danymi może być uciążliwe</p></li>
-<li><p>Niskie koszty mogą stymulować gromadzenie danych niepotrzebnych</p></li>
-<li><p>Prywatność danych: dane całej organizacji w jednym repozytorium.</p></li>
-</ol>
-<p>Jeziora danych <strong>warto stosować</strong> w następujących sytuacjach:</p>
+<li>trening i ewaluacja</li>
+<li>walidacja finalnego modelu</li>
+<li>tuning hiperparametrów</li>
+</ol></li>
+<li>Udostępnianie modelu
 <ol style="list-style-type: decimal">
-<li><p>Eksperymenty Data Science: chcemy sprawdzić proof-of-concept architektury przed zainwestowaniem w profesjonalny potok danych</p></li>
-<li><p>Do analizy danych w obszare cyberbezpieczeństwo: gromadzenie logów z wielu urządzeń w celu analizy pod kątem bezpieczeństwa</p></li>
-<li><p>Do analizy danych o klientach: gromadzenie i analiza danych o zachowaniach klientów z wielu źródeł i kanałów (www, mobile, sklepy tradycyjne, e-commerce, systemy lojalnościowe, CRM, etc.).</p></li>
+<li>przygotowanie do udostępnienia</li>
+<li>(ciągła) integracja (CI: Continuos Integration)</li>
+<li>(ciągłe) uruchamianie (CD: Continuos Deployment)</li>
+</ol></li>
+<li>Monitoring
+<ol style="list-style-type: decimal">
+<li>monitoring i identyfikacja dryfu danych</li>
+<li>monitoring i identyfikacja dryfu modeli</li>
+<li>monitoring infrastruktury</li>
+</ol></li>
+<li>Dotrenowywanie
+<ol style="list-style-type: decimal">
+<li>generowanie sygnału dotrenowania</li>
+<li>wybór nowych danych treningowych</li>
+<li>dotrenowanie.</li>
+</ol></li>
 </ol>
-
+<p><img src="media/image-20220430102415870-1313152.png" alt="" style="zoom:50%;" /></p>
+<p>Realizację tych procesów wspiera wiele dedykowanych systemów, wyspecjalizowanych w realizacji konkretnych zadań. Szczególnie istotną rolę odgrywają:</p>
+<ol style="list-style-type: decimal">
+<li>repozytoria cech (ang. feature stores)</li>
+<li>systemy monitoringu eksperymentów</li>
+<li>repozytoria modeli (ang. model stores)</li>
+<li>systemy ciągłej integracji i udostępniania (ang. continuous integration (CI) and deployment (CD))</li>
+<li>systemy monitorujące modele</li>
+<li>repozytoria metadanych generowanych przez cały proces (ang. metadata stores).</li>
+</ol>
+<p><img src="media/image-20220430102856733.png" alt="" style="zoom:50%;" /></p>
+<p>Wybór technologii wykorzystanych do implementacji poszczególnych komponentów zależy od stopnia złożoności projektu. W prostych przedsięwzięciach można z powodzeniem wykorzystać pliki CSV, skrypty Python czy aplikacje typu Flask, bardziej złożone wymagają wdrożenia dedykowanych rozwiązań dostępnych za darmo (np. MLFlow, FastApi czy darmowa wersja WandB.ai), zaś zaawansowane dedykowanych systemów takich jak Feast, Kubeflow, Heroku czy Arize.</p>
+<p><img src="media/image-20220430103159955-1313201.png" alt=" " style="zoom:50%;" /></p>
+<p>Pejzaż dostępnych w tym zakresie rozwiązań jest bardzo dynamiczny: pojawia się tu coraz więcej nowych rozwiązań, czemu towarzyszy mniej lub bardziej dynamiczny rozwój już istniejących.</p>
+<p><strong>Przydatne źródła</strong></p>
+<ol style="list-style-type: decimal">
+<li>Przykład kompletnej architektury projektu uczenia maszynowego, ze świetnie opisanymi poszczególnymi etapami jej konstrukcji, opisany jest <a href="https://towardsdatascience.com/architecting-a-machine-learning-pipeline-a847f094d1c7">tutaj</a>.</li>
+<li>Bardzo dobrym wprowadzenie w zagadnienie cyklu życia projektu maszynowego, i ogólniej w tematykę MLOps jest artykuł dostępny <a href="https://towardsdatascience.com/a-gentle-introduction-to-mlops-7d64a3e890ff">tutaj</a>.</li>
+<li>Nieco bardziej rozbudowane wprowadzenie do różnych poziomów automatyzacji procesów MLOps można znaleźć tutaj:
+<ol style="list-style-type: decimal">
+<li><a href="https://towardsdatascience.com/mlops-level-0-manual-pipelines-7278b9949e59">poziom 0: manual pipelines</a></li>
+<li><a href="https://towardsdatascience.com/mlops-level-1-continuous-training-b2a633e27d47">poziom 1: continuous training</a></li>
+<li><a href="https://towardsdatascience.com/mlops-level-2-ci-cd-continous-training-b9b64042368">poziom 2: CI/CD</a></li>
+</ol></li>
+<li>Interesujący przegląd narzędzi wspomagających zarządzanie cyklem życia oraz poszczególnymi etapami projektu data science jest dostępny <a href="https://mlops.neptune.ai/">tutaj</a>.</li>
+</ol>
+<!--chapter:end:3.1._Cykl_życia_projektu_ML.Rmd-->
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="potoki-danych.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="konsumenci-danych.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="strategia-wdrożenia.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="demo-trening-i-ewaluacja-modelu.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -256,7 +299,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/wodecki/ASI/edit/master/2.3.3._Jeziora.Rmd",
+"link": "https://github.com/wodecki/ASI/edit/master/3.1.1.Demo_trening_i_ewaluacja.Rmd",
 "text": "Edit"
 },
 "history": {

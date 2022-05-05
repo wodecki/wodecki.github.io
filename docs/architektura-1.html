@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.2 Jeziora danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
+  <title>4.2 Architektura | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
   <meta name="description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.2 Jeziora danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta property="og:title" content="4.2 Architektura | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="github-repo" content="openscapes/series" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.2 Jeziora danych | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta name="twitter:title" content="4.2 Architektura | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   
   <meta name="twitter:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="potoki-danych.html"/>
-<link rel="next" href="konsumenci-danych.html"/>
+<link rel="prev" href="lista-kontrolna-1.html"/>
+<link rel="next" href="decyzje-1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -187,45 +187,74 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="jeziora-danych" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Jeziora danych<a href="jeziora-danych.html#jeziora-danych" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<iframe width="745" height="515" src="https://www.youtube.com/embed/Trr6qBiEn3I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-<p>Jeziora danych to repozytoria, które przechowują dane w ich naturalnej postaci. Stanowią zazwyczaj pojedynczy zbiór wszystkich danych przedsiębiorstwa. Są źródłem danych dla systemów umożliwiające raportowanie, wizualizację, zaawansowaną analitykę i uczenie maszynowe.</p>
-<p>Główne <strong>zalety</strong> jezior danych:</p>
+<div id="architektura-1" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Architektura<a href="architektura-1.html#architektura-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="artefakty-1" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Artefakty<a href="architektura-1.html#artefakty-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
-<li>Można w nich przechowywać duże ilości danych…</li>
-<li>…które mogą mieć różne formy:
+<li>Wejście
 <ol style="list-style-type: decimal">
-<li>Ustrukturyzowane</li>
-<li>Cześciowo ustruktyryzowane</li>
-<li>Nieustrukturyzowane</li>
+<li>Inicjalny plik treningowy: data_init.csv</li>
+<li>Plik testowy: data_test.csv</li>
 </ol></li>
-<li>Przetwarzanie przed załadowaniem nie jest wymagane.</li>
-</ol>
-<p>Główne <strong>wady i ograniczenia</strong> jezior danych to:</p>
+<li>Wyjście
 <ol style="list-style-type: decimal">
-<li><p>To technologia, która wciąż się rozwija</p></li>
-<li><p>Problemy ze specjalistami</p></li>
-<li><p>Zarządzanie danymi może być uciążliwe</p></li>
-<li><p>Niskie koszty mogą stymulować gromadzenie danych niepotrzebnych</p></li>
-<li><p>Prywatność danych: dane całej organizacji w jednym repozytorium.</p></li>
+<li>model: model_1.0</li>
+</ol></li>
 </ol>
-<p>Jeziora danych <strong>warto stosować</strong> w następujących sytuacjach:</p>
+</div>
+<div id="komponenty-1" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Komponenty<a href="architektura-1.html#komponenty-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
-<li><p>Eksperymenty Data Science: chcemy sprawdzić proof-of-concept architektury przed zainwestowaniem w profesjonalny potok danych</p></li>
-<li><p>Do analizy danych w obszare cyberbezpieczeństwo: gromadzenie logów z wielu urządzeń w celu analizy pod kątem bezpieczeństwa</p></li>
-<li><p>Do analizy danych o klientach: gromadzenie i analiza danych o zachowaniach klientów z wielu źródeł i kanałów (www, mobile, sklepy tradycyjne, e-commerce, systemy lojalnościowe, CRM, etc.).</p></li>
+<li><strong>Wczytanie danych (1. read.py)</strong>
+<ol style="list-style-type: decimal">
+<li>Wejście: data_init.csv</li>
+<li>Działania:
+<ol style="list-style-type: decimal">
+<li>wczytuje dane</li>
+<li>zapisuje na dysku</li>
+</ol></li>
+<li>Wyjście: data_train.csv</li>
+</ol></li>
+<li><strong>Trening (2. train.py):</strong>
+<ol style="list-style-type: decimal">
+<li>Wejście: data_train.csv</li>
+<li>Działania:
+<ol style="list-style-type: decimal">
+<li>Wczytuje dane treningowe data_train.csv</li>
+<li>Przygotowuje dane do modelowania</li>
+<li>Trenuje model korzystając algorytmu LinearRegression</li>
+<li>Drukuje na ekranie parametry modelu</li>
+<li>Zapisuje model do pliku model_1.0.pkl w folderze model</li>
+</ol></li>
+<li>Wyjście: model_1.0.pkl</li>
+</ol></li>
+<li><strong>Ewaluacja (3. test.py):</strong>
+<ol style="list-style-type: decimal">
+<li>Wejście:
+<ol style="list-style-type: decimal">
+<li>data_test.csv</li>
+<li>model_1.0.pkl</li>
+</ol></li>
+<li>Działania:
+<ol style="list-style-type: decimal">
+<li>Wczytuje model z pliku model/model_1.0.pkl</li>
+<li>Wczytuje dane treningowe z pliku data/data_test.csv</li>
+<li>Generuje predykcje i ocenia model</li>
+<li>Drukuje wyniki ewaluacji na ekranie komputera</li>
+</ol></li>
+<li>Wyjście: ekran</li>
+</ol></li>
 </ol>
-
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="potoki-danych.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="konsumenci-danych.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lista-kontrolna-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="decyzje-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -256,7 +285,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/wodecki/ASI/edit/master/2.3.3._Jeziora.Rmd",
+"link": "https://github.com/wodecki/ASI/edit/master/3.3.Demo_modelowanie.Rmd",
 "text": "Edit"
 },
 "history": {

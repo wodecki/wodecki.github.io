@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Warsztaty | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
+  <title>3.2 Modelowanie architektury | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
   <meta name="description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Warsztaty | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta property="og:title" content="3.2 Modelowanie architektury | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   <meta name="github-repo" content="openscapes/series" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Warsztaty | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta name="twitter:title" content="3.2 Modelowanie architektury | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
   
   <meta name="twitter:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="cele-kursu.html"/>
-<link rel="next" href="architektury-it.html"/>
+<link rel="prev" href="demo-trening-i-ewaluacja-modelu.html"/>
+<link rel="next" href="demo-modelowanie.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -187,53 +187,138 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="warsztaty" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Warsztaty<a href="warsztaty.html#warsztaty" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<iframe width="745" height="515" src="https://www.youtube.com/embed/iyENO5Nu9LE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+<div id="modelowanie-architektury" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Modelowanie architektury<a href="modelowanie-architektury.html#modelowanie-architektury" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/QnrJieEe59g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
-<p>Pracę na ćwiczeniach podzielimy na 5 etapów:</p>
-<ol style="list-style-type: decimal">
-<li>Stworzenie komponentów umożliwiających
-<ol style="list-style-type: decimal">
-<li>trening</li>
-<li>uruchomienie</li>
-<li>i monitoring modeli</li>
-</ol></li>
-<li>Implementację tych komponentów w postaci kontenerów Docker (opcjonalnie: Kubernetes lub Dataiku)</li>
-<li>Opracowanie dokumentacji całej architektury.</li>
-</ol>
-<p><img src="media/image-20220329120614013.png" /></p>
-<p>W pracach wykorzystamy następujące narzędzia:</p>
-<ol style="list-style-type: decimal">
-<li>Pakiet MLFlow</li>
-<li>Środowisko Docker/Kubeflow</li>
-<li>Platformę Dataiku.</li>
-</ol>
-<p>Na końcową dokumentację złożą się:</p>
-<ol style="list-style-type: decimal">
-<li>Opis problemu: Co i dlaczego modelujemy?</li>
-<li>Analiza potrzeb.
-<ol style="list-style-type: decimal">
-<li>Krótka charakterystyka organizacji, dla której trenujemy model (1 akapit)</li>
-<li>Prognozowana częstość dotrenowywania</li>
-<li>Złożoność obliczeniowa algorytmu</li>
-<li>Ilość i złożoność danych.</li>
-</ol></li>
-<li>Rekomendowana architektura (implementacja w diagrams.net z łączami do GitHub (artefakty i komponenty))</li>
-<li>Dokumentacja implementacji:
-<ol style="list-style-type: decimal">
-<li>Komponenty</li>
-<li>Artefakty</li>
-<li>Środowisko uruchomieniowe</li>
-</ol></li>
-<li>Dyskusja wyników (ekrany z poszczególnych faz):
-<ol style="list-style-type: decimal">
-<li>Dane</li>
-<li>Modelowanie</li>
-<li>Monitoring.</li>
-</ol></li>
-</ol>
+<p>Początkowo proste przepływy zadań w projektach uczenia maszynowego mogą z czasem ewoluować w bardzo złożone. Dlatego od samego początku warto stosować metody projektowania zapewniające kontrolę nad architekturą całości.</p>
+<p>Rozwiązania takie jak Kubeflow czy Dataiku pozwalają wizualizować zaimplementowane już przepływy, jest to jednak tylko wizualizacja przepływu zaimplementowanego wcześniej np. w formie plików JSON czy skryptów Python.</p>
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/2.%20Cykl%20z%CC%87ycia%20projektu%20i%20modelowanie%20architektur/1.%20Tres%CC%81ci/2.%20Modelowanie%20architektur%20projekto%CC%81w%20ML/1.%20prezentacja/media/image-20220430185104572.png" alt="image-20220430185104572" style="zoom:50%;" /></p>
+<p>Do zaprojektowania przepływu uczenia maszynowego można wykorzystać systemy do wpomagające modelowanie procesów. Przykładowo, dostępne na licencji otwartej Diagrams.net, oferowane w szczególności jako aplikacja Google.</p>
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/2.%20Cykl%20z%CC%87ycia%20projektu%20i%20modelowanie%20architektur/1.%20Tres%CC%81ci/2.%20Modelowanie%20architektur%20projekto%CC%81w%20ML/1.%20prezentacja/media/image-20220430185353033.png" alt="image-20220430185353033" style="zoom:50%;" /></p>
+<p>Bloki diagrams.net możemy wykorzystać do wizualizacji komponentów i artefaktów przepływu ML. Każdy blok może mieć dedykowany zestaw cech (properties), które można wykorzystać do wprowadzenia własnych meta-opisów.</p>
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/2.%20Cykl%20z%CC%87ycia%20projektu%20i%20modelowanie%20architektur/1.%20Tres%CC%81ci/2.%20Modelowanie%20architektur%20projekto%CC%81w%20ML/1.%20prezentacja/media/image-20220430185401455.png" alt="image-20220430185401455" style="zoom:50%;" /></p>
+<p>Szczególną cechą jest link do zasobu zewnętrznego skojarzonego z blokiem. Jeśli wykorzystamy go do połączenia z repozytorium GitHub, rozwiązanie będzie nam służyć nie tylko do wizualizacji architektury, ale też monitoringu aktualnego stanu komponentów i artefaktów. Przykładowo, każdy współpracownik w projekcie będzie miał dostęp do aktualnych miar jakości modelu.</p>
+<p>W efekcie, proste, darmowe systemy wspomagające modelowanie procesów czy architektur mogą posłużyć do stworzenia prostych systemów zarządzania procesami MLOps.</p>
 
+<div id="proces-modelowania" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Proces modelowania<a href="modelowanie-architektury.html#proces-modelowania" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/-gI9WdhTXZ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Modelowanie architektur systemów uczenia maszynowego można zrealizować w następujących krokach:</p>
+<ol style="list-style-type: decimal">
+<li>Organizacja</li>
+<li>Specyfikacja wymagań</li>
+<li>Modelowanie.</li>
+</ol>
+<div id="organizacja" class="section level4 hasAnchor" number="3.2.1.1">
+<h4><span class="header-section-number">3.2.1.1</span> Organizacja<a href="modelowanie-architektury.html#organizacja" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/2.%20Cykl%20z%CC%87ycia%20projektu%20i%20modelowanie%20architektur/1.%20Tres%CC%81ci/2.%20Modelowanie%20architektur%20projekto%CC%81w%20ML/1.%20prezentacja/media/image-20220430200239339.png" alt="image-20220430200239339" style="zoom:50%;" /></p>
+<p>Cały proces warto rozpocząć od stworzenia środowiska pracy (zarówno własnej, jak i grupowej). W pierwszej kolejności załóż dedykowany folder (opcjonalnie: udostępnij go współpracownikom), skonfiguruj środowisko zarządzania projektem i utwórz dedykowane repozytorium w systemi Git (np. GitHub).</p>
+<p>Następnie zdefiniuj problem i określ zakres modelowania. Chcesz modelować architekturę tylko dla procesu trenowania? A może wnioskowania na produkcji? Czy też zaprojektować pełny cykl MLOps. Przydatny może być tu artykuł dostępny <a href="https://towardsdatascience.com/architecting-a-machine-learning-pipeline-a847f094d1c7">tutaj</a>.</p>
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/2.%20Cykl%20z%CC%87ycia%20projektu%20i%20modelowanie%20architektur/1.%20Tres%CC%81ci/2.%20Modelowanie%20architektur%20projekto%CC%81w%20ML/1.%20prezentacja/media/image-20220501090246349.png" alt="image-20220501090246349" style="zoom:50%;" /></p>
+<p>W ostatnim kroku stwórz w dedykowanym folderze pliki odpowiadające pierwszej wersji architektury (w oparciu o swoją intuicję i poprzednie doświadczenia, na razie bez tworzenia szczegółowej specyfikacji). Mogą być to szablony (puste pliki lub zawierające jedynie podstawowe elementy) komponentów, artefaktów oraz ich dokumentacji. Na koniec wprowadź tę strukturę do repozytorium GitHub.</p>
+<p><strong>Przydatne źródła</strong></p>
+<p>Świetny opis procesu projektowania pełnej architektury MLOps znajdziesz <a href="https://towardsdatascience.com/architecting-a-machine-learning-pipeline-a847f094d1c7">tutaj</a>.</p>
+
+</div>
+<div id="specyfikacja-wymagań" class="section level4 hasAnchor" number="3.2.1.2">
+<h4><span class="header-section-number">3.2.1.2</span> Specyfikacja wymagań<a href="modelowanie-architektury.html#specyfikacja-wymagań" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/C0AwilI-AiU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Mając już przygotowane środowisko pracy, przystąp do tworzenia specyfikacji wymagań. Sugeruję w tym celu określić:</p>
+<ol style="list-style-type: decimal">
+<li>wymagania funkcjonalne w formie listy kontrolnej</li>
+<li>specyfikację artefaktów</li>
+<li>specyfikację komponentów</li>
+<li>kluczowe decyzje, które należy podjąć implementując rozwiązanie.</li>
+</ol>
+<hr />
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/2.%20Cykl%20z%CC%87ycia%20projektu%20i%20modelowanie%20architektur/1.%20Tres%CC%81ci/2.%20Modelowanie%20architektur%20projekto%CC%81w%20ML/1.%20prezentacja/media/image-20220501090343321.png" alt="image-20220501090343321" style="zoom:50%;" /></p>
+<p><strong>Lista kontrolna</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Specyfikuje zakres działania komponentu</p></li>
+<li><p>Określa standard wykonania</p></li>
+<li><p>Jest zbiorem kryteriów odbioru</p></li>
+</ol>
+<hr />
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/2.%20Cykl%20z%CC%87ycia%20projektu%20i%20modelowanie%20architektur/1.%20Tres%CC%81ci/2.%20Modelowanie%20architektur%20projekto%CC%81w%20ML/1.%20prezentacja/media/image-20220501090517386.png" alt="image-20220501090517386" style="zoom:50%;" /></p>
+<p><strong>Artefakty</strong> to lista obiektów (najczęściej plików z danymi lub modeli), które mogą być:</p>
+<ol style="list-style-type: decimal">
+<li>Wsadem do komponentu („wejście”)</li>
+<li>Powstawać w wyniku uruchomienia komponentu („wyjście”).</li>
+</ol>
+<p>W przypadku plików warto określić:</p>
+<ol style="list-style-type: decimal">
+<li>Miejsca i nazwy</li>
+<li>Formatu</li>
+</ol>
+<p>W przypadku danych przydatne jest też wskazanie:</p>
+<ol style="list-style-type: decimal">
+<li>Nazw i znaczenia poszczególnych pól</li>
+<li>Typów zmiennych (np. numeryczne, kategorialne, czas, etc.).</li>
+</ol>
+<hr />
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/2.%20Cykl%20z%CC%87ycia%20projektu%20i%20modelowanie%20architektur/1.%20Tres%CC%81ci/2.%20Modelowanie%20architektur%20projekto%CC%81w%20ML/1.%20prezentacja/media/image-20220501090710392.png" alt="image-20220501090710392" style="zoom:50%;" /></p>
+<p>Specyfikacja <strong>komponentów</strong> określa:</p>
+<ol style="list-style-type: decimal">
+<li>Wejścia (artefakt wejściowy)</li>
+<li>Procedury działań (w oparciu o listę kontrolną)</li>
+<li>Wyjścia (artefakt wyjściowy).</li>
+</ol>
+<p>Działania realizowane przez komponent warto pisać tak, by później posłużyły jako dokumentacja wewnętrzna kodu (ang. one-line docstrings, por. np. <a href="https://peps.python.org/pep-0257/" class="uri">https://peps.python.org/pep-0257/</a>).</p>
+<p>Czynność tę i tak z pewnością trzeba będzie wykonać w przyszłości. Realizacja tego zadania <strong>PRZED</strong> programowaniem:</p>
+<ol style="list-style-type: decimal">
+<li>Ułatwi zrozumienie celu i idei działania kodu</li>
+<li>Może istotnie uprościć samo programowanie w środowiskach IDE wykorzystując technologie typu GitHub Copilot (<a href="https://copilot.github.com" class="uri">https://copilot.github.com</a>).</li>
+</ol>
+<hr />
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/2.%20Cykl%20z%CC%87ycia%20projektu%20i%20modelowanie%20architektur/1.%20Tres%CC%81ci/2.%20Modelowanie%20architektur%20projekto%CC%81w%20ML/1.%20prezentacja/media/image-20220501091716380.png" alt="image-20220501091716380" style="zoom:50%;" /></p>
+<p>W kolejnym kroku wskaż najważniejsze <strong>decyzje</strong>, jakie trzeba będzie podjąć tworzyć dany komponent. Mogą być one później podjęte np. podczas spotkań zespołu projektowego.</p>
+<hr />
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/2.%20Cykl%20z%CC%87ycia%20projektu%20i%20modelowanie%20architektur/1.%20Tres%CC%81ci/2.%20Modelowanie%20architektur%20projekto%CC%81w%20ML/1.%20prezentacja/media/image-20220501091913579.png" alt="image-20220501091913579" style="zoom:50%;" /></p>
+<p>Całość podsumuj np. w prostym arkuszu i zapisz w folderze ze specyfikacją projektu.</p>
+
+</div>
+<div id="modelowanie" class="section level4 hasAnchor" number="3.2.1.3">
+<h4><span class="header-section-number">3.2.1.3</span> Modelowanie<a href="modelowanie-architektury.html#modelowanie" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/m6KWgvLNIVw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Mając przygotowaną szczegółową specyfikację działania modułu, stwórz szkic architektury korzystając np. z pakietu diagrams.net (możesz z niego korzystać w ramach aplikacji Google).</p>
+<p>Umieść na schemacie:</p>
+<ol style="list-style-type: decimal">
+<li>komponenty</li>
+<li>artefakty</li>
+<li>oraz relacje pomiędzy nimi.</li>
+</ol>
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/2.%20Cykl%20z%CC%87ycia%20projektu%20i%20modelowanie%20architektur/1.%20Tres%CC%81ci/2.%20Modelowanie%20architektur%20projekto%CC%81w%20ML/1.%20prezentacja/media/image-20220501092830605.png" alt="image-20220501092830605" style="zoom:50%;" /></p>
+<p>W kolejnym kroku, podłącz poszczególne komponenty i artefakty do odpowiednich plików w repozytorium GitHub.</p>
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/2.%20Cykl%20z%CC%87ycia%20projektu%20i%20modelowanie%20architektur/1.%20Tres%CC%81ci/2.%20Modelowanie%20architektur%20projekto%CC%81w%20ML/1.%20prezentacja/media/image-20220501093004186.png" alt="image-20220501093004186" style="zoom:50%;" /></p>
+<p>Aby podłączyć specyfikację artefaktu/komponentu stwórz dedykowane pole (np. <em>Description</em>), i wklej do niego hiperłącze do specyfikacji. Uwaga: ze względu na ograniczoną liczbę znaków, sugeruję wcześniej skrócić link do dokumentacji korzystając z serwisu takiego jak www.bit.ly.</p>
+<hr />
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/2.%20Cykl%20z%CC%87ycia%20projektu%20i%20modelowanie%20architektur/1.%20Tres%CC%81ci/2.%20Modelowanie%20architektur%20projekto%CC%81w%20ML/1.%20prezentacja/media/image-20220501093229717.png" alt="image-20220501093229717" style="zoom:50%;" /></p>
+<p>Z czasem rozwój systemu wymusza modyfikację architektury. Aby utrzymać przejrzystość architektury, wart porządkować komponenty i artefakty w osobne struktury.</p>
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/2.%20Cykl%20z%CC%87ycia%20projektu%20i%20modelowanie%20architektur/1.%20Tres%CC%81ci/2.%20Modelowanie%20architektur%20projekto%CC%81w%20ML/1.%20prezentacja/media/image-20220501093346956.png" alt="image-20220501093346956" style="zoom:50%;" /></p>
+<p>Przydatne może być wtedy uporządkowanie poszczególnych etapów modelowania
+w osobnych folderach.</p>
+<p><img src="/Users/wodecki/M%C3%B3j%20dysk/2.%20Areas/1.%20Szkolenia/4.%20PJATK/Semestr%20lato%202022/ASI/!%20Moje%20materia%C5%82y/2.%20Cykl%20z%CC%87ycia%20projektu%20i%20modelowanie%20architektur/1.%20Tres%CC%81ci/2.%20Modelowanie%20architektur%20projekto%CC%81w%20ML/1.%20prezentacja/media/image-20220501093526816.png" alt="image-20220501093526816" style="zoom:50%;" /></p>
+<p>W pakiecie diagrams.net mogą nam w tym pomóc <em>pionowe kontenery</em> (ang. vertical containers). Pozwalają one na grupowanie komponentów i artefaktów, i w efekcie uproszczenie całej wizualizacji.</p>
+</div>
+<div id="podsumowanie" class="section level4 hasAnchor" number="3.2.1.4">
+<h4><span class="header-section-number">3.2.1.4</span> Podsumowanie<a href="modelowanie-architektury.html#podsumowanie" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Tworzenie aplikacji warto rozpocząć od jej zaprojektowania.</p>
+<p>Projektowanie architektur uczenia maszynowego nie musi być poprzedzone ich tworzeniem. Z powodzeniem można wykorzystać w tym celu ogólnodostępne, darmowe rozwiązania wspomagające projektowanie schematów.</p>
+<p>Korzyści z takiego podejścia to:</p>
+<ol style="list-style-type: decimal">
+<li>Wizualizacja całości rozwiązania (komponenty, artefakty i relacje pomiędzy nimi)</li>
+<li>Szybki dostęp do aktualnych wersji komponentów i artefaktów dzięki połączeniu z GitHub</li>
+<li>Tworzenie własnych meta-opisów dzięki personalizowanym cechom obiektów.</li>
+</ol>
+<p><strong>Przydatne źródła</strong></p>
+<p>Świetny opis procesu projektowania pełnej architektury MLOps znajdziesz <a href="https://towardsdatascience.com/architecting-a-machine-learning-pipeline-a847f094d1c7">tutaj</a>.</p>
+
+</div>
+</div>
 </div>
 <!-- </div> -->
             </section>
@@ -241,8 +326,8 @@
           </div>
         </div>
       </div>
-<a href="cele-kursu.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="architektury-it.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="demo-trening-i-ewaluacja-modelu.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="demo-modelowanie.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -273,7 +358,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/wodecki/ASI/edit/master/1.3._Warsztaty.Rmd",
+"link": "https://github.com/wodecki/ASI/edit/master/3.2._Modelowanie_architektury.Rmd",
 "text": "Edit"
 },
 "history": {
