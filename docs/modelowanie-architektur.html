@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Rozdział 3 Modelowanie architektur | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
+  <meta name="description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Rozdział 3 Modelowanie architektur | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  <meta name="github-repo" content="openscapes/series" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Rozdział 3 Modelowanie architektur | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  
+  <meta name="twitter:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  
+
+<meta name="author" content="Andrzej Wodecki" />
+
+
+<meta name="date" content="2022-05-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="architektury-it.html"/>
+<link rel="next" href="monitoring-modeli.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Architektury i Metodyki Wdrozen Systemów Sztucznej Inteligencji</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Wprowadzenie<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#motywacja"><i class="fa fa-check"></i><b>1.1</b> <strong>Motywacja</strong><span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#cele-kursu"><i class="fa fa-check"></i><b>1.2</b> Cele kursu<span></span></a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#warsztaty"><i class="fa fa-check"></i><b>1.3</b> Warsztaty<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="architektury-it.html"><a href="architektury-it.html"><i class="fa fa-check"></i><b>2</b> Architektury IT<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="architektury-it.html"><a href="architektury-it.html#potoki-danych"><i class="fa fa-check"></i><b>2.1</b> Potoki danych<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="architektury-it.html"><a href="architektury-it.html#typy-danych"><i class="fa fa-check"></i><b>2.1.1</b> Typy danych<span></span></a></li>
+<li class="chapter" data-level="2.1.2" data-path="architektury-it.html"><a href="architektury-it.html#bazy-danych"><i class="fa fa-check"></i><b>2.1.2</b> Bazy danych<span></span></a></li>
+<li class="chapter" data-level="2.1.3" data-path="architektury-it.html"><a href="architektury-it.html#hurtownie-danych"><i class="fa fa-check"></i><b>2.1.3</b> Hurtownie danych<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="architektury-it.html"><a href="architektury-it.html#jeziora-danych"><i class="fa fa-check"></i><b>2.2</b> Jeziora danych<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="architektury-it.html"><a href="architektury-it.html#konsumenci-danych"><i class="fa fa-check"></i><b>2.3</b> Konsumenci danych<span></span></a></li>
+<li class="chapter" data-level="2.4" data-path="architektury-it.html"><a href="architektury-it.html#producenci-danych"><i class="fa fa-check"></i><b>2.4</b> Producenci danych<span></span></a></li>
+<li class="chapter" data-level="2.5" data-path="architektury-it.html"><a href="architektury-it.html#transformacja-danych"><i class="fa fa-check"></i><b>2.5</b> Transformacja danych<span></span></a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="architektury-it.html"><a href="architektury-it.html#przetwarzanie-etl-extract-transform-load"><i class="fa fa-check"></i><b>2.5.1</b> Przetwarzanie ETL (Extract, Transform, Load)<span></span></a></li>
+<li class="chapter" data-level="2.5.2" data-path="architektury-it.html"><a href="architektury-it.html#przetwarzanie-elt-extract-load-transform"><i class="fa fa-check"></i><b>2.5.2</b> Przetwarzanie ELT (Extract, Load, Transform)<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="architektury-it.html"><a href="architektury-it.html#strategia-wdrożenia"><i class="fa fa-check"></i><b>2.6</b> Strategia wdrożenia<span></span></a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="architektury-it.html"><a href="architektury-it.html#własne-czy-gotowe"><i class="fa fa-check"></i><b>2.6.1</b> Własne czy gotowe?<span></span></a></li>
+<li class="chapter" data-level="2.6.2" data-path="architektury-it.html"><a href="architektury-it.html#otwarte-czy-komercyjne"><i class="fa fa-check"></i><b>2.6.2</b> Otwarte czy komercyjne?<span></span></a></li>
+<li class="chapter" data-level="2.6.3" data-path="architektury-it.html"><a href="architektury-it.html#u-siebie-czy-w-chmurze"><i class="fa fa-check"></i><b>2.6.3</b> U siebie czy “w chmurze”?<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="modelowanie-architektur.html"><a href="modelowanie-architektur.html"><i class="fa fa-check"></i><b>3</b> Modelowanie architektur<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="modelowanie-architektur.html"><a href="modelowanie-architektur.html#cykl-życia-modelu-uczenia-maszynowego"><i class="fa fa-check"></i><b>3.1</b> Cykl życia modelu uczenia maszynowego<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="modelowanie-architektur.html"><a href="modelowanie-architektur.html#demo-trening-i-ewaluacja-modelu"><i class="fa fa-check"></i><b>3.2</b> Demo: trening i ewaluacja modelu<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="modelowanie-architektur.html"><a href="modelowanie-architektur.html#ćwiczenie-trening-i-ewaluacja-modelu"><i class="fa fa-check"></i><b>3.3</b> Ćwiczenie: trening i ewaluacja modelu<span></span></a></li>
+<li class="chapter" data-level="3.4" data-path="modelowanie-architektur.html"><a href="modelowanie-architektur.html#modelowanie-architektury---wprowadzenie"><i class="fa fa-check"></i><b>3.4</b> Modelowanie architektury - wprowadzenie<span></span></a></li>
+<li class="chapter" data-level="3.5" data-path="modelowanie-architektur.html"><a href="modelowanie-architektur.html#modelowanie-architektury---organizacja"><i class="fa fa-check"></i><b>3.5</b> Modelowanie architektury - organizacja<span></span></a></li>
+<li class="chapter" data-level="3.6" data-path="modelowanie-architektur.html"><a href="modelowanie-architektur.html#modelowanie-architektury---specyfikacja-wymagań"><i class="fa fa-check"></i><b>3.6</b> Modelowanie architektury - specyfikacja wymagań<span></span></a></li>
+<li class="chapter" data-level="3.7" data-path="modelowanie-architektur.html"><a href="modelowanie-architektur.html#modelowanie-architektury---modelowanie"><i class="fa fa-check"></i><b>3.7</b> Modelowanie architektury - modelowanie<span></span></a></li>
+<li class="chapter" data-level="3.8" data-path="modelowanie-architektur.html"><a href="modelowanie-architektur.html#demo-modelowanie"><i class="fa fa-check"></i><b>3.8</b> Demo: modelowanie<span></span></a></li>
+<li class="chapter" data-level="3.9" data-path="modelowanie-architektur.html"><a href="modelowanie-architektur.html#podsumowanie-modelowanie-architektur"><i class="fa fa-check"></i><b>3.9</b> Podsumowanie: modelowanie architektur<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="monitoring-modeli.html"><a href="monitoring-modeli.html"><i class="fa fa-check"></i><b>4</b> Monitoring modeli<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="monitoring-modeli.html"><a href="monitoring-modeli.html#monitoring-modeli---wprowadzenie"><i class="fa fa-check"></i><b>4.1</b> Monitoring modeli - wprowadzenie<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="monitoring-modeli.html"><a href="monitoring-modeli.html#demo-monitoring-modelu"><i class="fa fa-check"></i><b>4.2</b> Demo: monitoring modelu<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="monitoring-modeli.html"><a href="monitoring-modeli.html#ćwiczenie-monitoring-modelu"><i class="fa fa-check"></i><b>4.3</b> Ćwiczenie: monitoring modelu<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="monitoring-modeli.html"><a href="monitoring-modeli.html#detekcja-dryfu-modelu"><i class="fa fa-check"></i><b>4.4</b> Detekcja dryfu modelu<span></span></a></li>
+<li class="chapter" data-level="4.5" data-path="monitoring-modeli.html"><a href="monitoring-modeli.html#demo-detekcja-dryfu"><i class="fa fa-check"></i><b>4.5</b> Demo: detekcja dryfu<span></span></a></li>
+<li class="chapter" data-level="4.6" data-path="monitoring-modeli.html"><a href="monitoring-modeli.html#ćwiczenia-detekcja-dryfu-i-dotrenowanie"><i class="fa fa-check"></i><b>4.6</b> Ćwiczenia: detekcja dryfu i dotrenowanie<span></span></a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="monitoring-modeli.html"><a href="monitoring-modeli.html#ćwiczenie-detekcja-dryfu"><i class="fa fa-check"></i><b>4.6.1</b> Ćwiczenie: detekcja dryfu<span></span></a></li>
+<li class="chapter" data-level="4.6.2" data-path="monitoring-modeli.html"><a href="monitoring-modeli.html#ćwiczenie-uruchomienie-dotrenowania"><i class="fa fa-check"></i><b>4.6.2</b> Ćwiczenie: uruchomienie dotrenowania<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="monitoring-modeli.html"><a href="monitoring-modeli.html#monitoring-modeli---podsumowanie"><i class="fa fa-check"></i><b>4.7</b> Monitoring modeli - podsumowanie<span></span></a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="modelowanie-architektur" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Rozdział 3</span> Modelowanie architektur<a href="modelowanie-architektur.html#modelowanie-architektur" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="cykl-życia-modelu-uczenia-maszynowego" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Cykl życia modelu uczenia maszynowego<a href="modelowanie-architektur.html#cykl-życia-modelu-uczenia-maszynowego" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/fBVGpVMmlbw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Na typowy projekt uczenia maszynowego składają się następujące etapy:</p>
+<ol style="list-style-type: decimal">
+<li>Przygotowanie danych</li>
+<li>Modelowanie (trening i ewaluacja)</li>
+<li>Udostępnianie modelu</li>
+<li>Monitoring</li>
+<li>Dotrenowywanie.</li>
+</ol>
+<p>Za realizację każdego z nich odpowiada najczęściej osobny <strong>komponent</strong> (na rysunku powyżej zaprezentowany w formie owalnej), który przyjmuje na wejściu oraz generuje na wyjściu tzw. <strong>artefakt</strong> (oznaczony jako prostokąt).</p>
+<p><img src="media/image-20220430101905775-1312764.png" alt="" style="zoom:50%;" /></p>
+<p>W realnych projektach sytuacja jest bardziej złożona: na przygotowanie danych, modelowanie, udostępnianie i monitoring składa się wiele etapów cząstkowych (realizowanych przez odpowiednie komponenty):</p>
+<ol style="list-style-type: decimal">
+<li>Przygotowanie danych
+<ol style="list-style-type: decimal">
+<li>pozyskanie danych</li>
+<li>walidacja danych</li>
+<li>transformacja danych</li>
+</ol></li>
+<li>Modelowanie:
+<ol style="list-style-type: decimal">
+<li>trening i ewaluacja</li>
+<li>walidacja finalnego modelu</li>
+<li>tuning hiperparametrów</li>
+</ol></li>
+<li>Udostępnianie modelu
+<ol style="list-style-type: decimal">
+<li>przygotowanie do udostępnienia</li>
+<li>(ciągła) integracja (CI: Continuos Integration)</li>
+<li>(ciągłe) uruchamianie (CD: Continuos Deployment)</li>
+</ol></li>
+<li>Monitoring
+<ol style="list-style-type: decimal">
+<li>monitoring i identyfikacja dryfu danych</li>
+<li>monitoring i identyfikacja dryfu modeli</li>
+<li>monitoring infrastruktury</li>
+</ol></li>
+<li>Dotrenowywanie
+<ol style="list-style-type: decimal">
+<li>generowanie sygnału dotrenowania</li>
+<li>wybór nowych danych treningowych</li>
+<li>dotrenowanie.</li>
+</ol></li>
+</ol>
+<p><img src="media/image-20220430102415870-1313152.png" alt="" style="zoom:50%;" /></p>
+<p>Realizację tych procesów wspiera wiele dedykowanych systemów, wyspecjalizowanych w realizacji konkretnych zadań. Szczególnie istotną rolę odgrywają:</p>
+<ol style="list-style-type: decimal">
+<li>repozytoria cech (ang. feature stores)</li>
+<li>systemy monitoringu eksperymentów</li>
+<li>repozytoria modeli (ang. model stores)</li>
+<li>systemy ciągłej integracji i udostępniania (ang. continuous integration (CI) and deployment (CD))</li>
+<li>systemy monitorujące modele</li>
+<li>repozytoria metadanych generowanych przez cały proces (ang. metadata stores).</li>
+</ol>
+<p><img src="media/image-20220430102856733.png" alt="" style="zoom:50%;" /></p>
+<p>Wybór technologii wykorzystanych do implementacji poszczególnych komponentów zależy od stopnia złożoności projektu. W prostych przedsięwzięciach można z powodzeniem wykorzystać pliki CSV, skrypty Python czy aplikacje typu Flask, bardziej złożone wymagają wdrożenia dedykowanych rozwiązań dostępnych za darmo (np. MLFlow, FastApi czy darmowa wersja WandB.ai), zaś zaawansowane dedykowanych systemów takich jak Feast, Kubeflow, Heroku czy Arize.</p>
+<p><img src="media/image-20220430103159955-1313201.png" alt=" " style="zoom:50%;" /></p>
+<p>Pejzaż dostępnych w tym zakresie rozwiązań jest bardzo dynamiczny: pojawia się tu coraz więcej nowych rozwiązań, czemu towarzyszy mniej lub bardziej dynamiczny rozwój już istniejących.</p>
+<p><strong>Przydatne źródła</strong></p>
+<ol style="list-style-type: decimal">
+<li>Przykład kompletnej architektury projektu uczenia maszynowego, ze świetnie opisanymi poszczególnymi etapami jej konstrukcji, opisany jest <a href="https://towardsdatascience.com/architecting-a-machine-learning-pipeline-a847f094d1c7">tutaj</a>.</li>
+<li>Bardzo dobrym wprowadzenie w zagadnienie cyklu życia projektu maszynowego, i ogólniej w tematykę MLOps jest artykuł dostępny <a href="https://towardsdatascience.com/a-gentle-introduction-to-mlops-7d64a3e890ff">tutaj</a>.</li>
+<li>Nieco bardziej rozbudowane wprowadzenie do różnych poziomów automatyzacji procesów MLOps można znaleźć tutaj:
+<ol style="list-style-type: decimal">
+<li><a href="https://towardsdatascience.com/mlops-level-0-manual-pipelines-7278b9949e59">poziom 0: manual pipelines</a></li>
+<li><a href="https://towardsdatascience.com/mlops-level-1-continuous-training-b2a633e27d47">poziom 1: continuous training</a></li>
+<li><a href="https://towardsdatascience.com/mlops-level-2-ci-cd-continous-training-b9b64042368">poziom 2: CI/CD</a></li>
+</ol></li>
+<li>Interesujący przegląd narzędzi wspomagających zarządzanie cyklem życia oraz poszczególnymi etapami projektu data science jest dostępny <a href="https://mlops.neptune.ai/">tutaj</a>.</li>
+</ol>
+
+</div>
+<div id="demo-trening-i-ewaluacja-modelu" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Demo: trening i ewaluacja modelu<a href="modelowanie-architektur.html#demo-trening-i-ewaluacja-modelu" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/7kU9SM1py5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p><em>Uwaga: komplet wersji demonstracyjnych, ćwiczeń i rozwiązań oraz rekomendacje dotyczące środowiska uruchomieniowego znajdziesz tutaj:</em></p>
+<p><a href="https://github.com/wodecki/ASI_2022" class="uri">https://github.com/wodecki/ASI_2022</a></p>
+<p><strong>Cel</strong></p>
+<p>Nasz pierwszy kod będzie stanowił punkt wyjścia dla kolejnych ćwiczeń. Stworzymy sekwencję skryptów Python, których zadaniem będzie wczytanie danych treningowych, stworzenie modelu i jego ewaluacja na danych testowych.</p>
+<p>Do modelowania wykorzystamy dane syntetyczne, które będą możliwe do zamodelowania z wykorzystaniem prostego modelu regresji liniowej.</p>
+<p>Stworzony dzięki temu szkielet oprogramowania będziemy mogli później rozwijać w następujących wymiarach:</p>
+<ol style="list-style-type: decimal">
+<li>Urealnienie problemu:
+<ol style="list-style-type: decimal">
+<li>przejście od danych syntetycznych do danych realnych, np. modelowania cen mieszkań</li>
+<li>zmianę typu problemu uczenia maszynowego: przejście od regresji do np. klasyfikacji</li>
+</ol></li>
+<li>Zamiany prostych skryptów Python na dedykowane biblioteki, służące np. do monitorowania modeli czy pre-processingu danych</li>
+<li>Zmiany środowisk uruchomieniowych: z własnego komputera na docker czy kubernetes.</li>
+</ol>
+<p>W ćwiczeniu tym przedstawimy też podstawowe zasady projektowania architektury kodu uczenia maszynowego, w szczególności pojęcia artefaktów, komponentów i wizualizacji relacji pomiędzy nimi z wykorzystaniem diagramów.</p>
+<p><strong>Lista kontrolna</strong></p>
+<p>Skrypt, który stworzymy, będzie realizował następujące zadania:</p>
+<ol style="list-style-type: decimal">
+<li>Wczytanie danych</li>
+</ol>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+​ Wczytuje plik treningowy data_init.csv</li>
+<li><input type="checkbox" disabled="" />
+​ Zapisuje go do pliku data_train.csv</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Trenowanie modelu</li>
+</ol>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+​ Wczytuje dane treningowe data_train.csv</li>
+<li><input type="checkbox" disabled="" />
+​ Przygotowuje dane do modelowania</li>
+<li><input type="checkbox" disabled="" />
+​ Trenuje model korzystając algorytmu LinearRegression</li>
+<li><input type="checkbox" disabled="" />
+​ Drukuje na ekranie parametry modelu</li>
+<li><input type="checkbox" disabled="" />
+​ Zapisuje model do pliku model_1.0.pkl w folderze model</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Ewaluacja modelu</li>
+</ol>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+​ Wczytuje model z pliku model/model_1.0.pkl</li>
+<li><input type="checkbox" disabled="" />
+​ Wczytuje dane treningowe z pliku data/data_test.csv</li>
+<li><input type="checkbox" disabled="" />
+​ Generuje predykcje i ocenia model</li>
+<li><input type="checkbox" disabled="" />
+​ Drukuje wyniki ewaluacji na ekranie komputera</li>
+</ul>
+<p><strong>Architektura</strong></p>
+<p><em>Artefakty</em></p>
+<ol style="list-style-type: decimal">
+<li>Wejście
+<ol style="list-style-type: decimal">
+<li>Inicjalny plik treningowy: data_init.csv</li>
+<li>Plik testowy: data_test.csv</li>
+</ol></li>
+<li>Wyjście
+<ol style="list-style-type: decimal">
+<li>model: model_1.0</li>
+</ol></li>
+</ol>
+<p><em>Komponenty</em></p>
+<ol style="list-style-type: decimal">
+<li>Wczytanie danych (1. read.py)
+<ol style="list-style-type: decimal">
+<li>Wejście: data_init.csv</li>
+<li>Działania:
+<ol style="list-style-type: decimal">
+<li>wczytuje dane</li>
+<li>zapisuje na dysku</li>
+</ol></li>
+<li>Wyjście: data_train.csv</li>
+</ol></li>
+<li>Trening (2. train.py):
+<ol style="list-style-type: decimal">
+<li>Wejście: data_train.csv</li>
+<li>Działania:
+<ol style="list-style-type: decimal">
+<li>Wczytuje dane treningowe data_train.csv</li>
+<li>Przygotowuje dane do modelowania</li>
+<li>Trenuje model korzystając algorytmu LinearRegression</li>
+<li>Drukuje na ekranie parametry modelu</li>
+<li>Zapisuje model do pliku model_1.0.pkl w folderze model</li>
+</ol></li>
+<li>Wyjście: model_1.0.pkl</li>
+</ol></li>
+<li>Ewaluacja (3. test.py):
+<ol style="list-style-type: decimal">
+<li>Wejście:
+<ol style="list-style-type: decimal">
+<li>data_test.csv</li>
+<li>model_1.0.pkl</li>
+</ol></li>
+<li>Działania:
+<ol style="list-style-type: decimal">
+<li>Wczytuje model z pliku model/model_1.0.pkl</li>
+<li>Wczytuje dane treningowe z pliku data/data_test.csv</li>
+<li>Generuje predykcje i ocenia model</li>
+<li>Drukuje wyniki ewaluacji na ekranie komputera</li>
+</ol></li>
+<li>Wyjście: ekran</li>
+</ol></li>
+</ol>
+<p><strong>Decyzje</strong></p>
+<p>Projektując to rozwiązanie, musimy podjąć następujące decyzje:</p>
+<ol style="list-style-type: decimal">
+<li>Wybór miary jakości modelu
+<ol style="list-style-type: decimal">
+<li>RMSE</li>
+<li>R2</li>
+</ol></li>
+<li>Algorytm(y) ML: LinearRegression</li>
+</ol>
+<p><strong>Podsumowanie</strong></p>
+<p><img src="media/image-20220411121120443.png" alt="" style="zoom:50%;" /></p>
+
+</div>
+<div id="ćwiczenie-trening-i-ewaluacja-modelu" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Ćwiczenie: trening i ewaluacja modelu<a href="modelowanie-architektur.html#ćwiczenie-trening-i-ewaluacja-modelu" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Zadanie 1. Zapis danych ewaluacyjnych do pliku csv</strong></p>
+<p>Zmodyfikuj moduł ewaluacyjny tak, by wyniki były zapisywane do pliku <code>model_eval.csv</code> w folderze <code>evaluation</code>.</p>
+<p>Zapisz do niego:</p>
+<ul>
+<li>stempel czasu (aktualny czas) w kolumnie <code>time_stamp</code></li>
+<li>wersję modelu (liczbę po słowie <code>model</code> w nazwie modelu) w kolumnie ‘Model version’</li>
+<li>nazwę miary w kolumnie <code>Measure</code></li>
+<li>wartości obu miar (<code>RMSE</code> i <code>r2</code>) w kolumnie <code>score</code></li>
+</ul>
+<p>Wykorzystaj w tym celu skrypt <code>3. evaluate.py</code></p>
+<p><strong>Lista kontrolna</strong></p>
+<p>Zmodyfikowany skrypt zapisuje w pliku <code>evaluation/model_eval.csv</code>:</p>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+stempel czasu (aktualny czas) w kolumnie <code>time_stamp</code></li>
+<li><input type="checkbox" disabled="" />
+wersję modelu (liczbę po słowie <code>model</code> w nazwie modelu) w kolumnie ‘Model version’</li>
+<li><input type="checkbox" disabled="" />
+nazwę miary w kolumnie <code>Measure</code></li>
+<li><input type="checkbox" disabled="" />
+wartości obu miar (<code>RMSE</code> i <code>r2</code>) w kolumnie <code>score</code></li>
+</ul>
+<p><strong>Zadanie 2. Zapis danych ewaluacyjnych do systemu MLFlow lub Weights&amp;Biases</strong></p>
+<p>Zmodyfikuj moduł ewaluacyjny tak, by wyniki były zapisywane do wybranego systemu monitorującego jakość modelu, np. MLflow lub Weights&amp;Biases (www.wandb.com).</p>
+<p><strong>Lista kontrolna</strong></p>
+<p>Zmodyfikowany skrypt zapisuje w wybranym systemie monitoringowym następujące artefakty:</p>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+stempel czasu (aktualny czas) w kolumnie <code>time_stamp</code></li>
+<li><input type="checkbox" disabled="" />
+wersję modelu (liczbę po słowie <code>model</code> w nazwie modelu) w kolumnie ‘Model version’</li>
+<li><input type="checkbox" disabled="" />
+nazwę miary w kolumnie <code>Measure</code></li>
+<li><input type="checkbox" disabled="" />
+wartości obu miar (<code>RMSE</code> i <code>r2</code>) w kolumnie <code>score</code>.</li>
+</ul>
+<p><em>Uwaga: komplet wersji demonstracyjnych, ćwiczeń i rozwiązań oraz rekomendacje dotyczące środowiska uruchomieniowego znajdziesz tutaj:</em></p>
+<p><a href="https://github.com/wodecki/ASI_2022.git" class="uri">https://github.com/wodecki/ASI_2022.git</a></p>
+
+</div>
+<div id="modelowanie-architektury---wprowadzenie" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Modelowanie architektury - wprowadzenie<a href="modelowanie-architektur.html#modelowanie-architektury---wprowadzenie" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/QnrJieEe59g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Początkowo proste przepływy zadań w projektach uczenia maszynowego mogą z czasem ewoluować w bardzo złożone. Dlatego od samego początku warto stosować metody projektowania zapewniające kontrolę nad architekturą całości.</p>
+<p>Rozwiązania takie jak Kubeflow czy Dataiku pozwalają wizualizować zaimplementowane już przepływy, jest to jednak tylko wizualizacja przepływu zaimplementowanego wcześniej np. w formie plików JSON czy skryptów Python.</p>
+<p><img src="media/image-20220430185104572.png" alt="" style="zoom:50%;" /></p>
+<p>Do zaprojektowania przepływu uczenia maszynowego można wykorzystać systemy do wpomagające modelowanie procesów. Przykładowo, dostępne na licencji otwartej Diagrams.net, oferowane w szczególności jako aplikacja Google.</p>
+<p><img src="media/image-20220430185353033.png" alt="" style="zoom:50%;" /></p>
+<p>Bloki diagrams.net możemy wykorzystać do wizualizacji komponentów i artefaktów przepływu ML. Każdy blok może mieć dedykowany zestaw cech (properties), które można wykorzystać do wprowadzenia własnych meta-opisów.</p>
+<p><img src="media/image-20220430185401455.png" alt="" style="zoom:50%;" /></p>
+<p>Szczególną cechą jest link do zasobu zewnętrznego skojarzonego z blokiem. Jeśli wykorzystamy go do połączenia z repozytorium GitHub, rozwiązanie będzie nam służyć nie tylko do wizualizacji architektury, ale też monitoringu aktualnego stanu komponentów i artefaktów. Przykładowo, każdy współpracownik w projekcie będzie miał dostęp do aktualnych miar jakości modelu.</p>
+<p>W efekcie, proste, darmowe systemy wspomagające modelowanie procesów czy architektur mogą posłużyć do stworzenia prostych systemów zarządzania procesami MLOps.</p>
+
+</div>
+<div id="modelowanie-architektury---organizacja" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Modelowanie architektury - organizacja<a href="modelowanie-architektur.html#modelowanie-architektury---organizacja" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/-gI9WdhTXZ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Modelowanie architektur systemów uczenia maszynowego można zrealizować w następujących krokach:</p>
+<ol style="list-style-type: decimal">
+<li>Organizacja</li>
+<li>Specyfikacja wymagań</li>
+<li>Modelowanie.</li>
+</ol>
+<p><img src="media/image-20220430200239339.png" alt="" style="zoom:50%;" /></p>
+<p>Cały proces warto rozpocząć od stworzenia środowiska pracy (zarówno własnej, jak i grupowej). W pierwszej kolejności załóż dedykowany folder (opcjonalnie: udostępnij go współpracownikom), skonfiguruj środowisko zarządzania projektem i utwórz dedykowane repozytorium w systemi Git (np. GitHub).</p>
+<p>Następnie zdefiniuj problem i określ zakres modelowania. Chcesz modelować architekturę tylko dla procesu trenowania? A może wnioskowania na produkcji? Czy też zaprojektować pełny cykl MLOps. Przydatny może być tu artykuł dostępny <a href="https://towardsdatascience.com/architecting-a-machine-learning-pipeline-a847f094d1c7">tutaj</a>.</p>
+<p><img src="media/image-20220501090246349.png" alt="" style="zoom:50%;" /></p>
+<p>W ostatnim kroku stwórz w dedykowanym folderze pliki odpowiadające pierwszej wersji architektury (w oparciu o swoją intuicję i poprzednie doświadczenia, na razie bez tworzenia szczegółowej specyfikacji). Mogą być to szablony (puste pliki lub zawierające jedynie podstawowe elementy) komponentów, artefaktów oraz ich dokumentacji. Na koniec wprowadź tę strukturę do repozytorium GitHub.</p>
+<p><strong>Przydatne źródła</strong></p>
+<p>Świetny opis procesu projektowania pełnej architektury MLOps znajdziesz <a href="https://towardsdatascience.com/architecting-a-machine-learning-pipeline-a847f094d1c7">tutaj</a>.</p>
+
+</div>
+<div id="modelowanie-architektury---specyfikacja-wymagań" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Modelowanie architektury - specyfikacja wymagań<a href="modelowanie-architektur.html#modelowanie-architektury---specyfikacja-wymagań" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/C0AwilI-AiU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Mając już przygotowane środowisko pracy, przystąp do tworzenia specyfikacji wymagań. Sugeruję w tym celu określić:</p>
+<ol style="list-style-type: decimal">
+<li>wymagania funkcjonalne w formie listy kontrolnej</li>
+<li>specyfikację artefaktów</li>
+<li>specyfikację komponentów</li>
+<li>kluczowe decyzje, które należy podjąć implementując rozwiązanie.</li>
+</ol>
+<hr />
+<p><img src="media/image-20220501090343321.png" alt="image-20220501090343321" style="zoom:50%;" /></p>
+<p><strong>Lista kontrolna</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Specyfikuje zakres działania komponentu</p></li>
+<li><p>Określa standard wykonania</p></li>
+<li><p>Jest zbiorem kryteriów odbioru</p></li>
+</ol>
+<hr />
+<p><img src="media/image-20220501090517386.png" alt="image-20220501090517386" style="zoom:50%;" /></p>
+<p><strong>Artefakty</strong> to lista obiektów (najczęściej plików z danymi lub modeli), które mogą być:</p>
+<ol style="list-style-type: decimal">
+<li>Wsadem do komponentu („wejście”)</li>
+<li>Powstawać w wyniku uruchomienia komponentu („wyjście”).</li>
+</ol>
+<p>W przypadku plików warto określić:</p>
+<ol style="list-style-type: decimal">
+<li>Miejsca i nazwy</li>
+<li>Formatu</li>
+</ol>
+<p>W przypadku danych przydatne jest też wskazanie:</p>
+<ol style="list-style-type: decimal">
+<li>Nazw i znaczenia poszczególnych pól</li>
+<li>Typów zmiennych (np. numeryczne, kategorialne, czas, etc.).</li>
+</ol>
+<hr />
+<p><img src="media/image-20220501090710392.png" alt="image-20220501090710392" style="zoom:50%;" /></p>
+<p>Specyfikacja <strong>komponentów</strong> określa:</p>
+<ol style="list-style-type: decimal">
+<li>Wejścia (artefakt wejściowy)</li>
+<li>Procedury działań (w oparciu o listę kontrolną)</li>
+<li>Wyjścia (artefakt wyjściowy).</li>
+</ol>
+<p>Działania realizowane przez komponent warto pisać tak, by później posłużyły jako dokumentacja wewnętrzna kodu (ang. one-line docstrings, por. np. <a href="https://peps.python.org/pep-0257/" class="uri">https://peps.python.org/pep-0257/</a>).</p>
+<p>Czynność tę i tak z pewnością trzeba będzie wykonać w przyszłości. Realizacja tego zadania <strong>PRZED</strong> programowaniem:</p>
+<ol style="list-style-type: decimal">
+<li>Ułatwi zrozumienie celu i idei działania kodu</li>
+<li>Może istotnie uprościć samo programowanie w środowiskach IDE wykorzystując technologie typu GitHub Copilot (<a href="https://copilot.github.com" class="uri">https://copilot.github.com</a>).</li>
+</ol>
+<hr />
+<p><img src="media/image-20220501091716380.png" alt="image-20220501091716380" style="zoom:50%;" /></p>
+<p>W kolejnym kroku wskaż najważniejsze <strong>decyzje</strong>, jakie trzeba będzie podjąć tworzyć dany komponent. Mogą być one później podjęte np. podczas spotkań zespołu projektowego.</p>
+<hr />
+<p><img src="media/image-20220501091913579.png" alt="image-20220501091913579" style="zoom:50%;" /></p>
+<p>Całość podsumuj np. w prostym arkuszu i zapisz w folderze ze specyfikacją projektu.</p>
+
+</div>
+<div id="modelowanie-architektury---modelowanie" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Modelowanie architektury - modelowanie<a href="modelowanie-architektur.html#modelowanie-architektury---modelowanie" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/m6KWgvLNIVw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Mając przygotowaną szczegółową specyfikację działania modułu, stwórz szkic architektury korzystając np. z pakietu diagrams.net (możesz z niego korzystać w ramach aplikacji Google).</p>
+<p>Umieść na schemacie:</p>
+<ol style="list-style-type: decimal">
+<li>komponenty</li>
+<li>artefakty</li>
+<li>oraz relacje pomiędzy nimi.</li>
+</ol>
+<p><img src="media/image-20220501092830605.png" alt="" style="zoom:50%;" /></p>
+<p>W kolejnym kroku, podłącz poszczególne komponenty i artefakty do odpowiednich plików w repozytorium GitHub.</p>
+<p><img src="/media/image-20220501093004186.png" alt="" style="zoom:50%;" /></p>
+<p>Aby podłączyć specyfikację artefaktu/komponentu stwórz dedykowane pole (np. <em>Description</em>), i wklej do niego hiperłącze do specyfikacji. Uwaga: ze względu na ograniczoną liczbę znaków, sugeruję wcześniej skrócić link do dokumentacji korzystając z serwisu takiego jak www.bit.ly.</p>
+<hr />
+<p><img src="media/image-20220501093229717.png" alt="" style="zoom:50%;" /></p>
+<p>Z czasem rozwój systemu wymusza modyfikację architektury. Aby utrzymać przejrzystość architektury, wart porządkować komponenty i artefakty w osobne struktury.</p>
+<p><img src="media/image-20220501093346956.png" alt="" style="zoom:50%;" /></p>
+<p>Przydatne może być wtedy uporządkowanie poszczególnych etapów modelowania
+w osobnych folderach.</p>
+<p><img src="media/image-20220501093526816.png" alt="" style="zoom:50%;" /></p>
+<p>W pakiecie diagrams.net mogą nam w tym pomóc <em>pionowe kontenery</em> (ang. vertical containers). Pozwalają one na grupowanie komponentów i artefaktów, i w efekcie uproszczenie całej wizualizacji.</p>
+<p><strong>Podsumowanie</strong></p>
+<p>Tworzenie aplikacji warto rozpocząć od jej zaprojektowania.</p>
+<p>Projektowanie architektur uczenia maszynowego nie musi być poprzedzone ich tworzeniem. Z powodzeniem można wykorzystać w tym celu ogólnodostępne, darmowe rozwiązania wspomagające projektowanie schematów.</p>
+<p>Korzyści z takiego podejścia to:</p>
+<ol style="list-style-type: decimal">
+<li>Wizualizacja całości rozwiązania (komponenty, artefakty i relacje pomiędzy nimi)</li>
+<li>Szybki dostęp do aktualnych wersji komponentów i artefaktów dzięki połączeniu z GitHub</li>
+<li>Tworzenie własnych meta-opisów dzięki personalizowanym cechom obiektów.</li>
+</ol>
+<p><strong>Przydatne źródła</strong></p>
+<p>Świetny opis procesu projektowania pełnej architektury MLOps znajdziesz <a href="https://towardsdatascience.com/architecting-a-machine-learning-pipeline-a847f094d1c7">tutaj</a>.</p>
+
+</div>
+<div id="demo-modelowanie" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> Demo: modelowanie<a href="modelowanie-architektur.html#demo-modelowanie" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/_9YyGjh3DQk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Na tym krótkim filmie pokazuję, w jaki sposób można wykorzystać oprogramowanie Diagrams.net do stworzenia prostej architektury systemu uczenia maszynowego. Poniżej znajdziesz listę kontrolną, specyfikacje artefaktów i komponentów oraz decyzje, jakie należało podjąć w procesie projektowania.</p>
+<p><strong>Lista kontrolna</strong></p>
+<p>Skrypt, który stworzymy, będzie realizował następujące zadania:</p>
+<ol style="list-style-type: decimal">
+<li>Wczytanie danych</li>
+</ol>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+​ Wczytuje plik treningowy data_init.csv</li>
+<li><input type="checkbox" disabled="" />
+​ Zapisuje go do pliku data_train.csv</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Trenowanie modelu</li>
+</ol>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+​ Wczytuje dane treningowe data_train.csv</li>
+<li><input type="checkbox" disabled="" />
+​ Przygotowuje dane do modelowania</li>
+<li><input type="checkbox" disabled="" />
+​ Trenuje model korzystając algorytmu LinearRegression</li>
+<li><input type="checkbox" disabled="" />
+​ Drukuje na ekranie parametry modelu</li>
+<li><input type="checkbox" disabled="" />
+​ Zapisuje model do pliku model_1.0.pkl w folderze model</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Ewaluacja modelu</li>
+</ol>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+​ Wczytuje model z pliku model/model_1.0.pkl</li>
+<li><input type="checkbox" disabled="" />
+​ Wczytuje dane treningowe z pliku data/data_test.csv</li>
+<li><input type="checkbox" disabled="" />
+​ Generuje predykcje i ocenia model</li>
+<li><input type="checkbox" disabled="" />
+​ Drukuje wyniki ewaluacji na ekranie komputera</li>
+</ul>
+<p><strong>Architektura</strong></p>
+<p><em>Artefakty</em></p>
+<ol style="list-style-type: decimal">
+<li>Wejście
+<ol style="list-style-type: decimal">
+<li>Inicjalny plik treningowy: data_init.csv</li>
+<li>Plik testowy: data_test.csv</li>
+</ol></li>
+<li>Wyjście
+<ol style="list-style-type: decimal">
+<li>model: model_1.0</li>
+</ol></li>
+</ol>
+<p><em>Komponenty</em></p>
+<ol style="list-style-type: decimal">
+<li>Wczytanie danych (1. read.py)
+<ol style="list-style-type: decimal">
+<li>Wejście: data_init.csv</li>
+<li>Działania:
+<ol style="list-style-type: decimal">
+<li>wczytuje dane</li>
+<li>zapisuje na dysku</li>
+</ol></li>
+<li>Wyjście: data_train.csv</li>
+</ol></li>
+<li>Trening (2. train.py):
+<ol style="list-style-type: decimal">
+<li>Wejście: data_train.csv</li>
+<li>Działania:
+<ol style="list-style-type: decimal">
+<li>Wczytuje dane treningowe data_train.csv</li>
+<li>Przygotowuje dane do modelowania</li>
+<li>Trenuje model korzystając algorytmu LinearRegression</li>
+<li>Drukuje na ekranie parametry modelu</li>
+<li>Zapisuje model do pliku model_1.0.pkl w folderze model</li>
+</ol></li>
+<li>Wyjście: model_1.0.pkl</li>
+</ol></li>
+<li>Ewaluacja (3. test.py):
+<ol style="list-style-type: decimal">
+<li>Wejście:
+<ol style="list-style-type: decimal">
+<li>data_test.csv</li>
+<li>model_1.0.pkl</li>
+</ol></li>
+<li>Działania:
+<ol style="list-style-type: decimal">
+<li>Wczytuje model z pliku model/model_1.0.pkl</li>
+<li>Wczytuje dane treningowe z pliku data/data_test.csv</li>
+<li>Generuje predykcje i ocenia model</li>
+<li>Drukuje wyniki ewaluacji na ekranie komputera</li>
+</ol></li>
+<li>Wyjście: ekran</li>
+</ol></li>
+</ol>
+<p><strong>Decyzje</strong></p>
+<p>Projektując to rozwiązanie, musimy podjąć następujące decyzje:</p>
+<ol style="list-style-type: decimal">
+<li>Wybór miary jakości modelu
+<ol style="list-style-type: decimal">
+<li>RMSE</li>
+<li>R2</li>
+</ol></li>
+<li>Algorytm(y) ML: LinearRegression</li>
+</ol>
+<p><strong>Podsumowanie</strong></p>
+<p><img src="media/image-20220411121120443.png" alt="" style="zoom:50%;" /></p>
+
+</div>
+<div id="podsumowanie-modelowanie-architektur" class="section level2 hasAnchor" number="3.9">
+<h2><span class="header-section-number">3.9</span> Podsumowanie: modelowanie architektur<a href="modelowanie-architektur.html#podsumowanie-modelowanie-architektur" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/wbeyd1qMXsU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Cykl życia modelu uczenia maszynowego jest złożony - dlatego już na samym początku projektu zacząć pracować nad architekturą docelowego rozwiązania.</p>
+<p><img src="/media/image-20220502094758536.png" alt="" style="zoom:50%;" /></p>
+<p>Większość rozwiązań wizualizuje architekturę w oparciu o już stworzony kod. Do zaprojektowania przepływu uczenia maszynowego można jednak wykorzystać systemy do wpomagające modelowanie procesów. Przykładowo, dostępne na licencji otwartej Diagrams.net, oferowane w szczególności jako aplikacja Google.</p>
+<p><img src="/media/image-20220502094936924.png" alt="" style="zoom:50%;" /></p>
+<p>Proces modelowania proponujemy zrealizować w trzech krokach: rozpocząć od organizacji, potem stworzyć wstępną specyfikację, a następnie model architektury.</p>
+<p><img src="/media/image-20220502095024491.png" alt="" style="zoom:50%;" /></p>
+<p>Jeśli wykorzystamy go do połączenia z repozytorium GitHub, rozwiązanie będzie nam służyć nie tylko do wizualizacji architektury, ale też monitoringu aktualnego stanu komponentów i artefaktów. Przykładowo, każdy współpracownik w projekcie będzie miał dostęp do aktualnych miar jakości modelu.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="architektury-it.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="monitoring-modeli.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/wodecki/ASI/edit/master/3.1._Cykl_życia_projektu_ML.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["series.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
