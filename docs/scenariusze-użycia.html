@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.5 Scenariusze użycia | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
+  <meta name="description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.5 Scenariusze użycia | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  <meta name="github-repo" content="openscapes/series" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.5 Scenariusze użycia | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  
+  <meta name="twitter:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  
+
+<meta name="author" content="Andrzej Wodecki" />
+
+
+<meta name="date" content="2022-06-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="sekwencyjne-uruchamianie-kontenerów-z-wykorzystaniem-mechanizmu-volume-mount.html"/>
+<link rel="next" href="przydatne-źródła.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Architektury i Metodyki Wdrozen Systemów Sztucznej Inteligencji</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="wprowadzenie.html"><a href="wprowadzenie.html"><i class="fa fa-check"></i><b>1</b> Wprowadzenie</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="motywacja.html"><a href="motywacja.html"><i class="fa fa-check"></i><b>1.1</b> <strong>Motywacja</strong></a></li>
+<li class="chapter" data-level="1.2" data-path="cele-kursu.html"><a href="cele-kursu.html"><i class="fa fa-check"></i><b>1.2</b> Cele kursu</a></li>
+<li class="chapter" data-level="1.3" data-path="warsztaty.html"><a href="warsztaty.html"><i class="fa fa-check"></i><b>1.3</b> Warsztaty</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="architektury-it.html"><a href="architektury-it.html"><i class="fa fa-check"></i><b>2</b> Architektury IT</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="potoki-danych.html"><a href="potoki-danych.html"><i class="fa fa-check"></i><b>2.1</b> Potoki danych</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="potoki-danych.html"><a href="potoki-danych.html#typy-danych"><i class="fa fa-check"></i><b>2.1.1</b> Typy danych</a></li>
+<li class="chapter" data-level="2.1.2" data-path="potoki-danych.html"><a href="potoki-danych.html#bazy-danych"><i class="fa fa-check"></i><b>2.1.2</b> Bazy danych</a></li>
+<li class="chapter" data-level="2.1.3" data-path="potoki-danych.html"><a href="potoki-danych.html#hurtownie-danych"><i class="fa fa-check"></i><b>2.1.3</b> Hurtownie danych</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="jeziora-danych.html"><a href="jeziora-danych.html"><i class="fa fa-check"></i><b>2.2</b> Jeziora danych</a></li>
+<li class="chapter" data-level="2.3" data-path="konsumenci-danych.html"><a href="konsumenci-danych.html"><i class="fa fa-check"></i><b>2.3</b> Konsumenci danych</a></li>
+<li class="chapter" data-level="2.4" data-path="producenci-danych.html"><a href="producenci-danych.html"><i class="fa fa-check"></i><b>2.4</b> Producenci danych</a></li>
+<li class="chapter" data-level="2.5" data-path="transformacja-danych.html"><a href="transformacja-danych.html"><i class="fa fa-check"></i><b>2.5</b> Transformacja danych</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="transformacja-danych.html"><a href="transformacja-danych.html#przetwarzanie-etl-extract-transform-load"><i class="fa fa-check"></i><b>2.5.1</b> Przetwarzanie ETL (Extract, Transform, Load)</a></li>
+<li class="chapter" data-level="2.5.2" data-path="transformacja-danych.html"><a href="transformacja-danych.html#przetwarzanie-elt-extract-load-transform"><i class="fa fa-check"></i><b>2.5.2</b> Przetwarzanie ELT (Extract, Load, Transform)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html"><i class="fa fa-check"></i><b>2.6</b> Strategia wdrożenia</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#własne-czy-gotowe"><i class="fa fa-check"></i><b>2.6.1</b> Własne czy gotowe?</a></li>
+<li class="chapter" data-level="2.6.2" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#otwarte-czy-komercyjne"><i class="fa fa-check"></i><b>2.6.2</b> Otwarte czy komercyjne?</a></li>
+<li class="chapter" data-level="2.6.3" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#u-siebie-czy-w-chmurze"><i class="fa fa-check"></i><b>2.6.3</b> U siebie czy “w chmurze”?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="modelowanie-architektur.html"><a href="modelowanie-architektur.html"><i class="fa fa-check"></i><b>3</b> Modelowanie architektur</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cykl-życia-modelu-uczenia-maszynowego.html"><a href="cykl-życia-modelu-uczenia-maszynowego.html"><i class="fa fa-check"></i><b>3.1</b> Cykl życia modelu uczenia maszynowego</a></li>
+<li class="chapter" data-level="3.2" data-path="demo-trening-i-ewaluacja-modelu.html"><a href="demo-trening-i-ewaluacja-modelu.html"><i class="fa fa-check"></i><b>3.2</b> Demo: trening i ewaluacja modelu</a></li>
+<li class="chapter" data-level="3.3" data-path="ćwiczenie-trening-i-ewaluacja-modelu.html"><a href="ćwiczenie-trening-i-ewaluacja-modelu.html"><i class="fa fa-check"></i><b>3.3</b> Ćwiczenie: trening i ewaluacja modelu</a></li>
+<li class="chapter" data-level="3.4" data-path="modelowanie-architektury---wprowadzenie.html"><a href="modelowanie-architektury---wprowadzenie.html"><i class="fa fa-check"></i><b>3.4</b> Modelowanie architektury - wprowadzenie</a></li>
+<li class="chapter" data-level="3.5" data-path="modelowanie-architektury---organizacja.html"><a href="modelowanie-architektury---organizacja.html"><i class="fa fa-check"></i><b>3.5</b> Modelowanie architektury - organizacja</a></li>
+<li class="chapter" data-level="3.6" data-path="modelowanie-architektury---specyfikacja-wymagań.html"><a href="modelowanie-architektury---specyfikacja-wymagań.html"><i class="fa fa-check"></i><b>3.6</b> Modelowanie architektury - specyfikacja wymagań</a></li>
+<li class="chapter" data-level="3.7" data-path="modelowanie-architektury---modelowanie.html"><a href="modelowanie-architektury---modelowanie.html"><i class="fa fa-check"></i><b>3.7</b> Modelowanie architektury - modelowanie</a></li>
+<li class="chapter" data-level="3.8" data-path="demo-modelowanie.html"><a href="demo-modelowanie.html"><i class="fa fa-check"></i><b>3.8</b> Demo: modelowanie</a></li>
+<li class="chapter" data-level="3.9" data-path="podsumowanie-modelowanie-architektur.html"><a href="podsumowanie-modelowanie-architektur.html"><i class="fa fa-check"></i><b>3.9</b> Podsumowanie: modelowanie architektur</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="monitoring-modeli.html"><a href="monitoring-modeli.html"><i class="fa fa-check"></i><b>4</b> Monitoring modeli</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="monitoring-modeli---wprowadzenie.html"><a href="monitoring-modeli---wprowadzenie.html"><i class="fa fa-check"></i><b>4.1</b> Monitoring modeli - wprowadzenie</a></li>
+<li class="chapter" data-level="4.2" data-path="demo-monitoring-modelu.html"><a href="demo-monitoring-modelu.html"><i class="fa fa-check"></i><b>4.2</b> Demo: monitoring modelu</a></li>
+<li class="chapter" data-level="4.3" data-path="ćwiczenie-monitoring-modelu.html"><a href="ćwiczenie-monitoring-modelu.html"><i class="fa fa-check"></i><b>4.3</b> Ćwiczenie: monitoring modelu</a></li>
+<li class="chapter" data-level="4.4" data-path="detekcja-dryfu-modelu.html"><a href="detekcja-dryfu-modelu.html"><i class="fa fa-check"></i><b>4.4</b> Detekcja dryfu modelu</a></li>
+<li class="chapter" data-level="4.5" data-path="demo-detekcja-dryfu.html"><a href="demo-detekcja-dryfu.html"><i class="fa fa-check"></i><b>4.5</b> Demo: detekcja dryfu</a></li>
+<li class="chapter" data-level="4.6" data-path="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html"><a href="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html"><i class="fa fa-check"></i><b>4.6</b> Ćwiczenia: detekcja dryfu i dotrenowanie</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html"><a href="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html#ćwiczenie-detekcja-dryfu"><i class="fa fa-check"></i><b>4.6.1</b> Ćwiczenie: detekcja dryfu</a></li>
+<li class="chapter" data-level="4.6.2" data-path="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html"><a href="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html#ćwiczenie-uruchomienie-dotrenowania"><i class="fa fa-check"></i><b>4.6.2</b> Ćwiczenie: uruchomienie dotrenowania</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="monitoring-modeli---podsumowanie.html"><a href="monitoring-modeli---podsumowanie.html"><i class="fa fa-check"></i><b>4.7</b> Monitoring modeli - podsumowanie</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="konteneryzacja.html"><a href="konteneryzacja.html"><i class="fa fa-check"></i><b>5</b> Konteneryzacja</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="wprowadzenie-1.html"><a href="wprowadzenie-1.html"><i class="fa fa-check"></i><b>5.1</b> Wprowadzenie</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="wprowadzenie-1.html"><a href="wprowadzenie-1.html#scenariusze-użycia-docker-w-projektach-data-science"><i class="fa fa-check"></i><b>5.1.1</b> Scenariusze użycia docker w projektach Data Science</a></li>
+<li class="chapter" data-level="5.1.2" data-path="wprowadzenie-1.html"><a href="wprowadzenie-1.html#niezbędne-umiejętności"><i class="fa fa-check"></i><b>5.1.2</b> Niezbędne umiejętności</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><a href="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><i class="fa fa-check"></i><b>5.2</b> Organizacja, pierwszy obraz i prosta aplikacja</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><a href="organizacja-pierwszy-obraz-i-prosta-aplikacja.html#demo---pierwszy-obraz-docker"><i class="fa fa-check"></i><b>5.2.1</b> Demo - pierwszy obraz docker</a></li>
+<li class="chapter" data-level="5.2.2" data-path="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><a href="organizacja-pierwszy-obraz-i-prosta-aplikacja.html#demo-trenowanie-i-ewaluacja"><i class="fa fa-check"></i><b>5.2.2</b> Demo: trenowanie i ewaluacja</a></li>
+<li class="chapter" data-level="5.2.3" data-path="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><a href="organizacja-pierwszy-obraz-i-prosta-aplikacja.html#ćwiczenie-prosta-transformacja-danych-z-pandas"><i class="fa fa-check"></i><b>5.2.3</b> Ćwiczenie: prosta transformacja danych z pandas</a></li>
+<li class="chapter" data-level="5.2.4" data-path="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><a href="organizacja-pierwszy-obraz-i-prosta-aplikacja.html#zarządzanie-obrazami-i-kontenerami"><i class="fa fa-check"></i><b>5.2.4</b> Zarządzanie obrazami i kontenerami</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="wykorzystanie-gotowych-kontenerów.html"><a href="wykorzystanie-gotowych-kontenerów.html"><i class="fa fa-check"></i><b>5.3</b> Wykorzystanie gotowych kontenerów</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="wykorzystanie-gotowych-kontenerów.html"><a href="wykorzystanie-gotowych-kontenerów.html#uruchomienie-gotowego-kontenera-z-notatnikiem-jupyter-i-środowiskiem-datascience"><i class="fa fa-check"></i><b>5.3.1</b> Uruchomienie gotowego kontenera z notatnikiem Jupyter i środowiskiem DataScience</a></li>
+<li class="chapter" data-level="5.3.2" data-path="wykorzystanie-gotowych-kontenerów.html"><a href="wykorzystanie-gotowych-kontenerów.html#demo-kontener-ze-środowiskiem-pycaret"><i class="fa fa-check"></i><b>5.3.2</b> Demo: kontener ze środowiskiem PyCaret</a></li>
+<li class="chapter" data-level="5.3.3" data-path="wykorzystanie-gotowych-kontenerów.html"><a href="wykorzystanie-gotowych-kontenerów.html#ćwiczenie-prosta-transformacja-danych-z-pandas-1"><i class="fa fa-check"></i><b>5.3.3</b> Ćwiczenie: prosta transformacja danych z pandas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="wymiana-plików-kontenerhost.html"><a href="wymiana-plików-kontenerhost.html"><i class="fa fa-check"></i><b>5.4</b> <strong>Wymiana plików kontener&lt;&gt;host</strong></a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="wymiana-plików-kontenerhost.html"><a href="wymiana-plików-kontenerhost.html#stworzenie-kontenera-udostępniającego-wyłącznie-środowisko-uruchomieniowe"><i class="fa fa-check"></i><b>5.4.1</b> Stworzenie kontenera udostępniającego wyłącznie środowisko uruchomieniowe</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="kopiowanie-plików-host-kontener-z-wykorzystaniem-wtyczki-docker-w-ide-np.-ms-visual-studio-code.html"><a href="kopiowanie-plików-host-kontener-z-wykorzystaniem-wtyczki-docker-w-ide-np.-ms-visual-studio-code.html"><i class="fa fa-check"></i><b>5.5</b> Kopiowanie plików host-kontener z wykorzystaniem wtyczki Docker w IDE (np. MS Visual Studio Code)</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="kopiowanie-plików-host-kontener-z-wykorzystaniem-wtyczki-docker-w-ide-np.-ms-visual-studio-code.html"><a href="kopiowanie-plików-host-kontener-z-wykorzystaniem-wtyczki-docker-w-ide-np.-ms-visual-studio-code.html#uruchomienie-bez-podłączania-lokalnego-systemu-plików"><i class="fa fa-check"></i><b>5.5.1</b> Uruchomienie bez podłączania lokalnego systemu plików</a></li>
+<li class="chapter" data-level="5.5.2" data-path="kopiowanie-plików-host-kontener-z-wykorzystaniem-wtyczki-docker-w-ide-np.-ms-visual-studio-code.html"><a href="kopiowanie-plików-host-kontener-z-wykorzystaniem-wtyczki-docker-w-ide-np.-ms-visual-studio-code.html#uruchomienie-z-podłączeniem-lokalnego-systemu-plików"><i class="fa fa-check"></i><b>5.5.2</b> Uruchomienie z podłączeniem lokalnego systemu plików</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="utrzymanie-ciągłości-pracy-pojedyńczej-aplikacji-z-volume-mount.html"><a href="utrzymanie-ciągłości-pracy-pojedyńczej-aplikacji-z-volume-mount.html"><i class="fa fa-check"></i><b>6</b> Utrzymanie ciągłości pracy pojedyńczej aplikacji z <code>volume mount</code></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="nasza-aplikacja.html"><a href="nasza-aplikacja.html"><i class="fa fa-check"></i><b>6.1</b> Nasza aplikacja</a></li>
+<li class="chapter" data-level="6.2" data-path="stworzenie-obrazu.html"><a href="stworzenie-obrazu.html"><i class="fa fa-check"></i><b>6.2</b> Stworzenie obrazu</a></li>
+<li class="chapter" data-level="6.3" data-path="stworzenie-współdzielonego-woluminu.html"><a href="stworzenie-współdzielonego-woluminu.html"><i class="fa fa-check"></i><b>6.3</b> Stworzenie współdzielonego woluminu</a></li>
+<li class="chapter" data-level="6.4" data-path="sekwencyjne-uruchamianie-kontenerów-z-wykorzystaniem-mechanizmu-volume-mount.html"><a href="sekwencyjne-uruchamianie-kontenerów-z-wykorzystaniem-mechanizmu-volume-mount.html"><i class="fa fa-check"></i><b>6.4</b> Sekwencyjne uruchamianie kontenerów z wykorzystaniem mechanizmu volume mount</a></li>
+<li class="chapter" data-level="6.5" data-path="scenariusze-użycia.html"><a href="scenariusze-użycia.html"><i class="fa fa-check"></i><b>6.5</b> Scenariusze użycia</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="scenariusze-użycia.html"><a href="scenariusze-użycia.html#produkcja"><i class="fa fa-check"></i><b>6.5.1</b> Produkcja</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="przydatne-źródła.html"><a href="przydatne-źródła.html"><i class="fa fa-check"></i><b>6.6</b> Przydatne źródła</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="współdzielenie-danych-pomiędzy-kontenerami-z-volume-mount.html"><a href="współdzielenie-danych-pomiędzy-kontenerami-z-volume-mount.html"><i class="fa fa-check"></i><b>7</b> Współdzielenie danych pomiędzy kontenerami z <code>volume mount</code></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="stworzenie-obrazów-i-uruchomienie-poszczególnych-kontenerów.html"><a href="stworzenie-obrazów-i-uruchomienie-poszczególnych-kontenerów.html"><i class="fa fa-check"></i><b>7.1</b> Stworzenie obrazów i uruchomienie poszczególnych kontenerów</a></li>
+<li class="chapter" data-level="7.2" data-path="stworzenie-współdzielonego-woluminu-1.html"><a href="stworzenie-współdzielonego-woluminu-1.html"><i class="fa fa-check"></i><b>7.2</b> Stworzenie współdzielonego woluminu</a></li>
+<li class="chapter" data-level="7.3" data-path="uruchomienie-poszczególnych-kontenerów-z-funkcjonalnością-wymiany-danych.html"><a href="uruchomienie-poszczególnych-kontenerów-z-funkcjonalnością-wymiany-danych.html"><i class="fa fa-check"></i><b>7.3</b> Uruchomienie poszczególnych kontenerów z funkcjonalnością wymiany danych</a></li>
+<li class="chapter" data-level="7.4" data-path="scenariusze-użycia-1.html"><a href="scenariusze-użycia-1.html"><i class="fa fa-check"></i><b>7.4</b> Scenariusze użycia</a></li>
+<li class="chapter" data-level="7.5" data-path="przydatne-źródła-1.html"><a href="przydatne-źródła-1.html"><i class="fa fa-check"></i><b>7.5</b> Przydatne źródła</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="aplikacje-wielokontenerowe.html"><a href="aplikacje-wielokontenerowe.html"><i class="fa fa-check"></i><b>8</b> Aplikacje wielokontenerowe</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="budowa-i-uruchomienie.html"><a href="budowa-i-uruchomienie.html"><i class="fa fa-check"></i><b>8.1</b> Budowa i uruchomienie</a></li>
+<li class="chapter" data-level="8.2" data-path="docker-compose-vs-docker-compose.html"><a href="docker-compose-vs-docker-compose.html"><i class="fa fa-check"></i><b>8.2</b> <code>docker compose</code> vs <code>docker-compose</code></a></li>
+<li class="chapter" data-level="8.3" data-path="przydatne-źródła-2.html"><a href="przydatne-źródła-2.html"><i class="fa fa-check"></i><b>8.3</b> Przydatne źródła</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="podsumowanie.html"><a href="podsumowanie.html"><i class="fa fa-check"></i><b>9</b> <strong>Podsumowanie</strong></a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="scenariusze-użycia" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Scenariusze użycia<a href="scenariusze-użycia.html#scenariusze-użycia" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Wyżej wymieniony mechanizm możesz w szczególności zastosować w następujących sytuacjach:</p>
+<div id="produkcja" class="section level3 hasAnchor" number="6.5.1">
+<h3><span class="header-section-number">6.5.1</span> Produkcja<a href="scenariusze-użycia.html#produkcja" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Chcę zapewnić ciągłość działania mojej aplikacji</strong></p>
+<p>… tak, aby kolejne uruchomienia kontenera z moją aplikacją mogły korzystać z wyników poprzednich uruchomień</p>
+<p>Wykorzystuję w tym celu docker volume.</p>
+<p><strong>Chcę, aby różne równolegle pracujące kontenery wymieniały wymieniały się danymi</strong></p>
+<p>Wykorzystuję w tym celu docker volume.</p>
+<p><strong>Chcę przechowywać dane wykorzystywane przez moje kontenery u dostawcy usług chmurowych</strong></p>
+<p>Wykorzystuję w tym celu docker volume.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="sekwencyjne-uruchamianie-kontenerów-z-wykorzystaniem-mechanizmu-volume-mount.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="przydatne-źródła.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/wodecki/ASI/edit/master/5.4.4._Docker_-_Demo_-_utrzymanie_ciągłości_danych_z_volume_mount.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["series.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

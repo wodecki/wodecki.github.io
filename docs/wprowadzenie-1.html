@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.1 Wprowadzenie | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
+  <meta name="description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.1 Wprowadzenie | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  <meta name="github-repo" content="openscapes/series" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.1 Wprowadzenie | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  
+  <meta name="twitter:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  
+
+<meta name="author" content="Andrzej Wodecki" />
+
+
+<meta name="date" content="2022-06-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="konteneryzacja.html"/>
+<link rel="next" href="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Architektury i Metodyki Wdrozen Systemów Sztucznej Inteligencji</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="wprowadzenie.html"><a href="wprowadzenie.html"><i class="fa fa-check"></i><b>1</b> Wprowadzenie</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="motywacja.html"><a href="motywacja.html"><i class="fa fa-check"></i><b>1.1</b> <strong>Motywacja</strong></a></li>
+<li class="chapter" data-level="1.2" data-path="cele-kursu.html"><a href="cele-kursu.html"><i class="fa fa-check"></i><b>1.2</b> Cele kursu</a></li>
+<li class="chapter" data-level="1.3" data-path="warsztaty.html"><a href="warsztaty.html"><i class="fa fa-check"></i><b>1.3</b> Warsztaty</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="architektury-it.html"><a href="architektury-it.html"><i class="fa fa-check"></i><b>2</b> Architektury IT</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="potoki-danych.html"><a href="potoki-danych.html"><i class="fa fa-check"></i><b>2.1</b> Potoki danych</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="potoki-danych.html"><a href="potoki-danych.html#typy-danych"><i class="fa fa-check"></i><b>2.1.1</b> Typy danych</a></li>
+<li class="chapter" data-level="2.1.2" data-path="potoki-danych.html"><a href="potoki-danych.html#bazy-danych"><i class="fa fa-check"></i><b>2.1.2</b> Bazy danych</a></li>
+<li class="chapter" data-level="2.1.3" data-path="potoki-danych.html"><a href="potoki-danych.html#hurtownie-danych"><i class="fa fa-check"></i><b>2.1.3</b> Hurtownie danych</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="jeziora-danych.html"><a href="jeziora-danych.html"><i class="fa fa-check"></i><b>2.2</b> Jeziora danych</a></li>
+<li class="chapter" data-level="2.3" data-path="konsumenci-danych.html"><a href="konsumenci-danych.html"><i class="fa fa-check"></i><b>2.3</b> Konsumenci danych</a></li>
+<li class="chapter" data-level="2.4" data-path="producenci-danych.html"><a href="producenci-danych.html"><i class="fa fa-check"></i><b>2.4</b> Producenci danych</a></li>
+<li class="chapter" data-level="2.5" data-path="transformacja-danych.html"><a href="transformacja-danych.html"><i class="fa fa-check"></i><b>2.5</b> Transformacja danych</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="transformacja-danych.html"><a href="transformacja-danych.html#przetwarzanie-etl-extract-transform-load"><i class="fa fa-check"></i><b>2.5.1</b> Przetwarzanie ETL (Extract, Transform, Load)</a></li>
+<li class="chapter" data-level="2.5.2" data-path="transformacja-danych.html"><a href="transformacja-danych.html#przetwarzanie-elt-extract-load-transform"><i class="fa fa-check"></i><b>2.5.2</b> Przetwarzanie ELT (Extract, Load, Transform)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html"><i class="fa fa-check"></i><b>2.6</b> Strategia wdrożenia</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#własne-czy-gotowe"><i class="fa fa-check"></i><b>2.6.1</b> Własne czy gotowe?</a></li>
+<li class="chapter" data-level="2.6.2" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#otwarte-czy-komercyjne"><i class="fa fa-check"></i><b>2.6.2</b> Otwarte czy komercyjne?</a></li>
+<li class="chapter" data-level="2.6.3" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#u-siebie-czy-w-chmurze"><i class="fa fa-check"></i><b>2.6.3</b> U siebie czy “w chmurze”?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="modelowanie-architektur.html"><a href="modelowanie-architektur.html"><i class="fa fa-check"></i><b>3</b> Modelowanie architektur</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cykl-życia-modelu-uczenia-maszynowego.html"><a href="cykl-życia-modelu-uczenia-maszynowego.html"><i class="fa fa-check"></i><b>3.1</b> Cykl życia modelu uczenia maszynowego</a></li>
+<li class="chapter" data-level="3.2" data-path="demo-trening-i-ewaluacja-modelu.html"><a href="demo-trening-i-ewaluacja-modelu.html"><i class="fa fa-check"></i><b>3.2</b> Demo: trening i ewaluacja modelu</a></li>
+<li class="chapter" data-level="3.3" data-path="ćwiczenie-trening-i-ewaluacja-modelu.html"><a href="ćwiczenie-trening-i-ewaluacja-modelu.html"><i class="fa fa-check"></i><b>3.3</b> Ćwiczenie: trening i ewaluacja modelu</a></li>
+<li class="chapter" data-level="3.4" data-path="modelowanie-architektury---wprowadzenie.html"><a href="modelowanie-architektury---wprowadzenie.html"><i class="fa fa-check"></i><b>3.4</b> Modelowanie architektury - wprowadzenie</a></li>
+<li class="chapter" data-level="3.5" data-path="modelowanie-architektury---organizacja.html"><a href="modelowanie-architektury---organizacja.html"><i class="fa fa-check"></i><b>3.5</b> Modelowanie architektury - organizacja</a></li>
+<li class="chapter" data-level="3.6" data-path="modelowanie-architektury---specyfikacja-wymagań.html"><a href="modelowanie-architektury---specyfikacja-wymagań.html"><i class="fa fa-check"></i><b>3.6</b> Modelowanie architektury - specyfikacja wymagań</a></li>
+<li class="chapter" data-level="3.7" data-path="modelowanie-architektury---modelowanie.html"><a href="modelowanie-architektury---modelowanie.html"><i class="fa fa-check"></i><b>3.7</b> Modelowanie architektury - modelowanie</a></li>
+<li class="chapter" data-level="3.8" data-path="demo-modelowanie.html"><a href="demo-modelowanie.html"><i class="fa fa-check"></i><b>3.8</b> Demo: modelowanie</a></li>
+<li class="chapter" data-level="3.9" data-path="podsumowanie-modelowanie-architektur.html"><a href="podsumowanie-modelowanie-architektur.html"><i class="fa fa-check"></i><b>3.9</b> Podsumowanie: modelowanie architektur</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="monitoring-modeli.html"><a href="monitoring-modeli.html"><i class="fa fa-check"></i><b>4</b> Monitoring modeli</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="monitoring-modeli---wprowadzenie.html"><a href="monitoring-modeli---wprowadzenie.html"><i class="fa fa-check"></i><b>4.1</b> Monitoring modeli - wprowadzenie</a></li>
+<li class="chapter" data-level="4.2" data-path="demo-monitoring-modelu.html"><a href="demo-monitoring-modelu.html"><i class="fa fa-check"></i><b>4.2</b> Demo: monitoring modelu</a></li>
+<li class="chapter" data-level="4.3" data-path="ćwiczenie-monitoring-modelu.html"><a href="ćwiczenie-monitoring-modelu.html"><i class="fa fa-check"></i><b>4.3</b> Ćwiczenie: monitoring modelu</a></li>
+<li class="chapter" data-level="4.4" data-path="detekcja-dryfu-modelu.html"><a href="detekcja-dryfu-modelu.html"><i class="fa fa-check"></i><b>4.4</b> Detekcja dryfu modelu</a></li>
+<li class="chapter" data-level="4.5" data-path="demo-detekcja-dryfu.html"><a href="demo-detekcja-dryfu.html"><i class="fa fa-check"></i><b>4.5</b> Demo: detekcja dryfu</a></li>
+<li class="chapter" data-level="4.6" data-path="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html"><a href="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html"><i class="fa fa-check"></i><b>4.6</b> Ćwiczenia: detekcja dryfu i dotrenowanie</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html"><a href="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html#ćwiczenie-detekcja-dryfu"><i class="fa fa-check"></i><b>4.6.1</b> Ćwiczenie: detekcja dryfu</a></li>
+<li class="chapter" data-level="4.6.2" data-path="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html"><a href="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html#ćwiczenie-uruchomienie-dotrenowania"><i class="fa fa-check"></i><b>4.6.2</b> Ćwiczenie: uruchomienie dotrenowania</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="monitoring-modeli---podsumowanie.html"><a href="monitoring-modeli---podsumowanie.html"><i class="fa fa-check"></i><b>4.7</b> Monitoring modeli - podsumowanie</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="konteneryzacja.html"><a href="konteneryzacja.html"><i class="fa fa-check"></i><b>5</b> Konteneryzacja</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="wprowadzenie-1.html"><a href="wprowadzenie-1.html"><i class="fa fa-check"></i><b>5.1</b> Wprowadzenie</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="wprowadzenie-1.html"><a href="wprowadzenie-1.html#scenariusze-użycia-docker-w-projektach-data-science"><i class="fa fa-check"></i><b>5.1.1</b> Scenariusze użycia docker w projektach Data Science</a></li>
+<li class="chapter" data-level="5.1.2" data-path="wprowadzenie-1.html"><a href="wprowadzenie-1.html#niezbędne-umiejętności"><i class="fa fa-check"></i><b>5.1.2</b> Niezbędne umiejętności</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><a href="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><i class="fa fa-check"></i><b>5.2</b> Organizacja, pierwszy obraz i prosta aplikacja</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><a href="organizacja-pierwszy-obraz-i-prosta-aplikacja.html#demo---pierwszy-obraz-docker"><i class="fa fa-check"></i><b>5.2.1</b> Demo - pierwszy obraz docker</a></li>
+<li class="chapter" data-level="5.2.2" data-path="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><a href="organizacja-pierwszy-obraz-i-prosta-aplikacja.html#demo-trenowanie-i-ewaluacja"><i class="fa fa-check"></i><b>5.2.2</b> Demo: trenowanie i ewaluacja</a></li>
+<li class="chapter" data-level="5.2.3" data-path="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><a href="organizacja-pierwszy-obraz-i-prosta-aplikacja.html#ćwiczenie-prosta-transformacja-danych-z-pandas"><i class="fa fa-check"></i><b>5.2.3</b> Ćwiczenie: prosta transformacja danych z pandas</a></li>
+<li class="chapter" data-level="5.2.4" data-path="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><a href="organizacja-pierwszy-obraz-i-prosta-aplikacja.html#zarządzanie-obrazami-i-kontenerami"><i class="fa fa-check"></i><b>5.2.4</b> Zarządzanie obrazami i kontenerami</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="wykorzystanie-gotowych-kontenerów.html"><a href="wykorzystanie-gotowych-kontenerów.html"><i class="fa fa-check"></i><b>5.3</b> Wykorzystanie gotowych kontenerów</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="wykorzystanie-gotowych-kontenerów.html"><a href="wykorzystanie-gotowych-kontenerów.html#uruchomienie-gotowego-kontenera-z-notatnikiem-jupyter-i-środowiskiem-datascience"><i class="fa fa-check"></i><b>5.3.1</b> Uruchomienie gotowego kontenera z notatnikiem Jupyter i środowiskiem DataScience</a></li>
+<li class="chapter" data-level="5.3.2" data-path="wykorzystanie-gotowych-kontenerów.html"><a href="wykorzystanie-gotowych-kontenerów.html#demo-kontener-ze-środowiskiem-pycaret"><i class="fa fa-check"></i><b>5.3.2</b> Demo: kontener ze środowiskiem PyCaret</a></li>
+<li class="chapter" data-level="5.3.3" data-path="wykorzystanie-gotowych-kontenerów.html"><a href="wykorzystanie-gotowych-kontenerów.html#ćwiczenie-prosta-transformacja-danych-z-pandas-1"><i class="fa fa-check"></i><b>5.3.3</b> Ćwiczenie: prosta transformacja danych z pandas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="wymiana-plików-kontenerhost.html"><a href="wymiana-plików-kontenerhost.html"><i class="fa fa-check"></i><b>5.4</b> Wymiana plików kontener&lt;&gt;host</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="wymiana-plików-kontenerhost.html"><a href="wymiana-plików-kontenerhost.html#stworzenie-kontenera-udostępniającego-wyłącznie-środowisko-uruchomieniowe"><i class="fa fa-check"></i><b>5.4.1</b> Stworzenie kontenera udostępniającego wyłącznie środowisko uruchomieniowe</a></li>
+<li class="chapter" data-level="5.4.2" data-path="wymiana-plików-kontenerhost.html"><a href="wymiana-plików-kontenerhost.html#uruchomienie-bez-podłączania-lokalnego-systemu-plików"><i class="fa fa-check"></i><b>5.4.2</b> Uruchomienie bez podłączania lokalnego systemu plików</a></li>
+<li class="chapter" data-level="5.4.3" data-path="wymiana-plików-kontenerhost.html"><a href="wymiana-plików-kontenerhost.html#uruchomienie-z-podłączeniem-lokalnego-systemu-plików"><i class="fa fa-check"></i><b>5.4.3</b> Uruchomienie z podłączeniem lokalnego systemu plików</a></li>
+<li class="chapter" data-level="5.4.4" data-path="wymiana-plików-kontenerhost.html"><a href="wymiana-plików-kontenerhost.html#utrzymanie-ciągłości-pracy-pojedyńczej-aplikacji-z-volume-mount"><i class="fa fa-check"></i><b>5.4.4</b> Utrzymanie ciągłości pracy pojedyńczej aplikacji z <code>volume mount</code></a></li>
+<li class="chapter" data-level="5.4.5" data-path="wymiana-plików-kontenerhost.html"><a href="wymiana-plików-kontenerhost.html#współdzielenie-danych-pomiędzy-kontenerami-z-volume-mount"><i class="fa fa-check"></i><b>5.4.5</b> Współdzielenie danych pomiędzy kontenerami z <code>volume mount</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="aplikacje-wielokontenerowe.html"><a href="aplikacje-wielokontenerowe.html"><i class="fa fa-check"></i><b>5.5</b> Aplikacje wielokontenerowe</a></li>
+<li class="chapter" data-level="5.6" data-path="podsumowanie.html"><a href="podsumowanie.html"><i class="fa fa-check"></i><b>5.6</b> Podsumowanie</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="wprowadzenie-1" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Wprowadzenie<a href="wprowadzenie-1.html#wprowadzenie-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Wyobraźmy sobie bardzo elementarny przepływ trenowania modelu uczenia maszynowego, na który składają się etapy przygotowania danych, trenowania i ewaluacji modelu.</p>
+<p><img src="media/image-20220603144414245.png" alt="image-20220603144414245" style="zoom:50%;" /></p>
+<p>Proces ten najczęściej nie jest prostą sekwencją kroków, ale procesem zawierającym różne rozgałęzienia i artefakty pochodzące z różnych źródeł. We wdrożeniach produkcyjnych dodatkową komplikacją jest równoległa praca w często osobnych środowiskach twórców aplikacji, oraz inżynierów odpowiedzialnych za ich uruchamianie i utrzymanie.</p>
+<p>Na szczęście istnieje wiele metod i technik umożliwiających efektywne zarządzanie tak złożonymi procesami i systemami. Wśród nich jedną z ważniejszych jest tzw. konteneryzacja, która najczęściej wdrażana jest z wykorzystaniem środowiska Docker.</p>
+<p><img src="media/image-20220603144525383.png" alt="image-20220603144525383" style="zoom:50%;" /></p>
+<p><font size="6"> <strong>Korzyści</strong> </font></p>
+<p>Najczęściej wskazywane przez praktyktów korzyści z wykorzystania konteneryzacja w projektach uczenia maszynowego to:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Przenaszalność</strong>. Możliwość uruchomienia rozwiązania w różnych środowiskach, stacjach roboczych i systemach</li>
+<li><strong>Reużywalność</strong>. Możliwość wykorzystania komponentów dostarczonych przez innych, oraz własnych, stworzonych wcześniej, np. w innych projektach</li>
+<li><strong>Reprodukowalność</strong>. Możliwość odtworzenia wyników innych zespołów</li>
+<li><strong>Produktywność</strong>. Istotne usprawnienie pracy własnej oraz zespołowej.</li>
+</ol>
+<p><font size="6"> <strong>Czego się nauczysz</strong>?</font></p>
+<p>Mam nadzieję, że po kolejnych lekcjach będziesz potrafił/a:</p>
+<p><strong>Stworzyć, udostępnić i uruchomić obraz pojedyńczej aplikacji</strong></p>
+<ol style="list-style-type: decimal">
+<li>Zaprojektować obrazu z wykorzystaniem Dockerfile</li>
+<li>Zbudować go</li>
+<li>Udostępnić ten obraz innym</li>
+<li>Pobrać gotowy obraz i uruchomić go w postaci kontenera.</li>
+</ol>
+<p><strong>Wykorzystać istniejące kontenery do stworzenia własnej aplikacji</strong></p>
+<p>A konkretnie, zidentyfikać i wykorzystać już stworzone obrazy</p>
+<ul>
+<li>z repozytoriów publicznych</li>
+<li>z własnego repozytorium.</li>
+</ul>
+<p><strong>Zaimplementować mechanizmy wymiany plików w kanałach kontener&lt;&gt;host i kontener&lt;&gt;kontener</strong></p>
+<p>Czyli dobrać i wdrożyć optymalną w danym przypadku strategię wymiany informacji pomiędzy kontenerami i hostem. W szczególności, wymieniać dane, parametry sterujące i pliki, wykorzystując metody docker volume i docker mount.</p>
+<p><strong>Tworzyć aplikacje wielokontenerowe</strong>
+Projektować, udostępniać i uruchamiać aplikacje wielokontenerowych jako:</p>
+<ol style="list-style-type: decimal">
+<li>Równolegle działające, niezależne usługi</li>
+<li>Usługi wymieniające między sobą dane</li>
+<li>Usługi uruchamiane sekwencyjnie.</li>
+</ol>
+<p><strong>Zarządzać obrazami, kontenerami i woluminami</strong> korzystając z:</p>
+<ol style="list-style-type: decimal">
+<li><p>Linii komend</p></li>
+<li><p>Aplikacji Docker Desktop</p></li>
+<li><p>Środowisk IDE, np. MS VSCode.</p></li>
+</ol>
+<p><strong>Powodzenia!</strong></p>
+
+<div id="scenariusze-użycia-docker-w-projektach-data-science" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Scenariusze użycia docker w projektach Data Science<a href="wprowadzenie-1.html#scenariusze-użycia-docker-w-projektach-data-science" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/JOAkA0GpkLo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Konteneryzacja jest jedną z kluczowych metod wykorzystywanych w projektach Data Science.</p>
+<p>Poniżej prezentuję najciekawsze moim zdaniem scenariusze jej użycia, porządkując je wg kluczowych etapów cyklu życia projektu: organizacji, wytwarzania, udostępniania i wdrożenia produkcyjnego.</p>
+<p><font size="5"> <strong>Organizacja</strong> </font></p>
+<p><strong>Chcę szybko wprowadzić nowego pracownika do projektu</strong></p>
+<p>Do naszego zespołu dołącza nowy pracownik. Chcemy szybko przygotować mu maszynę (PC, serwer, notebook).</p>
+<p>Zamiast instalować komplet pakietów: uruchamiamy kontener Docker.</p>
+<p><strong>Chcę kontynuować pracę nad moim projektem na innym komputerze</strong></p>
+<p>Często zmieniam lokalizację: podróżuję, wracam do domu, etc. Chciałbym móc wykonywać obliczenia, trenować modele lub testować aplikację na komputerach, do których mam dostęp. Różnią się one nie tylko systemami operacyjnymi, ale też zainstalowanymi na nich środowiskami oraz konfiguracją sprzętową. W szczególności, część z nich nie może korzystać z akceleratorów takich jak karty graficzne.</p>
+<p>Zamiast na każdym z nich instalować dedykowane środowiska, uruchamiam kontener docker z różnymi parametrami (np. z lub bez akceleracji GPU).</p>
+<p><font size="5"> <strong>Wytwarzanie</strong> </font></p>
+<p><strong>Chcę szybko sprawdzić działanie nowej biblioteki uczenia maszynowego</strong></p>
+<p>Nie chcę jednak tworzyć dedykowanego środowiska wirtualnego, instalować odpowiednich pakietów, etc.</p>
+<p>Pozyskuję oficjalny obraz aplikacji (zawierający odpowiednio skonfigurowane środowisko) i uruchamiam odpowiedni komponent.</p>
+<p><strong>Chcę stworzyć nową usługę uczenia maszynowego łącząc ze sobą gotowe komponenty</strong></p>
+<p>Wykorzystuję <a href="https://hub.docker.com/" class="uri">https://hub.docker.com/</a> do pozyskania odpowiednich obrazów (trochę jak “sklep” z aplikacjami). Łączę je ze sobą w potok korzystając z docker compose.</p>
+<p><strong>Chcę zademonstrować innym członkom zespołu aplikację wykorzystującą uczenie maszynowe</strong></p>
+<p>…ale tak, by w razie potrzeby mogli sami eksperymentować z odpowiednimi komponentami.
+(np. zmieniać dane, algorytmy trenowania, aplikację końcową, etc.).</p>
+<p>Udostępniam im obraz docker z odpowiednim środowiskiem oraz kompletem kodów źródłowych.</p>
+<p><font size="5"> <strong>Udostępnianie</strong> </font></p>
+<p><strong>Chcę udostępnić innym aplikację wykorzystującą bazę danych</strong></p>
+<p>Moja aplikacja wykorzystuje bazę danych (np. Redis, PostgreSQL czy MySQL). Chcę ją udostępnić osobom, które nie mają jej zainstalowanej, nie potrafią też jej skonfigurować czy zarządzać.</p>
+<p>Wykorzystuję docker compose do stworzenia aplikacji wielokontenerowej, zawierającej zarówno moją aplikację, jak i odpowiednią bazę danych.</p>
+<p><strong>Chcę przeprowadzić szkolenie z zakresu Data Science</strong></p>
+<p>Chcę pokazać komuś rozwiązanie w jupyter notebook, wykorzystujące różne biblioteki (np. PyCaret). Użytkownicy nie mają zainstalowanych żadnych środowisk.</p>
+<p>Proszę ich o instalację Docker, a potem uruchomienie mojego kontenera.</p>
+<p><strong>Archiwizując projekt, chcę zapewnić odtwarzalność mojego rozwiązania w przyszłości</strong></p>
+<p>Odpowiednio dokumentuję i publikuję obraz docker mojego rozwiązania w repozytorium obrazów.</p>
+<p><font size="5"> <strong>Produkcja</strong> </font></p>
+<p><strong>Chcę przekazywać do kontenera dane specyficzne dla danego hosta (np. jako parametry uruchomieniowy)</strong></p>
+<p>Wykorzystuję w tym celu docker bind mount.</p>
+<p><strong>Chcę zapewnić ciągłość działania mojej aplikacji</strong></p>
+<p>… tak, aby kolejne uruchomienia kontenera z moją aplikacją mogły korzystać z wyników poprzednich uruchomień</p>
+<p>Wykorzystuję w tym celu docker volume.</p>
+<p><strong>Chcę, aby różne równolegle pracujące kontenery wymieniały wymieniały się danymi</strong></p>
+<p>Wykorzystuję w tym celu docker volume.</p>
+<p><strong>Chcę przechowywać dane wykorzystywane przez moje kontenery u dostawcy usług chmurowych</strong></p>
+<p>Wykorzystuję w tym celu docker volume.</p>
+<p><strong>Chcę zasymulować środowisko produkcyjne</strong></p>
+<p>Nasz system analizy obrazu uruchamiany jest na urządzeniu końcowym typu NVidia Jetson Nano. Na swojej stacji roboczej chcę zasymulować, jak zachowa się na tym urządzeniu najnowsza wersja mojego modelu.</p>
+<p>W tym celu uruchamiam kontener Docker z obrazem urządzenia końcowego.</p>
+<p><strong>Chcę na urządzeniu końcowym uruchomić wiele serwisów lub sekwencję usług</strong></p>
+<p>W tym celu wykorzystuję docker compose do stworzenia uruchomienia kilku usług: równolegle lub w odpowiedniej sekwencji.</p>
+<p><strong>Chcę uruchomić mój projekt ML w skalowalnym środowisku</strong>, np. Kubernetes, czy u dostawcy usług (GCP, MS Azure czy Amazon EC2)</p>
+<p>Dla każdego z komponentów mojego procesu uczenia maszynowego tworzę osobny obraz. Wykorzystuję system Kubeflow do zarządzania pełnym procesem w systemie Kubernetes.</p>
+
+</div>
+<div id="niezbędne-umiejętności" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Niezbędne umiejętności<a href="wprowadzenie-1.html#niezbędne-umiejętności" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/p933AFdDaK0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Poniżej przedstawiam najważniejsze umiejętności, które warto posiadać by w pełni wykorzystać potencjał rozwiązania docker w projektach uczenia maszynowego.</p>
+<p><strong>Pojedyńcza aplikacja</strong></p>
+<ol style="list-style-type: decimal">
+<li>Zaprojektowanie obrazu z wykorzystaniem Dockerfile</li>
+<li>Zbudowanie obrazu</li>
+<li>Udostępnienie obrazu innym</li>
+<li>Pobranie obrazu i uruchomienie kontenera.</li>
+</ol>
+<p><strong>Wykorzystanie istniejących kontenerów</strong></p>
+<p>Identyfikacja i wykorzystanie już stworzonych obrazów
+- z repozytoriów publicznych
+- z własnego repozytorium.</p>
+<p><strong>Wymiana plików kontener&lt;&gt;host i kontener&lt;&gt;kontener</strong></p>
+<p>Dobór i implementacja optymalnej w danym przypadku strategii wymiany informacji pomiędzy kontenerami i hostem</p>
+<p>Informacje:</p>
+<ol style="list-style-type: decimal">
+<li>Dane</li>
+<li>Parametry sterujące</li>
+<li>Pliki.</li>
+</ol>
+<p>Metody:</p>
+<ol style="list-style-type: decimal">
+<li>Docker volume</li>
+<li>Docker bind-mount</li>
+<li>Networking.</li>
+</ol>
+<p><strong>Tworzenie aplikacji wielokontenerowych</strong>
+Projektowanie, udostępnianie i uruchamianie aplikacji wielokontenerowych:</p>
+<ol style="list-style-type: decimal">
+<li>Równolegle działające, niezależne usługi</li>
+<li>Usługi wymieniające między sobą dane</li>
+<li>Usługi uruchamiane sekwencyjnie</li>
+</ol>
+<p><strong>Zarządzanie obrazami, kontenerami i woluminami</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Linia komend</p></li>
+<li><p>Aplikacja Docker Desktop</p></li>
+<li><p>Środowiska IDE, np. MS VSCode.</p></li>
+</ol>
+<p><font size="5"> <strong>Przydatne źródła</strong> </font></p>
+<p>Najlepszym znanym mi źródłem wiedzy nt systemu Docker jest oficjalny kurs dostępny na stronie:</p>
+<p><a href="https://docs.docker.com/get-started/" class="uri">https://docs.docker.com/get-started/</a></p>
+<p>Dobre wprowadzenie w tematykę wykorzystania docker’a w projektach Data Science dostępne jest <a href="https://towardsdatascience.com/building-a-portable-data-science-environment-using-docker-2021-6d533fe2b86a">tutaj</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="konteneryzacja.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="organizacja-pierwszy-obraz-i-prosta-aplikacja.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/wodecki/ASI/edit/master/5.1.1._Docker_-_Wprowadzenie.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["series.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

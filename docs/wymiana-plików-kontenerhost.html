@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.4 Wymiana plików kontener&lt;&gt;host | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</title>
+  <meta name="description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.4 Wymiana plików kontener&lt;&gt;host | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  <meta name="github-repo" content="openscapes/series" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.4 Wymiana plików kontener&lt;&gt;host | Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji" />
+  
+  <meta name="twitter:description" content="Materiały szkoleniowe z zakresu MLDevOps." />
+  
+
+<meta name="author" content="Andrzej Wodecki" />
+
+
+<meta name="date" content="2022-06-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="wykorzystanie-gotowych-kontenerów.html"/>
+<link rel="next" href="aplikacje-wielokontenerowe.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Architektury i Metodyki Wdrozen Systemów Sztucznej Inteligencji</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="wprowadzenie.html"><a href="wprowadzenie.html"><i class="fa fa-check"></i><b>1</b> Wprowadzenie</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="motywacja.html"><a href="motywacja.html"><i class="fa fa-check"></i><b>1.1</b> <strong>Motywacja</strong></a></li>
+<li class="chapter" data-level="1.2" data-path="cele-kursu.html"><a href="cele-kursu.html"><i class="fa fa-check"></i><b>1.2</b> Cele kursu</a></li>
+<li class="chapter" data-level="1.3" data-path="warsztaty.html"><a href="warsztaty.html"><i class="fa fa-check"></i><b>1.3</b> Warsztaty</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="architektury-it.html"><a href="architektury-it.html"><i class="fa fa-check"></i><b>2</b> Architektury IT</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="potoki-danych.html"><a href="potoki-danych.html"><i class="fa fa-check"></i><b>2.1</b> Potoki danych</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="potoki-danych.html"><a href="potoki-danych.html#typy-danych"><i class="fa fa-check"></i><b>2.1.1</b> Typy danych</a></li>
+<li class="chapter" data-level="2.1.2" data-path="potoki-danych.html"><a href="potoki-danych.html#bazy-danych"><i class="fa fa-check"></i><b>2.1.2</b> Bazy danych</a></li>
+<li class="chapter" data-level="2.1.3" data-path="potoki-danych.html"><a href="potoki-danych.html#hurtownie-danych"><i class="fa fa-check"></i><b>2.1.3</b> Hurtownie danych</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="jeziora-danych.html"><a href="jeziora-danych.html"><i class="fa fa-check"></i><b>2.2</b> Jeziora danych</a></li>
+<li class="chapter" data-level="2.3" data-path="konsumenci-danych.html"><a href="konsumenci-danych.html"><i class="fa fa-check"></i><b>2.3</b> Konsumenci danych</a></li>
+<li class="chapter" data-level="2.4" data-path="producenci-danych.html"><a href="producenci-danych.html"><i class="fa fa-check"></i><b>2.4</b> Producenci danych</a></li>
+<li class="chapter" data-level="2.5" data-path="transformacja-danych.html"><a href="transformacja-danych.html"><i class="fa fa-check"></i><b>2.5</b> Transformacja danych</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="transformacja-danych.html"><a href="transformacja-danych.html#przetwarzanie-etl-extract-transform-load"><i class="fa fa-check"></i><b>2.5.1</b> Przetwarzanie ETL (Extract, Transform, Load)</a></li>
+<li class="chapter" data-level="2.5.2" data-path="transformacja-danych.html"><a href="transformacja-danych.html#przetwarzanie-elt-extract-load-transform"><i class="fa fa-check"></i><b>2.5.2</b> Przetwarzanie ELT (Extract, Load, Transform)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html"><i class="fa fa-check"></i><b>2.6</b> Strategia wdrożenia</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#własne-czy-gotowe"><i class="fa fa-check"></i><b>2.6.1</b> Własne czy gotowe?</a></li>
+<li class="chapter" data-level="2.6.2" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#otwarte-czy-komercyjne"><i class="fa fa-check"></i><b>2.6.2</b> Otwarte czy komercyjne?</a></li>
+<li class="chapter" data-level="2.6.3" data-path="strategia-wdrożenia.html"><a href="strategia-wdrożenia.html#u-siebie-czy-w-chmurze"><i class="fa fa-check"></i><b>2.6.3</b> U siebie czy “w chmurze”?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="modelowanie-architektur.html"><a href="modelowanie-architektur.html"><i class="fa fa-check"></i><b>3</b> Modelowanie architektur</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cykl-życia-modelu-uczenia-maszynowego.html"><a href="cykl-życia-modelu-uczenia-maszynowego.html"><i class="fa fa-check"></i><b>3.1</b> Cykl życia modelu uczenia maszynowego</a></li>
+<li class="chapter" data-level="3.2" data-path="demo-trening-i-ewaluacja-modelu.html"><a href="demo-trening-i-ewaluacja-modelu.html"><i class="fa fa-check"></i><b>3.2</b> Demo: trening i ewaluacja modelu</a></li>
+<li class="chapter" data-level="3.3" data-path="ćwiczenie-trening-i-ewaluacja-modelu.html"><a href="ćwiczenie-trening-i-ewaluacja-modelu.html"><i class="fa fa-check"></i><b>3.3</b> Ćwiczenie: trening i ewaluacja modelu</a></li>
+<li class="chapter" data-level="3.4" data-path="modelowanie-architektury---wprowadzenie.html"><a href="modelowanie-architektury---wprowadzenie.html"><i class="fa fa-check"></i><b>3.4</b> Modelowanie architektury - wprowadzenie</a></li>
+<li class="chapter" data-level="3.5" data-path="modelowanie-architektury---organizacja.html"><a href="modelowanie-architektury---organizacja.html"><i class="fa fa-check"></i><b>3.5</b> Modelowanie architektury - organizacja</a></li>
+<li class="chapter" data-level="3.6" data-path="modelowanie-architektury---specyfikacja-wymagań.html"><a href="modelowanie-architektury---specyfikacja-wymagań.html"><i class="fa fa-check"></i><b>3.6</b> Modelowanie architektury - specyfikacja wymagań</a></li>
+<li class="chapter" data-level="3.7" data-path="modelowanie-architektury---modelowanie.html"><a href="modelowanie-architektury---modelowanie.html"><i class="fa fa-check"></i><b>3.7</b> Modelowanie architektury - modelowanie</a></li>
+<li class="chapter" data-level="3.8" data-path="demo-modelowanie.html"><a href="demo-modelowanie.html"><i class="fa fa-check"></i><b>3.8</b> Demo: modelowanie</a></li>
+<li class="chapter" data-level="3.9" data-path="podsumowanie-modelowanie-architektur.html"><a href="podsumowanie-modelowanie-architektur.html"><i class="fa fa-check"></i><b>3.9</b> Podsumowanie: modelowanie architektur</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="monitoring-modeli.html"><a href="monitoring-modeli.html"><i class="fa fa-check"></i><b>4</b> Monitoring modeli</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="monitoring-modeli---wprowadzenie.html"><a href="monitoring-modeli---wprowadzenie.html"><i class="fa fa-check"></i><b>4.1</b> Monitoring modeli - wprowadzenie</a></li>
+<li class="chapter" data-level="4.2" data-path="demo-monitoring-modelu.html"><a href="demo-monitoring-modelu.html"><i class="fa fa-check"></i><b>4.2</b> Demo: monitoring modelu</a></li>
+<li class="chapter" data-level="4.3" data-path="ćwiczenie-monitoring-modelu.html"><a href="ćwiczenie-monitoring-modelu.html"><i class="fa fa-check"></i><b>4.3</b> Ćwiczenie: monitoring modelu</a></li>
+<li class="chapter" data-level="4.4" data-path="detekcja-dryfu-modelu.html"><a href="detekcja-dryfu-modelu.html"><i class="fa fa-check"></i><b>4.4</b> Detekcja dryfu modelu</a></li>
+<li class="chapter" data-level="4.5" data-path="demo-detekcja-dryfu.html"><a href="demo-detekcja-dryfu.html"><i class="fa fa-check"></i><b>4.5</b> Demo: detekcja dryfu</a></li>
+<li class="chapter" data-level="4.6" data-path="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html"><a href="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html"><i class="fa fa-check"></i><b>4.6</b> Ćwiczenia: detekcja dryfu i dotrenowanie</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html"><a href="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html#ćwiczenie-detekcja-dryfu"><i class="fa fa-check"></i><b>4.6.1</b> Ćwiczenie: detekcja dryfu</a></li>
+<li class="chapter" data-level="4.6.2" data-path="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html"><a href="ćwiczenia-detekcja-dryfu-i-dotrenowanie.html#ćwiczenie-uruchomienie-dotrenowania"><i class="fa fa-check"></i><b>4.6.2</b> Ćwiczenie: uruchomienie dotrenowania</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="monitoring-modeli---podsumowanie.html"><a href="monitoring-modeli---podsumowanie.html"><i class="fa fa-check"></i><b>4.7</b> Monitoring modeli - podsumowanie</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="konteneryzacja.html"><a href="konteneryzacja.html"><i class="fa fa-check"></i><b>5</b> Konteneryzacja</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="wprowadzenie-1.html"><a href="wprowadzenie-1.html"><i class="fa fa-check"></i><b>5.1</b> Wprowadzenie</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="wprowadzenie-1.html"><a href="wprowadzenie-1.html#scenariusze-użycia-docker-w-projektach-data-science"><i class="fa fa-check"></i><b>5.1.1</b> Scenariusze użycia docker w projektach Data Science</a></li>
+<li class="chapter" data-level="5.1.2" data-path="wprowadzenie-1.html"><a href="wprowadzenie-1.html#niezbędne-umiejętności"><i class="fa fa-check"></i><b>5.1.2</b> Niezbędne umiejętności</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><a href="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><i class="fa fa-check"></i><b>5.2</b> Organizacja, pierwszy obraz i prosta aplikacja</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><a href="organizacja-pierwszy-obraz-i-prosta-aplikacja.html#demo---pierwszy-obraz-docker"><i class="fa fa-check"></i><b>5.2.1</b> Demo - pierwszy obraz docker</a></li>
+<li class="chapter" data-level="5.2.2" data-path="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><a href="organizacja-pierwszy-obraz-i-prosta-aplikacja.html#demo-trenowanie-i-ewaluacja"><i class="fa fa-check"></i><b>5.2.2</b> Demo: trenowanie i ewaluacja</a></li>
+<li class="chapter" data-level="5.2.3" data-path="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><a href="organizacja-pierwszy-obraz-i-prosta-aplikacja.html#ćwiczenie-prosta-transformacja-danych-z-pandas"><i class="fa fa-check"></i><b>5.2.3</b> Ćwiczenie: prosta transformacja danych z pandas</a></li>
+<li class="chapter" data-level="5.2.4" data-path="organizacja-pierwszy-obraz-i-prosta-aplikacja.html"><a href="organizacja-pierwszy-obraz-i-prosta-aplikacja.html#zarządzanie-obrazami-i-kontenerami"><i class="fa fa-check"></i><b>5.2.4</b> Zarządzanie obrazami i kontenerami</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="wykorzystanie-gotowych-kontenerów.html"><a href="wykorzystanie-gotowych-kontenerów.html"><i class="fa fa-check"></i><b>5.3</b> Wykorzystanie gotowych kontenerów</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="wykorzystanie-gotowych-kontenerów.html"><a href="wykorzystanie-gotowych-kontenerów.html#uruchomienie-gotowego-kontenera-z-notatnikiem-jupyter-i-środowiskiem-datascience"><i class="fa fa-check"></i><b>5.3.1</b> Uruchomienie gotowego kontenera z notatnikiem Jupyter i środowiskiem DataScience</a></li>
+<li class="chapter" data-level="5.3.2" data-path="wykorzystanie-gotowych-kontenerów.html"><a href="wykorzystanie-gotowych-kontenerów.html#demo-kontener-ze-środowiskiem-pycaret"><i class="fa fa-check"></i><b>5.3.2</b> Demo: kontener ze środowiskiem PyCaret</a></li>
+<li class="chapter" data-level="5.3.3" data-path="wykorzystanie-gotowych-kontenerów.html"><a href="wykorzystanie-gotowych-kontenerów.html#ćwiczenie-prosta-transformacja-danych-z-pandas-1"><i class="fa fa-check"></i><b>5.3.3</b> Ćwiczenie: prosta transformacja danych z pandas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="wymiana-plików-kontenerhost.html"><a href="wymiana-plików-kontenerhost.html"><i class="fa fa-check"></i><b>5.4</b> Wymiana plików kontener&lt;&gt;host</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="wymiana-plików-kontenerhost.html"><a href="wymiana-plików-kontenerhost.html#stworzenie-kontenera-udostępniającego-wyłącznie-środowisko-uruchomieniowe"><i class="fa fa-check"></i><b>5.4.1</b> Stworzenie kontenera udostępniającego wyłącznie środowisko uruchomieniowe</a></li>
+<li class="chapter" data-level="5.4.2" data-path="wymiana-plików-kontenerhost.html"><a href="wymiana-plików-kontenerhost.html#uruchomienie-bez-podłączania-lokalnego-systemu-plików"><i class="fa fa-check"></i><b>5.4.2</b> Uruchomienie bez podłączania lokalnego systemu plików</a></li>
+<li class="chapter" data-level="5.4.3" data-path="wymiana-plików-kontenerhost.html"><a href="wymiana-plików-kontenerhost.html#uruchomienie-z-podłączeniem-lokalnego-systemu-plików"><i class="fa fa-check"></i><b>5.4.3</b> Uruchomienie z podłączeniem lokalnego systemu plików</a></li>
+<li class="chapter" data-level="5.4.4" data-path="wymiana-plików-kontenerhost.html"><a href="wymiana-plików-kontenerhost.html#utrzymanie-ciągłości-pracy-pojedyńczej-aplikacji-z-volume-mount"><i class="fa fa-check"></i><b>5.4.4</b> Utrzymanie ciągłości pracy pojedyńczej aplikacji z <code>volume mount</code></a></li>
+<li class="chapter" data-level="5.4.5" data-path="wymiana-plików-kontenerhost.html"><a href="wymiana-plików-kontenerhost.html#współdzielenie-danych-pomiędzy-kontenerami-z-volume-mount"><i class="fa fa-check"></i><b>5.4.5</b> Współdzielenie danych pomiędzy kontenerami z <code>volume mount</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="aplikacje-wielokontenerowe.html"><a href="aplikacje-wielokontenerowe.html"><i class="fa fa-check"></i><b>5.5</b> Aplikacje wielokontenerowe</a></li>
+<li class="chapter" data-level="5.6" data-path="podsumowanie.html"><a href="podsumowanie.html"><i class="fa fa-check"></i><b>5.6</b> Podsumowanie</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Architektury i metodyki wdrożeń systemów Sztucznej Inteligencji</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="wymiana-plików-kontenerhost" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Wymiana plików kontener&lt;&gt;host<a href="wymiana-plików-kontenerhost.html#wymiana-plików-kontenerhost" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/vG8UaiVCWPc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Jak już wspomnieliśmy we wprowadzeniu, typowy proces uczenia maszynowego przebiega w wielu etapach.</p>
+<div class="figure">
+<img src="media/image-20220604102745700.png" alt="" />
+<p class="caption">image-20220604102745700</p>
+</div>
+<p>Realizowane są one często w różnych środowiskach uruchomieniowych, na różnych maszynach wykorzystujących różne systemy.</p>
+<p>Koordynacja takiego rozwiązania wymaga nie tylko zarządzania procesami czy infrastrukturą, ale też odpowiedniej wymiany danych, np. w formie plików.</p>
+<p>W kolejnych lekcjach poznasz oferowane przez docker mechanizmy wymiany plików umożliwiające implementację następujących scenariuszy:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Kontener udostępnia wyłącznie środowisko uruchomieniowe</strong> (np. biblioteki, pakiety, etc.) - komplet danych jest na systemie lokalnym</li>
+</ol>
+<div class="figure">
+<img src="media/image-20220604103009850.png" alt="" />
+<p class="caption">image-20220604103009850</p>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Kontener zawiera zarówno środowisko, jak i komponenty oraz artefakty niezbędne do uruchomienia projektu.</strong> System lokalny ma zapewnić jedynie moc obliczeniową.</li>
+</ol>
+<div class="figure">
+<img src="media/image-20220604103030339.png" alt="" />
+<p class="caption">image-20220604103030339</p>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Docker zapewnia synchronizacją pomiędzy systemem lokalnym a systemem plików kontenera.</strong> W efekcie, wszelkie zmiany w systemie lokalnym (a dokładniej: w konkretnej lokalizacji w tym systemie) są uwzględniane w kontenerze, co w szczególności umożliwia nanoszenie zmian w artefaktach/komponentach bez konieczności przebudowania obrazu.</li>
+</ol>
+<div class="figure">
+<img src="media/image-20220604103043609.png" alt="" />
+<p class="caption">image-20220604103043609</p>
+</div>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Docker zapewnia wymianę danych pomiędzy kontenerami a wirtualnym woluminem</strong>. Nie jest konieczna synchronizacja z konkretną lokalizacją w systemie lokalnym, można to zastosować zarówno do utrzymania ciągłości pracy jednego kontenera, jak i wymiany danych pomiędzy wieloma kontenerami (pracującymi równolegle lub uruchamianymi sekwencyjnie).</li>
+</ol>
+<div class="figure">
+<img src="media/image-20220604103054834.png" alt="" />
+<p class="caption">image-20220604103054834</p>
+</div>
+<p>W kolejnych przykładach zobaczysz implementację wszystkich tych scenariuszy. Zapraszam!</p>
+<div class="figure">
+<img src="media/image-20220604103109484.png" alt="" />
+<p class="caption">image-20220604103109484</p>
+</div>
+
+<div id="stworzenie-kontenera-udostępniającego-wyłącznie-środowisko-uruchomieniowe" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Stworzenie kontenera udostępniającego wyłącznie środowisko uruchomieniowe<a href="wymiana-plików-kontenerhost.html#stworzenie-kontenera-udostępniającego-wyłącznie-środowisko-uruchomieniowe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/zxXIdgO11Ac" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Najprostszym scenariuszem użycia kontenera Docker jest udostępnienie w nim wyłącznie środowiska uruchomieniowego. Komplet plików niezbędnych do uruchomienia aplikacji powinien znajdować się w systemie lokalnych (host’a).</p>
+<p><font size="5"> <strong>Budowa obrazu</strong> </font></p>
+<p>Stwórz obraz:</p>
+<p><code>docker build -t bind_app1_app2:v1 .</code></p>
+<p>Uruchom obraz bez podłączania lokalnego wolumenu:</p>
+<p><code>docker run -ti bind_app1_app2:v1</code></p>
+<p>Zauważ, że:</p>
+<ol style="list-style-type: decimal">
+<li>po uruchomieniu kontenera automatycznie uruchamia się środowisko python</li>
+<li>w środowisku tym zainstalowany jest pakiet pandas: komenda <code>import pandas as pd</code> nie generuje błędu.</li>
+</ol>
+<p><font size="5"> <strong>Kopiowanie plików host-kontener z wykorzystaniem linii komend</strong> </font></p>
+<p>Aby móc wykorzystać tak skonfigurowane środowisko w praktyce, należy przekazać do niego pliki. W tym celu możesz wykorzystać komendę <code>docker cp</code>.</p>
+<p><code>docker cp ...</code> umożliwia kopiowanie plików pomiędzy uruchomionym kontenerem a systemem lokalnym. Przyjmuje ona tylko jeden argument po stronie “źródła”, dlatego też dobrą praktyką jest zgromadzenie wszystkich plików i folderów w jednym katalogu (w naszym przypadku <em>my_app</em>), a potem skopiowanie go w całości do kontenera. Drugim parametrem jest miejsce docelowe: ID kontenera oraz jego folder docelowy.</p>
+<p>Kompletna procedura z wykorzystaniem linii komend wygląda następująco:</p>
+<ol style="list-style-type: decimal">
+<li>W nowym terminalu uruchom kontener:
+<code>docker run -ti bind_app1_app2:v1 bash</code></li>
+<li>Sprawdź jego ID:
+<code>docker ps</code></li>
+<li>Przejdź do folderu lokalnego, w którym znajduje się folder, który chcesz skopiować. U mnie: katalog, w którym znajduje się folder <em>my_app/</em></li>
+<li>Uruchom w tym folderze kolejny terminal i wpisz w nim komendę:
+<code>docker cp my_app 111ac631710c:/app</code>
+UWAGA: zamień <em>111ac631710c</em> na ID własnego kontenera</li>
+<li>W terminalu z uruchomionym kontenerem:
+<ol style="list-style-type: decimal">
+<li>Sprawdź komendą <code>ls</code> , czy Twój folder poprawnie się skopiował</li>
+<li>Wejdź do niego i uruchom skrypt:
+<code>python3 run.py</code></li>
+</ol></li>
+</ol>
+<p><font size="5"> <strong>Kopiowanie plików host-kontener z wykorzystaniem wtyczki Docker w IDE (np. MS Visual Studio Code)</strong> </font></p>
+<p>W praktyce często wygodniejszym rozwiązaniem jest wykorzystanie środowiska IDE do operacji na plikach w aktywnych kontenerach. W szczególności, MS Visual Studio Code udostępnia możliwości inspekcji i zarządzania obrazami, kontenerami i wolumenami (wtyczka Docker).</p>
+<p><img src="media/image-20220530112935038.png" alt="image-20220530112935038" style="zoom:50%;" /></p>
+<p><font size="5"> <strong>Scenariusze użycia</strong> </font></p>
+<p>Wyżej wymieniony mechanizm możesz w szczególności zastosować w następujących sytuacjach:</p>
+<p><strong>Chcę szybko wprowadzić nowego pracownika do projektu</strong></p>
+<p>Do naszego zespołu dołącza nowy pracownik. Chcemy szybko przygotować mu maszynę (PC, serwer, notebook).</p>
+<p>Zamiast instalować komplet pakietów: uruchamiamy kontener Docker.</p>
+<p><strong>Chcę kontynuować pracę nad moim projektem na innym komputerze</strong></p>
+<p>Często zmieniam lokalizację: podróżuję, wracam do domu, etc. Chciałbym móc wykonywać obliczenia, trenować modele lub testować aplikację na komputerach, do których mam dostęp. Różnią się one nie tylko systemami operacyjnymi, ale też zainstalowanymi na nich środowiskami oraz konfiguracją sprzętową. W szczególności, część z nich nie może korzystać z akceleratorów takich jak karty graficzne.</p>
+<p>Zamiast na każdym z nich instalować dedykowane środowiska, uruchamiam kontener docker z różnymi parametrami (np. z lub bez akceleracji GPU).</p>
+<p><strong>Chcę szybko sprawdzić działanie nowej biblioteki uczenia maszynowego</strong></p>
+<p>Nie chcę jednak tworzyć dedykowanego środowiska wirtualnego, instalować odpowiednich pakietów, etc.</p>
+<p>Pozyskuję oficjalny obraz aplikacji (zawierający odpowiednio skonfigurowane środowisko) i uruchamiam odpowiedni komponent.</p>
+<p><strong>Chcę stworzyć nową usługę uczenia maszynowego łącząc ze sobą gotowe komponenty</strong></p>
+<p>Wykorzystuję <a href="https://hub.docker.com/" class="uri">https://hub.docker.com/</a> do pozyskania odpowiednich obrazów (trochę jak “sklep” z aplikacjami). Łączę je ze sobą w potok korzystając z docker compose.</p>
+<p><strong>Chcę zasymulować środowisko produkcyjne</strong></p>
+<p>Nasz system analizy obrazu uruchamiany jest na urządzeniu końcowym typu NVidia Jetson Nano. Na swojej stacji roboczej chcę zasymulować, jak zachowa się na tym urządzeniu najnowsza wersja mojego modelu.</p>
+<p>W tym celu uruchamiam kontener Docker z obrazem urządzenia końcowego.</p>
+<p><strong>Chcę uruchomić mój projekt ML w skalowalnym środowisku</strong>, np. Kubernetes, czy u dostawcy usług (GCP, MS Azure czy Amazon EC2)</p>
+<p>Dla każdego z komponentów mojego procesu uczenia maszynowego tworzę osobny obraz. Wykorzystuję system Kubeflow do zarządzania pełnym procesem w systemie Kubernetes.</p>
+
+</div>
+<div id="uruchomienie-bez-podłączania-lokalnego-systemu-plików" class="section level3 hasAnchor" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Uruchomienie bez podłączania lokalnego systemu plików<a href="wymiana-plików-kontenerhost.html#uruchomienie-bez-podłączania-lokalnego-systemu-plików" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/paEleHgNYkI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Jeśli chcemy przekazać komuś kontener z kompletem niezbędnych plików (tak, by mógł uruchomić kompletny proces bez konfiguracji zarówno środowiska, jak i posiadania niezbędnych plików), możemy w pliku <em>Dockerfile</em> skopiować komplet plików do odpowiedniego katalogu w obrazie. Odpowiada za to komenda <code>COPY . .</code> :</p>
+<p><img src="media/image-20220530114448251.png" alt="image-20220530114448251" style="zoom:50%;" /></p>
+<p>Aby stworzyć obraz:</p>
+<ol style="list-style-type: decimal">
+<li>przejdź do folderu, w którym masz komplet niezbędnych danych</li>
+<li>uruchom w nim terminal, a w nim komendę:
+<code>docker build -t bind_app1_app2:v2 .</code></li>
+</ol>
+<p>Tak stworzony obraz możesz uruchomić w dowolnym katalogu - nie musisz mieć w nim dostępu do niezbędnych plików:</p>
+<p><code>docker run -ti bind_app1_app2:v2 python3 run.py</code></p>
+<p>Zauważ, że:</p>
+<ol style="list-style-type: decimal">
+<li>na końcu komendy dodaliśmy <code>python3 run.py</code>. Jest to związane z tym, że zgodnie z plikiem Dockerfile nasz obraz nie uruchamia skryptu <code>run.py</code></li>
+<li>uruchomienie w folderze, w którym nie ma niezbędnych plików, nie generuje błędów</li>
+<li>kolejne uruchomienia nie dodają żadnych plików do lokalnego systemu.</li>
+</ol>
+<p><font size="5"> <strong>Scenariusze użycia</strong> </font></p>
+<p>Wyżej wymieniony mechanizm możesz w szczególności zastosować w następujących sytuacjach:</p>
+<p><strong>Chcę udostępnić innym aplikację wykorzystującą bazę danych</strong></p>
+<p>Moja aplikacja wykorzystuje bazę danych (np. Redis, PostgreSQL czy MySQL). Chcę ją udostępnić osobom, które nie mają jej zainstalowanej, nie potrafią też jej skonfigurować czy zarządzać.</p>
+<p>Wykorzystuję docker compose do stworzenia aplikacji wielokontenerowej, zawierającej zarówno moją aplikację, jak i odpowiednią bazę danych.</p>
+<p><strong>Chcę przeprowadzić szkolenie z zakresu Data Science</strong></p>
+<p>Chcę pokazać komuś rozwiązanie w jupyter notebook, wykorzystujące różne biblioteki (np. PyCaret). Użytkownicy nie mają zainstalowanych żadnych środowisk.</p>
+<p>Proszę ich o instalację Docker, a potem uruchomienie mojego kontenera.</p>
+<p><strong>Archiwizując projekt, chcę zapewnić odtwarzalność mojego rozwiązania w przyszłości</strong></p>
+<p>Odpowiednio dokumentuję i publikuję obraz docker mojego rozwiązania w repozytorium obrazów.</p>
+<p><strong>Chcę zasymulować środowisko produkcyjne</strong></p>
+<p>Nasz system analizy obrazu uruchamiany jest na urządzeniu końcowym typu NVidia Jetson Nano. Na swojej stacji roboczej chcę zasymulować, jak zachowa się na tym urządzeniu najnowsza wersja mojego modelu.</p>
+<p>W tym celu uruchamiam kontener Docker z obrazem urządzenia końcowego.</p>
+<p><strong>Chcę na urządzeniu końcowym uruchomić wiele serwisów lub sekwencję usług</strong></p>
+<p>W tym celu wykorzystuję docker compose do stworzenia uruchomienia kilku usług: równolegle lub w odpowiedniej sekwencji.</p>
+<p><strong>Chcę uruchomić mój projekt ML w skalowalnym środowisku</strong>, np. Kubernetes, czy u dostawcy usług (GCP, MS Azure czy Amazon EC2)</p>
+<p>Dla każdego z komponentów mojego procesu uczenia maszynowego tworzę osobny obraz. Wykorzystuję system Kubeflow do zarządzania pełnym procesem w systemie Kubernetes.</p>
+<p><font size="5"> <strong>Przydatne źródła</strong> </font></p>
+<p>Bardzo dobrą prezentację metod <em>bind mount</em> i <em>volume mount</em> znajdziesz w oficjalnej dokumentacji docker dostępnej <a href="https://docs.docker.com/storage/">tutaj</a>.</p>
+
+</div>
+<div id="uruchomienie-z-podłączeniem-lokalnego-systemu-plików" class="section level3 hasAnchor" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Uruchomienie z podłączeniem lokalnego systemu plików<a href="wymiana-plików-kontenerhost.html#uruchomienie-z-podłączeniem-lokalnego-systemu-plików" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/OFkoMYy2_k4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Bardzo często istnieje potrzeba synchronizacji lokalnego systemu plików z kontenerem tak, by można było zmieniać dane źródłowe bez konieczności przebudowy obrazu. Przykładowo, chcemy mieć możliwość modyfikacji plików z danymi, zmiany skryptów python, czy też podglądu pod wyniki uruchomień kontenerów w lokalnym systemie.</p>
+<p>Powyższe scenariusze mogą być zrealizowane z wykorzystaniem mechanizm <strong>bind mount</strong>.</p>
+<p><font size="5"> <strong>Synchronizacja folderu host’a z kontenerem</strong> </font></p>
+<p>Aby stworzyć obraz, w folderze z plikiem Dockerfile uruchom w terminalu komendę:</p>
+<p><code>docker build -t bind_app1_app2:v3 .</code></p>
+<p>Po zbudowaniu obrazu, uruchom odpowiedni kontener podłączając lokalny wolumin:</p>
+<p><code>docker run -ti -v"$(pwd):/app" bind_app1_app2:v3 python3 run.py</code></p>
+<p>Zauważ, że:</p>
+<ol style="list-style-type: decimal">
+<li>tym razem pliki wygenerowane w ramach kontenera synchronizują się z Twoim folderem lokalnym. W szczególności, w folderach <code>app_1/input</code> i <code>app_1/output</code> pojawiły się nowe pliki</li>
+<li>konieczne jest jednak uruchamianie kontenera w folderze, który zawiera niezbędne pliki. Opcja <code>-v"$(pwd):/app"</code> usuwa pliki z katalogu <code>\app</code> kontenera</li>
+<li>jeśli chcesz uruchomić kontener w miejscu, w którym nie ma odpowiednich plików, uruchom go bez opcji bind mount: <code>docker run -ti bind_app1_app2:v3 python3 run.py</code></li>
+</ol>
+<p><font size="5"> <strong>Modyfikacja pliku w folderze lokalnym</strong> </font></p>
+<p>Sprawdźmy teraz, czy ta synchronizacja działa w obie strony. W tym celu zmodyfikuj skrypt <code>run.py</code> dodając do niego wydruk <code>cześć stary...</code></p>
+<p>Jak widać, modyfikacja pliku lokalnego jest uwzględniana przez kontener bez konieczności przebudowania obrazu.</p>
+<p><font size="5"> <strong>Scenariusze użycia</strong> </font></p>
+<p>Wyżej wymieniony mechanizm możesz w szczególności zastosować w następujących sytuacjach:</p>
+<p><strong>Chcę kontynuować pracę nad moim projektem na innym komputerze</strong></p>
+<p>Często zmieniam lokalizację: podróżuję, wracam do domu, etc. Chciałbym móc wykonywać obliczenia, trenować modele lub testować aplikację na komputerach, do których mam dostęp. Różnią się one nie tylko systemami operacyjnymi, ale też zainstalowanymi na nich środowiskami oraz konfiguracją sprzętową. W szczególności, część z nich nie może korzystać z akceleratorów takich jak karty graficzne.</p>
+<p>Zamiast na każdym z nich instalować dedykowane środowiska, uruchamiam kontener docker z różnymi parametrami (np. z lub bez akceleracji GPU).</p>
+<p><strong>Chcę zademonstrować innym członkom zespołu aplikację wykorzystującą uczenie maszynowe</strong></p>
+<p>…ale tak, by w razie potrzeby mogli sami eksperymentować z odpowiednimi komponentami.
+(np. zmieniać dane, algorytmy trenowania, aplikację końcową, etc.).</p>
+<p>Udostępniam im obraz docker z odpowiednim środowiskiem oraz kompletem kodów źródłowych.</p>
+<p><strong>Chcę przeprowadzić szkolenie z zakresu Data Science</strong></p>
+<p>Chcę pokazać komuś rozwiązanie w jupyter notebook, wykorzystujące różne biblioteki (np. PyCaret). Użytkownicy nie mają zainstalowanych żadnych środowisk.</p>
+<p>Proszę ich o instalację Docker, a potem uruchomienie mojego kontenera.</p>
+<p><strong>Chcę przekazywać do kontenera dane specyficzne dla danego hosta (np. jako parametry uruchomieniowy)</strong></p>
+<p>Wykorzystuję w tym celu docker bind mount.</p>
+<p><strong>Chcę zasymulować środowisko produkcyjne</strong></p>
+<p>Nasz system analizy obrazu uruchamiany jest na urządzeniu końcowym typu NVidia Jetson Nano. Na swojej stacji roboczej chcę zasymulować, jak zachowa się na tym urządzeniu najnowsza wersja mojego modelu.</p>
+<p>W tym celu uruchamiam kontener Docker z obrazem urządzenia końcowego.</p>
+<p><font size="5"> <strong>Przydatne źródła</strong> </font></p>
+<p>Bardzo dobrą prezentację metod <em>bind mount</em> i <em>volume mount</em> znajdziesz w oficjalnej dokumentacji docker dostępnej <a href="https://docs.docker.com/storage/">tutaj</a>.</p>
+
+</div>
+<div id="utrzymanie-ciągłości-pracy-pojedyńczej-aplikacji-z-volume-mount" class="section level3 hasAnchor" number="5.4.4">
+<h3><span class="header-section-number">5.4.4</span> Utrzymanie ciągłości pracy pojedyńczej aplikacji z <code>volume mount</code><a href="wymiana-plików-kontenerhost.html#utrzymanie-ciągłości-pracy-pojedyńczej-aplikacji-z-volume-mount" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/t3TV85v18-U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Często istnieje potrzeba współdzielenia danych pomiędzy różnymi kontenerami. Można wyróżnić trzy typowe sytuacje, w których może ona zaistnieć:</p>
+<ol style="list-style-type: decimal">
+<li>Wielokrotnie uruchamiamy ten sam kontener, i chcemy zapewnić ciągłość jego działania. Przykładowo, uruchomienie nr 2 korzysta z rezultatów uruchomienia nr 1 (dane z uruchomienia 1 nie znikają, ale są przekazywane na potrzeby kolejnego)</li>
+<li>Mamy kilka działających równolegle kontenerów i chcemy, by wymieniały one pomiędzy sobą pliki.</li>
+<li>Mamy kilka kontenerów uruchamianych w sekwencji i chcemy, by przekazywały one sobie wyniki operacji.</li>
+</ol>
+<p>W poniższym przykładzie pokażemy, jak można zapewnić ciągłość działania pojedynczej aplikacji korzystając z mechanizmu <strong>volume mount</strong>.</p>
+<p><font size="5"> <strong>Nasza aplikacja</strong> </font></p>
+<p>W naszym przykładzie wykorzystamy aplikację <em>app_1.py</em> realizującą prostą transformację ramki danych:</p>
+<p><img src="media/image-20220530201558848.png" alt="image-20220530201558848" style="zoom:50%;" /></p>
+<p>Zwróć uwagę na eksporty do pliku csv na końcu aplikacji: wynik obliczeń przekazujemy nie tylko do pliku <code>data/output_1.csv</code>, ale też pliku wejściowego <code>data/input_1.csv</code>. W efekcie, kolejne uruchomienia, przy poprawnie działającym mechanizmie zachowania ciągłości danych, powinny korzystać z wyników uruchomień poprzednich.</p>
+<p><font size="5"> <strong>Stworzenie obrazu</strong> </font></p>
+<p>Obraz tworzymy w oparciu o plik Dockerfile:
+<img src="media/image-20220530201911263.png" alt="image-20220530201911263" style="zoom:50%;" /></p>
+<p>Korzystamy w tym celu z komendy:</p>
+<p><code>docker build -t app1_vm:v1 .</code></p>
+<p><font size="5"> <strong>Stworzenie współdzielonego woluminu</strong> </font></p>
+<p>Funkcjonalność <em>volume mount</em> umożliwia stworzenie lokalnego, ale zarządzanego przez docker’a współdzielonego woluminu. Stwórzmy taki wolumen korzystając z komendy:</p>
+<p><code>docker volume create vm_app1</code></p>
+<p>Możesz teraz sprawdzić, np. korzystając z aplikacji Docker Desktop, że nie zawiera on żadnych danych.</p>
+<p><font size="5"> <strong>Sekwencyjne uruchamianie kontenerów z wykorzystaniem mechanizmu volume mount</strong> </font></p>
+<p>Aby uruchomić kontener <strong>z opcją synchronizacja danych z woluminem Docker</strong>, w linii komend wpisz:</p>
+<p><code>docker run -ti -v vm_app1_vm:/app/data app1_vm:v1</code></p>
+<p>Efekt to nie tylko uruchomiony skrypt:
+<img src="media/image-20220530202729461.png" alt="image-20220530202729461" /></p>
+<p>… ale też nowe dane w naszym wolumenie:
+<img src="media/image-20220530202909311.png" alt="image-20220530202909311" /></p>
+<p>Kolejne uruchomienia kontenerów wykorzystują wyniki poprzednich:
+<img src="media/image-20220530203036229.png" alt="image-20220530203036229" /></p>
+<p><font size="5"> <strong>Scenariusze użycia</strong> </font></p>
+<p>Wyżej wymieniony mechanizm możesz w szczególności zastosować w następujących sytuacjach:</p>
+<p><strong>Chcę zapewnić ciągłość działania mojej aplikacji</strong></p>
+<p>… tak, aby kolejne uruchomienia kontenera z moją aplikacją mogły korzystać z wyników poprzednich uruchomień</p>
+<p>Wykorzystuję w tym celu docker volume.</p>
+<p><strong>Chcę, aby różne równolegle pracujące kontenery wymieniały wymieniały się danymi</strong></p>
+<p>Wykorzystuję w tym celu docker volume.</p>
+<p><strong>Chcę przechowywać dane wykorzystywane przez moje kontenery u dostawcy usług chmurowych</strong></p>
+<p>Wykorzystuję w tym celu docker volume.</p>
+
+</div>
+<div id="współdzielenie-danych-pomiędzy-kontenerami-z-volume-mount" class="section level3 hasAnchor" number="5.4.5">
+<h3><span class="header-section-number">5.4.5</span> Współdzielenie danych pomiędzy kontenerami z <code>volume mount</code><a href="wymiana-plików-kontenerhost.html#współdzielenie-danych-pomiędzy-kontenerami-z-volume-mount" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<iframe width="745" height="450" src="https://www.youtube.com/embed/VT0AI0zUQ5A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>W tej części naszego wykładu pokażemy, w jaki sposób można zapewnić wymianę danych pomiędzy <strong>wieloma kontenerami</strong> z wykorzystaniem mechanizmy <strong>volume mount</strong>.</p>
+<p><font size="5"> <strong>Stworzenie obrazów i uruchomienie poszczególnych kontenerów</strong> </font></p>
+<p>W naszym przykładzie stworzymy i uruchomimy 2 kontenery: <code>app1_shared</code> i <code>app2_shared</code>.</p>
+<p>Obie dokunują prostej transformacji danych zaczytanych z pliku zewnętrznego, przy czym <strong>app2_shared jako wejście traktuje wynik działania app1_shared</strong>:</p>
+<p><img src="media//image-20220531173342191.png" alt="image-20220531173342191" style="zoom:50%;" /></p>
+<p>Aby stworzyć obraz <code>app1</code>, w folderze <code>\app_1</code> uruchom w terminalu komendę:</p>
+<p><code>docker build -t app1_shared:v1 .</code></p>
+<p>Aby go uruchomić:</p>
+<p><code>docker run -ti app1_shared:v1</code></p>
+<p>Analogicznie, aby stworzyć obraz <code>app2</code>, w folderze <code>\app_2</code> uruchom w terminalu komendę:</p>
+<p><code>docker build -t app2_shared:v1 .</code></p>
+<p>Aby go uruchomić:</p>
+<p><code>docker run -ti app2_shared:v1</code></p>
+<p><font size="5"> <strong>Stworzenie współdzielonego woluminu</strong> </font></p>
+<p>Funkcjonalność <em>volume mount</em> umożliwia stworzenie lokalnego, ale zarządzanego przez docker’a współdzielonego woluminu. Stwórzmy taki wolumen korzystając z komendy:</p>
+<p><code>docker volume create vol_app1_app2</code></p>
+<p><font size="5"> <strong>Uruchomienie poszczególnych kontenerów z funkcjonalnością wymiany danych</strong> </font></p>
+<p>Aby uruchomić poszczególne aplikacje w trybie wymiany danych z wykorzystaniem mechanizmu volume mount:</p>
+<ol style="list-style-type: decimal">
+<li>W przypadku aplikacji <code>app1_shared</code> w linii komend uruchom:</li>
+</ol>
+<p><code>docker run -ti -v vol_app1_app2:/app/data app1_shared:v1</code></p>
+<ol start="2" style="list-style-type: decimal">
+<li>W przypadku aplikacji <code>app2_shared</code> w linii komend uruchom:</li>
+</ol>
+<p><code>docker run -ti -v vol_app1_app2:/app/data app2_shared:v1</code></p>
+<p>Zauważ, że sekwencyjne uruchamianie tych aplikacji powoduje uwzględnianie wyników poprzednich obliczeń jako weściowych do kolejnych:
+<img src="media//image-20220531172957645.png" alt="image-20220531172957645" style="zoom:50%;" /></p>
+<p><font size="5"> <strong>Scenariusze użycia</strong> </font></p>
+<p>Wyżej wymieniony mechanizm możesz w szczególności zastosować w następujących sytuacjach:</p>
+<p><strong>Chcę zapewnić ciągłość działania mojej aplikacji</strong></p>
+<p>… tak, aby kolejne uruchomienia kontenera z moją aplikacją mogły korzystać z wyników poprzednich uruchomień</p>
+<p>Wykorzystuję w tym celu docker volume.</p>
+<p><strong>Chcę, aby różne równolegle pracujące kontenery wymieniały wymieniały się danymi</strong></p>
+<p>Wykorzystuję w tym celu docker volume.</p>
+<p><strong>Chcę przechowywać dane wykorzystywane przez moje kontenery u dostawcy usług chmurowych</strong></p>
+<p>Wykorzystuję w tym celu docker volume.</p>
+<p><font size="5"> <strong>Przydatne źródła</strong> </font></p>
+<p>Bardzo dobrą prezentację metod <em>bind mount</em> i <em>volume mount</em> znajdziesz w oficjalnej dokumentacji docker dostępnej <a href="https://docs.docker.com/storage/">tutaj</a>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="wykorzystanie-gotowych-kontenerów.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="aplikacje-wielokontenerowe.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/wodecki/ASI/edit/master/5.4.0._Wymiana_plików_kontener_-_host_i_kontener-kontener.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["series.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
